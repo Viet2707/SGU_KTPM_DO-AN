@@ -51,5 +51,31 @@ const removeFood = async (req, res) => {
     }
 
 }
+// update food
+const updateFood = async (req, res) => {
+    try {
+        const { id, name, description, price, category } = req.body;
+        let updatedData = { name, description, price, category };
 
-export { listFood, addFood, removeFood }
+        // Nếu admin upload ảnh mới
+        if (req.file) {
+            const food = await foodModel.findById(id);
+            if (food && food.image) {
+                fs.unlink(`uploads/${food.image}`, () => {});
+            }
+            updatedData.image = req.file.filename;
+        }
+
+        const updatedFood = await foodModel.findByIdAndUpdate(id, updatedData, { new: true });
+
+        if (!updatedFood) {
+            return res.json({ success: false, message: "Không tìm thấy sản phẩm" });
+        }
+
+        res.json({ success: true, message: "Cập nhật sản phẩm thành công", data: updatedFood });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Error" });
+    }
+};
+export { listFood, addFood, removeFood, updateFood }

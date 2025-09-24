@@ -1,0 +1,75 @@
+.list-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.list-table {
+    flex: 2; /* chiếm 2 phần */
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+
+.list-table-format {
+    display: grid;
+    grid-template-columns: 0.6fr 2fr 1fr 1fr 1fr;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 14px;
+    background-color: #fff;
+}
+
+.list-table-format:hover {
+    background-color: #f5f5f5;
+}
+
+.list-table-format.title {
+    background-color: #f9f9f9;
+    font-weight: bold;
+    border-bottom: 2px solid #ccc;
+}
+
+.list-table-format img {
+    width: 60px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.action-buttons span {
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: white;
+    font-size: 13px;
+    transition: background-color 0.2s ease;
+}
+
+.action-buttons .edit {
+    background-color: #007bff;
+}
+
+.action-buttons .edit:hover {
+    background-color: #0056b3;
+}
+
+.action-buttons .remove {
+    background-color: #dc3545;
+}
+
+.action-buttons .remove:hover {
+    background-color: #b02a37;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+    .list-container {
+        flex-direction: column;
+    }
+    .list-table, .edit-food {
+        width: 100%;
+    }
+}
