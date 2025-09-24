@@ -65,4 +65,25 @@ export const updateStock = async (req, res) => {
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
     }
+}
+    // Thêm stock mới cho 1 sản phẩm trong kho
+    export const addStock = async (req, res) => {
+    try {
+        const { warehouseId, productId, quantity } = req.body;
+        if (!warehouseId || !productId || quantity == null) {
+            return res.status(400).json({ success: false, message: "Thiếu thông tin" });
+        }
+
+        let stock = await Stock.findOne({ warehouseId, productId });
+        if (stock) {
+            return res.status(400).json({ success: false, message: "Stock đã tồn tại, vui lòng dùng updateStock" });
+        }
+
+        stock = new Stock({ warehouseId, productId, quantity });
+        await stock.save();
+
+        res.json({ success: true, stock });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
 };

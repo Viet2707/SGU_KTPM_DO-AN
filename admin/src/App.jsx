@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import CreateWarehouse from './pages/ListWarehouses/CreateWarehouse'
 import ListWarehouses from './pages/ListWarehouses/ListWarehouses' // <-- import component
 
+
 const App = () => {
   return (
     <div className='app'>

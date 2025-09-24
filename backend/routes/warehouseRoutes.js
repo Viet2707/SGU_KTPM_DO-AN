@@ -9,5 +9,4 @@ router.get("/:warehouseId/stocks", viewStock);
 router.post("/add-stock", addStock);
 router.post("/update-stock", updateStock);
 
-
 export default router;
