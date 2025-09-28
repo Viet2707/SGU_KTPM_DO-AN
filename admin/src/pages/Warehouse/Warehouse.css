@@ -1,0 +1,33 @@
+.warehouse-container {
+  padding: 20px;
+}
+
+.category-section {
+  margin-bottom: 30px;
+}
+
+.foods-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.food-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.food-card:hover {
+  transform: scale(1.05);
+}
+
+.food-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+}

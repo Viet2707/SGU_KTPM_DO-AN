@@ -20,13 +20,10 @@ const Sidebar = () => {
               <img src={assets.order_icon} alt="" />
               <p>Đơn đặt hàng</p>
           </NavLink>
-        <NavLink to='/createWarehouse' className="sidebar-option">
         
-          <p>Tạo Kho hàng</p>
-        </NavLink>
         <NavLink to='/listWarehouses' className="sidebar-option">
               <img src={assets.warehouse_icon} alt="" />
-              <p>Kho hàng</p>
+              <p>Quản lí kho hàng</p>
           </NavLink>
           
       </div>
