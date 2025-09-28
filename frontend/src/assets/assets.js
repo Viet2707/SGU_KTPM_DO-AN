@@ -92,7 +92,7 @@ export const menu_list = [
     menu_image: menu_2,
   },
   {
-    menu_name: "Cây phong thuỷ",
+    menu_name: "Cây phong thủy",
     menu_image: menu_3,
   },
   {

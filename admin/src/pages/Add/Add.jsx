@@ -79,7 +79,7 @@ const Add = () => {
                             <option value="Cây để bàn">Cây để bàn</option>
                             <option value="Cây trồng nước">Cây trồng nước</option>
                             <option value="Cây cao cấp">Cây cao cấp</option>
-                            <option value="Trậu nung đất">Trậu nung đất</option>
+                            <option value="Chậu nung đất">Chậu nung đất</option>
                             <option value="Chậu xi măng">Chậu xi măng</option>
                            
                         </select>
