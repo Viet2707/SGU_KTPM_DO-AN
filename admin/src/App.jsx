@@ -2,13 +2,13 @@ import React from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Sidebar from "./components/Sidebar/Sidebar";
 import { Route, Routes } from "react-router-dom";
+
 import Add from "./pages/Add/Add";
 import List from "./pages/List/List";
 import Orders from "./pages/Orders/Orders";
-import Warehouse from "./pages/Warehouse/Warehouse";
+import Stock from "./pages/Stock/Stock";  // ✅ đổi từ Warehouse sang Stock
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 
 const App = () => {
   return (
@@ -22,7 +22,7 @@ const App = () => {
           <Route path="/add" element={<Add />} />
           <Route path="/list" element={<List />} />
           <Route path="/orders" element={<Orders />} />
-          <Route path="/listWarehouses" element={<Warehouse />} />
+          <Route path="/stock" element={<Stock />} /> {/* ✅ đồng bộ với Sidebar */}
         </Routes>
       </div>
     </div>

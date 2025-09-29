@@ -60,8 +60,7 @@ const List = () => {
                     <div key={index} className="list-table-format">
                         <img src={`${url}/images/${item.image}`} alt={item.name} />
                         <p>{item.name}</p>
-                        <p>{item.category}</p>
-                        <p>{currency}{item.price}</p>
+<p>{item.category}</p>                        <p>{currency}{item.price}</p>
                         <div className="action-buttons">
                             <span className="cursor edit" onClick={() => setEditingFood(item)}>Edit</span>
                             <span className="cursor remove" onClick={() => removeFood(item._id)}>x</span>

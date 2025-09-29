@@ -1,72 +1,138 @@
-import React, { useState } from "react";
-import "./EditFood.css";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 import { url } from "../../assets/assets";
 
 const EditFood = ({ food, onClose, refreshList }) => {
-    const [formData, setFormData] = useState({
-        name: food.name,
-        description: food.description,
-        price: food.price,
-        category: food.category,
-    });
-    const [image, setImage] = useState(null);
+  const [form, setForm] = useState({
+    id: food._id,
+    name: food.name || "",
+    description: food.description || "",
+    price: food.price || 0,
+    categoryId: "", // lưu categoryId real
+    image: null,
+    previewImage: food.image ? `${url}/images/${food.image}` : null,
+  });
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+  const [categories, setCategories] = useState([]);
 
-    const handleImageChange = (e) => {
-        setImage(e.target.files[0]);
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const data = new FormData();
-        data.append("id", food._id);
-        data.append("name", formData.name);
-        data.append("description", formData.description);
-        data.append("price", formData.price);
-        data.append("category", formData.category);
-        if (image) data.append("image", image);
-
-        try {
-            const res = await axios.put(`${url}/api/food/update`, data, {
-                headers: { "Content-Type": "multipart/form-data" },
-            });
-
-            if (res.data.success) {
-                refreshList();
-                onClose();
-            }
-        } catch (err) {
-            console.error(err);
+  // Fetch categories for <select>
+  const fetchCategories = async () => {
+    try {
+      const res = await axios.get(`${url}/api/categories`);
+      if (res.data.success) {
+        setCategories(res.data.categories);
+        // Set default: categoryId trùng food.category hiện tại
+        const cat = res.data.categories.find(
+          (c) => c.name === food.category // backend trả về tên danh mục
+        );
+        if (cat) {
+          setForm((prev) => ({ ...prev, categoryId: cat._id }));
         }
-    };
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Không tải được danh mục");
+    }
+  };
 
-    return (
-        <div className="edit-food">
-            <h2>Edit Food</h2>
-            <form onSubmit={handleSubmit}>
-                <input name="name" value={formData.name} onChange={handleChange} placeholder="Name" />
-                <input name="description" value={formData.description} onChange={handleChange} placeholder="Description" />
-                <input name="price" value={formData.price} onChange={handleChange} placeholder="Price" type="number" />
-                <select name="category" value={formData.category} onChange={handleChange}>
-                      <option value="Cây dễ chăm">Cây dễ chăm</option>
-                            <option value="Cây văn phòng">Cây văn phòng</option>
-                            <option value="Cây phong thủy">Cây phong thủy</option>
-                            <option value="Cây để bàn">Cây để bàn</option>
-                            <option value="Cây trồng nước">Cây trồng nước</option>
-                            <option value="Cây cao cấp">Cây cao cấp</option>
-                            <option value="Trậu nung đất">Trậu nung đất</option>
-                            <option value="Chậu xi măng">Chậu xi măng</option>
-                </select>
-                <input type="file" onChange={handleImageChange} />
-                <button type="submit">Save</button>
-                <button type="button" onClick={onClose}>Cancel</button>
-            </form>
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  // Handle form submit
+  const handleUpdate = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("id", form.id);
+      formData.append("name", form.name);
+      formData.append("description", form.description);
+      formData.append("price", form.price);
+      formData.append("categoryId", form.categoryId);
+      if (form.image) formData.append("image", form.image);
+
+      const res = await axios.put(`${url}/api/food/update`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      if (res.data.success) {
+        toast.success("Cập nhật sản phẩm thành công!");
+        refreshList();
+        onClose();
+      } else {
+        toast.error(res.data.message || "Cập nhật thất bại");
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Có lỗi khi cập nhật sản phẩm");
+    }
+  };
+
+  return (
+    <div className="edit-modal">
+      <div className="edit-form">
+        <h3>✏️ Sửa sản phẩm</h3>
+        <input
+          type="text"
+          value={form.name}
+          onChange={(e) => setForm({ ...form, name: e.target.value })}
+          placeholder="Tên sản phẩm"
+        />
+        <textarea
+          value={form.description}
+          onChange={(e) => setForm({ ...form, description: e.target.value })}
+          placeholder="Mô tả"
+        />
+        <input
+          type="number"
+          value={form.price}
+          onChange={(e) => setForm({ ...form, price: e.target.value })}
+          placeholder="Giá"
+        />
+
+        {/* Upload ảnh */}
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) =>
+            setForm({
+              ...form,
+              image: e.target.files[0],
+              previewImage: URL.createObjectURL(e.target.files[0]),
+            })
+          }
+        />
+        {form.previewImage && (
+          <img
+            src={form.previewImage}
+            alt="preview"
+            style={{ width: 100, marginTop: 10 }}
+          />
+        )}
+
+        {/* Select danh mục */}
+        <select
+          value={form.categoryId}
+          onChange={(e) => setForm({ ...form, categoryId: e.target.value })}
+        >
+          <option value="">-- Chọn danh mục --</option>
+          {categories.map((cat) => (
+            <option key={cat._id} value={cat._id}>
+              {cat.name}
+            </option>
+          ))}
+        </select>
+
+        {/* Action buttons */}
+        <div style={{ marginTop: 20 }}>
+          <button onClick={handleUpdate}>💾 Lưu</button>
+          <button onClick={onClose} style={{ marginLeft: 10 }}>
+            ❌ Hủy
+          </button>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default EditFood;
