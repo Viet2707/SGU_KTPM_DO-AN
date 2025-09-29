@@ -3,7 +3,7 @@
 import React, { useContext } from 'react'
 import './ExploreMenu.css'
 import { StoreContext } from '../../Context/StoreContext'
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types' 
 
 /**
  * Props đề xuất:
