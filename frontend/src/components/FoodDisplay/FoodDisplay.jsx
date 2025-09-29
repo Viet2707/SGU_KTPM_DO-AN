@@ -77,11 +77,11 @@ FoodDisplay.propTypes = {
   category: PropTypes.string.isRequired,
   minPrice: PropTypes.oneOfType([
     PropTypes.number,
-    PropTypes.number
+    PropTypes.string
   ]),
   maxPrice: PropTypes.oneOfType([
     PropTypes.number,
-    PropTypes.number
+    PropTypes.string
   ]),
 };
 
