@@ -81,8 +81,8 @@ const ProductDetail = () => {
           </div>
 
           <p className="product-detail-price">
-            {currency}
-            {product.price.toLocaleString()}
+            
+            {product.price.toLocaleString()}{currency}
           </p>
 
           {/* Hiển thị trạng thái hàng */}
@@ -160,8 +160,8 @@ const ProductDetail = () => {
               <img src={url + "/images/" + item.image} alt={item.name} />
               <h3>{item.name}</h3>
               <p className="price">
-                {currency}
-                {item.price.toLocaleString()}
+                
+                {item.price.toLocaleString()}{currency}
               </p>
               <button
                 className="btn-view"

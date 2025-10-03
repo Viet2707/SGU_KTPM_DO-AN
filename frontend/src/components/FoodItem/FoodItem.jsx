@@ -28,8 +28,7 @@ const FoodItem = ({ id, image, name, price, desc }) => {
         </div>
         <p className="food-item-desc">{desc}</p>
         <p className="food-item-price">
-          {currency}
-          {price}
+          {price.toLocaleString()}{currency}
         </p>
       </div>
 
