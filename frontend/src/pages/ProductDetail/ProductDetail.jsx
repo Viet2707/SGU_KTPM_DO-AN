@@ -1,16 +1,45 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./ProductDetail.css";
 import { StoreContext } from "../../Context/StoreContext";
+import axios from "axios";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { food_list, url, currency, addToCart } = useContext(StoreContext);
 
-  const [quantity, setQuantity] = useState(1);
+  // Lấy sản phẩm theo id
+  const product = useMemo(
+    () => food_list.find((item) => item._id === id),
+    [food_list, id]
+  );
 
-  const product = food_list.find((item) => item._id === id);
+  const [quantity, setQuantity] = useState(1);
+  const [stock, setStock] = useState(null);       // số lượng tồn hiện tại
+  const [loadingStock, setLoadingStock] = useState(true);
+
+  // Lấy tồn kho lúc mở trang
+  useEffect(() => {
+    let alive = true;
+    const fetchStock = async () => {
+      try {
+        setLoadingStock(true);
+        const { data } = await axios.get(`${url}/api/stocks/available/${id}`);
+        if (!alive) return;
+        const qty = data?.quantity ?? 0;
+        setStock(qty);
+        setQuantity((q) => Math.max(1, Math.min(q, qty || 1)));
+      } catch (e) {
+        if (!alive) return;
+        setStock(0);
+      } finally {
+        if (alive) setLoadingStock(false);
+      }
+    };
+    if (id) fetchStock();
+    return () => { alive = false; };
+  }, [id, url]);
 
   if (!product) {
     return (
@@ -20,9 +49,41 @@ const ProductDetail = () => {
     );
   }
 
-  // Hàm xử lý "Mua ngay"
-  const handleBuyNow = () => {
-    addToCart(product._id, quantity); // thêm với số lượng đã chọn
+  // Refresh tồn kho ngay trước khi thêm/mua để tránh lệch số liệu
+  const refreshStock = async () => {
+    try {
+      const { data } = await axios.get(`${url}/api/stocks/available/${id}`);
+      const qty = data?.quantity ?? 0;
+      setStock(qty);
+      return qty;
+    } catch {
+      setStock(0);
+      return 0;
+    }
+  };
+
+  const alertQty = (msg) => window.alert(msg);
+
+  // Thêm vào giỏ
+  const handleAdd = async () => {
+    const available = await refreshStock();
+    if (available <= 0) return alertQty("Kho còn 0 sản phẩm");
+    if (quantity > available) {
+      setQuantity(Math.max(1, Math.min(quantity, available)));
+      return alertQty(`Chỉ còn ${available} sản phẩm`);
+    }
+    addToCart(product._id, quantity);
+  };
+
+  // Mua ngay
+  const handleBuyNow = async () => {
+    const available = await refreshStock();
+    if (available <= 0) return alertQty("Kho còn 0 sản phẩm");
+    if (quantity > available) {
+      setQuantity(Math.max(1, Math.min(quantity, available)));
+      return alertQty(`Chỉ còn ${available} sản phẩm`);
+    }
+    addToCart(product._id, quantity);
     navigate("/order");
   };
 
@@ -38,7 +99,7 @@ const ProductDetail = () => {
         <div className="product-detail-left">
           <img
             className="product-detail-image"
-            src={url + "/images/" + product.image}
+            src={`${url}/images/${product.image}`}
             alt={product.name}
           />
         </div>
@@ -60,35 +121,59 @@ const ProductDetail = () => {
 
           <p className="product-detail-desc">{product.description}</p>
 
+          {/* Hiển thị tồn kho đơn giản */}
+          <div className="product-detail-stock">
+            <span>Tồn kho: </span>
+            {loadingStock ? (
+              <b>Đang kiểm tra...</b>
+            ) : (
+              <b>{stock ?? 0}</b>
+            )}
+          </div>
+
           {/* Bộ chọn số lượng */}
           <div className="product-detail-quantity">
             <p>Số lượng:</p>
             <div className="quantity-control">
               <button
-                onClick={() => setQuantity((q) => (q > 1 ? q - 1 : 1))}
+                onClick={() => setQuantity((q) => Math.max(1, q - 1))}
                 className="btn-qty"
+                disabled={loadingStock}
               >
                 -
               </button>
               <span>{quantity}</span>
               <button
-                onClick={() => setQuantity((q) => q + 1)}
+                onClick={() =>
+                  setQuantity((q) => (stock != null ? Math.min(q + 1, stock) : q + 1))
+                }
                 className="btn-qty"
+                disabled={loadingStock || (stock != null && quantity >= stock)}
               >
                 +
               </button>
             </div>
+            {!loadingStock && stock != null && quantity >= stock && stock > 0 && (
+              <small style={{ color: "#f57c00" }}>
+                Chỉ còn {stock} sản phẩm
+              </small>
+            )}
           </div>
 
           {/* Nút hành động */}
           <div className="product-detail-actions">
             <button
               className="btn-add"
-              onClick={() => addToCart(product._id, quantity)}
+              onClick={handleAdd}
+              disabled={loadingStock || (stock !== null && stock <= 0)}
             >
               🛒 Thêm vào giỏ
             </button>
-            <button className="btn-buy" onClick={handleBuyNow}>
+            <button
+              className="btn-buy"
+              onClick={handleBuyNow}
+              disabled={loadingStock || (stock !== null && stock <= 0)}
+            >
               ⚡ Mua ngay
             </button>
           </div>
@@ -101,7 +186,7 @@ const ProductDetail = () => {
               <br />
               - Xuất xứ: Việt Nam <br />
               - Kích thước: Trung bình (20 - 30cm) <br />
-              - Tình trạng: Còn hàng <br />
+              - Tồn kho: {loadingStock ? "Đang kiểm tra..." : (stock ?? 0)} <br />
               - Bảo hành: 7 ngày đổi trả <br />
               <br />
               {product.description} Sản phẩm phù hợp để làm quà tặng, trang trí
@@ -118,7 +203,7 @@ const ProductDetail = () => {
         <div className="related-grid">
           {relatedProducts.map((item) => (
             <div key={item._id} className="related-item">
-              <img src={url + "/images/" + item.image} alt={item.name} />
+              <img src={`${url}/images/${item.image}`} alt={item.name} />
               <h3>{item.name}</h3>
               <p className="price">
                 {currency}
