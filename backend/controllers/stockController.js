@@ -27,27 +27,30 @@ export const getAllStocks = async (req, res) => {
 };
 
 // 📌 Tạo mới Food + Stock (có upload ảnh)
+// Nhập kho cho sản phẩm đã tồn tại
 export const createStock = async (req, res) => {
   try {
-    const { name, description, price, categoryId, quantity } = req.body;
-    const image = req.file ? req.file.filename : null;
+    const { foodId, quantity } = req.body;
 
-    // tạo sản phẩm mới
-    const food = await Food.create({
-      name,
-      description,
-      price: Number(price),
-      categoryId,
-      image,
-    });
+    // 🔍 Kiểm tra có Food không
+    const food = await Food.findById(foodId);
+    if (!food) {
+      return res.status(400).json({
+        success: false,
+        message: "Food không tồn tại, hãy Thêm cây mới trước"
+      });
+    }
 
-    // tạo kho cho sản phẩm đó
-    const stock = await Stock.create({
-      foodId: food._id,
-      quantity: Number(quantity) || 0,
-    });
+    // Nhập kho
+    let stock = await Stock.findOne({ foodId });
+    if (stock) {
+      stock.quantity += Number(quantity) || 0;
+      await stock.save();
+    } else {
+      stock = await Stock.create({ foodId, quantity: Number(quantity) || 0 });
+    }
 
-    res.json({ success: true, food, stock });
+    res.json({ success: true, message: "Đã nhập kho", stock });
   } catch (err) {
     console.error("❌ createStock error:", err);
     res.status(500).json({ success: false, message: err.message });

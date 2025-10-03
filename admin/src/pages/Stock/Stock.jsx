@@ -7,30 +7,51 @@ axios.defaults.baseURL = "http://localhost:5000";
 export default function Stock() {
   const [stocks, setStocks] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [foods, setFoods] = useState([]); // danh sách sản phẩm có sẵn
   const [openCatId, setOpenCatId] = useState(null);
 
   const [form, setForm] = useState({
-    name: "",
-    description: "",
-    price: 0,
-    image: null,
-    categoryId: "",
+    foodId: "",
     quantity: 0,
   });
 
   const fetchStocks = async () => {
-    const res = await axios.get("/api/stocks");
-    setStocks(res.data.stocks || []);
+    try {
+      const res = await axios.get("/api/stocks");
+      setStocks(res.data.stocks || []);
+    } catch (err) {
+      console.error("❌ Lỗi fetch stocks:", err.response?.data || err.message);
+    }
   };
 
   const fetchCategories = async () => {
-    const res = await axios.get("/api/categories");
-    setCategories(res.data.categories || []);
+    try {
+      const res = await axios.get("/api/category/list");
+      setCategories(res.data.categories || []);
+    } catch (err) {
+      console.error("❌ Lỗi fetch categories:", err.response?.data || err.message);
+    }
+  };
+
+  const fetchFoods = async () => {
+    try {
+      const res = await axios.get("/api/food/list");
+      if (res.data.success) {
+        setFoods(res.data.data);
+      }
+    } catch (err) {
+      console.error("❌ Lỗi fetch foods:", err.response?.data || err.message);
+    }
+  };
+
+  const refreshData = () => {
+    fetchStocks();
+    fetchCategories();
+    fetchFoods();
   };
 
   useEffect(() => {
-    fetchStocks();
-    fetchCategories();
+    refreshData();
   }, []);
 
   const toggleCategory = (catId) => {
@@ -38,35 +59,36 @@ export default function Stock() {
   };
 
   const handleChangeQty = async (foodId, qty) => {
-    await axios.post("/api/stocks/change", { foodId, qty });
-    fetchStocks();
+    try {
+      await axios.post("/api/stocks/change", { foodId, qty });
+      fetchStocks();
+    } catch (err) {
+      console.error("❌ Lỗi change quantity:", err.response?.data || err.message);
+    }
   };
 
   const deleteStock = async (stockId, foodName) => {
     if (window.confirm(`Bạn có chắc muốn xoá ${foodName}?`)) {
-      await axios.delete(`/api/stocks/${stockId}`);
-      fetchStocks();
+      try {
+        await axios.delete(`/api/stocks/${stockId}`);
+        fetchStocks();
+      } catch (err) {
+        console.error("❌ Lỗi delete stock:", err.response?.data || err.message);
+      }
     }
   };
 
   const createStock = async () => {
     try {
-      const formData = new FormData();
-      formData.append("name", form.name);
-      formData.append("description", form.description);
-      formData.append("price", form.price);
-      formData.append("categoryId", form.categoryId);
-      formData.append("quantity", form.quantity);
-      if (form.image) formData.append("image", form.image);
-
-      await axios.post("/api/stocks", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
+      await axios.post("/api/stocks", {
+        foodId: form.foodId,
+        quantity: form.quantity,
       });
 
-      setForm({ name: "", description: "", price: 0, image: null, categoryId: "", quantity: 0 });
+      setForm({ foodId: "", quantity: 0 });
       fetchStocks();
     } catch (err) {
-      console.error("❌ AxiosError:", err.response?.data || err.message);
+      console.error("❌ Lỗi create stock:", err.response?.data || err.message);
     }
   };
 
@@ -74,22 +96,31 @@ export default function Stock() {
     <div style={{ padding: 20 }}>
       <h2>🌱 Quản lý kho hàng (Accordion theo danh mục)</h2>
 
-      {/* Form thêm sản phẩm */}
-      <h3>➕ Thêm sản phẩm mới</h3>
-      <input placeholder="Tên" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} />
-      <input placeholder="Mô tả" value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} />
-      <input type="number" placeholder="Giá" value={form.price} onChange={e => setForm({ ...form, price: e.target.value })} />
-      <input type="file" accept="image/*" onChange={e => setForm({ ...form, image: e.target.files[0] })} />
-      <select value={form.categoryId} onChange={e => setForm({ ...form, categoryId: e.target.value })}>
-        <option value="">Chọn danh mục</option>
-        {categories.map((cat) => (
-          <option key={cat._id} value={cat._id}>{cat.name}</option>
+      {/* Nút cập nhật */}
+      <button 
+        onClick={refreshData} 
+        style={{ marginBottom: 15, padding: "6px 14px", cursor: "pointer" }}
+      >
+        🔄 Cập nhật danh sách
+      </button>
+
+      {/* Nhập kho: chọn sản phẩm có sẵn */}
+      <h3>➕ Nhập hàng cho sản phẩm có sẵn</h3>
+      <select value={form.foodId} onChange={e => setForm({ ...form, foodId: e.target.value })}>
+        <option value="">-- Chọn sản phẩm --</option>
+        {foods.map(food => (
+          <option key={food._id} value={food._id}>
+            {food.name} - {food.category} ({food.price} VND)
+          </option>
         ))}
       </select>
-      <input type="number" placeholder="Số lượng" value={form.quantity} onChange={e => setForm({ ...form, quantity: e.target.value })} />
-      <button onClick={createStock}>💾 Lưu</button>
 
-      {/* Accordion Categories */}
+      <input type="number" placeholder="Số lượng" value={form.quantity} 
+             onChange={e => setForm({ ...form, quantity: e.target.value })} />
+
+      <button onClick={createStock}>💾 Nhập kho</button>
+
+      {/* Accordion theo category */}
       {categories.map((cat) => {
         const catStocks = stocks.filter((s) => s.categoryInfo?._id === cat._id);
 
@@ -115,7 +146,7 @@ export default function Stock() {
                     <tr key={stock._id}>
                       <td>
                         {stock.foodInfo?.image && (
-                          <img src={`http://localhost:5000/images/${stock.foodInfo.image}`} style={{ width: 50, height: 50 }} />
+                          <img src={`http://localhost:5000/images/${stock.foodInfo.image}`} style={{ width: 50 }} alt="" />
                         )}
                       </td>
                       <td>{stock.foodInfo?.name}</td>
@@ -126,7 +157,9 @@ export default function Stock() {
                         <button onClick={() => handleChangeQty(stock.foodInfo?._id, 1)}>+</button>
                       </td>
                       <td>
-                        {stock.quantity === 0 ? "Hết hàng" : stock.quantity <= 5 ? "Sắp hết" : "Còn hàng"}
+                        {stock.quantity === 0 ? "Hết hàng"
+                          : stock.quantity <= 5 ? "Sắp hết"
+                          : "Còn hàng"}
                       </td>
                       <td>
                         <button onClick={() => handleChangeQty(stock.foodInfo?._id, 5)}>+5</button>

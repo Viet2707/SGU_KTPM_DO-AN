@@ -9,8 +9,7 @@ import foodRouter from "./routes/foodRoute.js";
 import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 import stockRoutes from "./routes/stockRoutes.js";
-import categoryRoutes from "./routes/categoryRoutes.js";
-
+import categoryRoute from "./routes/categoryRoute.js";
 dotenv.config();
 
 const app = express();
@@ -27,8 +26,8 @@ app.use("/api/user", userRouter);
 app.use("/api/food", foodRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/order", orderRouter);
-app.use("/api/stocks", stockRoutes);
-app.use("/api/categories", categoryRoutes);
+app.use("/api/stocks", stockRoutes);     // FE nhớ gọi `/api/stocks/...`
+app.use("/api/category", categoryRoute);
 
 // ---------- DB Connect + Start ----------
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/plantshop")
