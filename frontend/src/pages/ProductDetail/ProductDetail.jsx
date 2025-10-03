@@ -20,10 +20,37 @@ const ProductDetail = () => {
     );
   }
 
+  // Kiểm tra tồn kho - quantity từ database
+  const stock = product.quantity || 0;
+  const isOutOfStock = stock <= 0;
+
   // Hàm xử lý "Mua ngay"
   const handleBuyNow = () => {
-    addToCart(product._id, quantity); // thêm với số lượng đã chọn
+    if (isOutOfStock) {
+      alert("⚠️ Xin lỗi! Sản phẩm này hiện đã hết hàng.");
+      return;
+    }
+    addToCart(product._id, quantity);
     navigate("/order");
+  };
+
+  // Hàm thêm vào giỏ hàng
+  const handleAddToCart = () => {
+    if (isOutOfStock) {
+      alert("⚠️ Xin lỗi! Sản phẩm này hiện đã hết hàng.");
+      return;
+    }
+    addToCart(product._id, quantity);
+    alert("✅ Đã thêm vào giỏ hàng thành công!");
+  };
+
+  // Giới hạn quantity không vượt quá stock
+  const handleIncreaseQuantity = () => {
+    if (quantity < stock) {
+      setQuantity((q) => q + 1);
+    } else {
+      alert(`Chỉ còn ${stock} sản phẩm trong kho!`);
+    }
   };
 
   // Gợi ý sản phẩm (3 sản phẩm khác)
@@ -58,37 +85,49 @@ const ProductDetail = () => {
             {product.price.toLocaleString()}
           </p>
 
+          {/* Hiển thị trạng thái hàng */}
+          {isOutOfStock ? (
+            <p className="out-of-stock-notice">⚠️ Sản phẩm đã hết hàng</p>
+          ) : (
+            <p className="in-stock-notice">✅ Còn {stock} sản phẩm</p>
+          )}
+
           <p className="product-detail-desc">{product.description}</p>
 
           {/* Bộ chọn số lượng */}
-          <div className="product-detail-quantity">
-            <p>Số lượng:</p>
-            <div className="quantity-control">
-              <button
-                onClick={() => setQuantity((q) => (q > 1 ? q - 1 : 1))}
-                className="btn-qty"
-              >
-                -
-              </button>
-              <span>{quantity}</span>
-              <button
-                onClick={() => setQuantity((q) => q + 1)}
-                className="btn-qty"
-              >
-                +
-              </button>
+          {!isOutOfStock && (
+            <div className="product-detail-quantity">
+              <p>Số lượng:</p>
+              <div className="quantity-control">
+                <button
+                  onClick={() => setQuantity((q) => (q > 1 ? q - 1 : 1))}
+                  className="btn-qty"
+                >
+                  -
+                </button>
+                <span>{quantity}</span>
+                <button
+                  onClick={handleIncreaseQuantity}
+                  className="btn-qty"
+                >
+                  +
+                </button>
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Nút hành động */}
           <div className="product-detail-actions">
             <button
-              className="btn-add"
-              onClick={() => addToCart(product._id, quantity)}
+              className={`btn-add ${isOutOfStock ? "disabled" : ""}`}
+              onClick={handleAddToCart}
             >
               🛒 Thêm vào giỏ
             </button>
-            <button className="btn-buy" onClick={handleBuyNow}>
+            <button
+              className={`btn-buy ${isOutOfStock ? "disabled" : ""}`}
+              onClick={handleBuyNow}
+            >
               ⚡ Mua ngay
             </button>
           </div>
@@ -101,7 +140,7 @@ const ProductDetail = () => {
               <br />
               - Xuất xứ: Việt Nam <br />
               - Kích thước: Trung bình (20 - 30cm) <br />
-              - Tình trạng: Còn hàng <br />
+              - Tình trạng: {isOutOfStock ? "Hết hàng" : "Còn hàng"} <br />
               - Bảo hành: 7 ngày đổi trả <br />
               <br />
               {product.description} Sản phẩm phù hợp để làm quà tặng, trang trí
