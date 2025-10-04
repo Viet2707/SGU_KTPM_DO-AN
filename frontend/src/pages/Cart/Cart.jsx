@@ -12,7 +12,7 @@ const Cart = () => {
     <div className='cart'>
       <div className="cart-items">
         <div className="cart-items-title">
-          <p>Items</p> <p>Title</p> <p>Price</p> <p>Quantity</p> <p>Total</p> <p>Remove</p>
+          <p>Mặt hàng</p> <p>Tiêu đề</p> <p>Giá</p> <p>Số lượng</p> <p>Tổng tiền</p> <p>Xoá sản phẩm</p>
         </div>
         <br />
         <hr />
@@ -22,9 +22,9 @@ const Cart = () => {
               <div className="cart-items-title cart-items-item">
                 <img src={url+"/images/"+item.image} alt="" />
                 <p>{item.name}</p>
-                <p>{currency}{item.price}</p>
+                <p>{item.price}{currency}</p>
                 <div>{cartItems[item._id]}</div>
-                <p>{currency}{item.price*cartItems[item._id]}</p>
+                <p>{item.price*cartItems[item._id]}{currency}</p>
                 <p className='cart-items-remove-icon' onClick={()=>removeFromCart(item._id)}>x</p>
               </div>
               <hr />
@@ -34,22 +34,22 @@ const Cart = () => {
       </div>
       <div className="cart-bottom">
         <div className="cart-total">
-          <h2>Cart Totals</h2>
+          <h2>Tổng đơn hàng</h2>
           <div>
-            <div className="cart-total-details"><p>Subtotal</p><p>{currency}{getTotalCartAmount()}</p></div>
+            <div className="cart-total-details"><p>Tổng phụ</p><p>{getTotalCartAmount()}{currency}</p></div>
             <hr />
-            <div className="cart-total-details"><p>Delivery Fee</p><p>{currency}{getTotalCartAmount()===0?0:deliveryCharge}</p></div>
+            <div className="cart-total-details"><p>Phí giao hàng</p><p>{getTotalCartAmount()===0?0:deliveryCharge}{currency}</p></div>
             <hr />
-            <div className="cart-total-details"><b>Total</b><b>{currency}{getTotalCartAmount()===0?0:getTotalCartAmount()+deliveryCharge}</b></div>
+            <div className="cart-total-details"><b>Tổng tiền</b><b>{getTotalCartAmount()===0?0:getTotalCartAmount()+deliveryCharge}{currency}</b></div>
           </div>
-          <button onClick={()=>navigate('/order')}>PROCEED TO CHECKOUT</button>
+          <button onClick={()=>navigate('/order')}>TIẾN HÀNH THANH TOÁN</button>
         </div>
         <div className="cart-promocode">
           <div>
-            <p>If you have a promo code, Enter it here</p>
+            <p>Nếu bạn có mã khuyến mại, hãy nhập vào đây</p>
             <div className='cart-promocode-input'>
               <input type="text" placeholder='promo code'/>
-              <button>Submit</button>
+              <button>Chọn</button>
             </div>
           </div>
         </div>

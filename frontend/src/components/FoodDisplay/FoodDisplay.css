@@ -1,14 +1,102 @@
+export default FoodDisplay
+FoodDisplay.propTypes = {
+category: PropTypes.string.isRequired,
+minPrice: PropTypes.oneOfType([
+PropTypes.number,
+PropTypes.string
+]),
+maxPrice: PropTypes.oneOfType([
+PropTypes.number,
+PropTypes.string
+]),
+};
+
 .food-display{
-    margin-top: 30px;
+margin-top: 30px;
 }
 .food-display h2{
-    font-size: max(2vw,24px);
-    font-weight: 600;
+font-size: max(2vw,24px);
+font-weight: 600;
 }
 .food-display-list{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    margin-top: 30px;
-    gap: 30px;
-    row-gap: 50px;
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+margin-top: 30px;
+gap: 30px;
+row-gap: 50px;
+}
+/* --- BỘ LỌC GIÁ --- */
+.price-filter {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Khoảng cách giữa các phần tử (input, nút) */
+    font-family: Arial, sans-serif;
+}
+
+/* Style cho mỗi cặp label + input */
+.price-filter-input {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Khoảng cách giữa "Giá từ" và ô input */
+    border: 1px solid #ddd;
+    border-radius: 25px; /* Bo tròn viền ngoài */
+    padding: 6px 15px;
+    background-color: #fff;
+    transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+/* Hiệu ứng khi người dùng click vào một trong các ô input */
+.price-filter-input:focus-within {
+    box-shadow: 0 0 0 2px rgba(255, 99, 71, 0.2); /* Tạo viền mờ màu cam */
+    border-color: tomato; /* Viền trong chuyển màu cam */
+}
+
+/* Style cho các label "Giá từ", "Đến" */
+.price-filter label {
+    font-size: 14px;
+    color: #666;
+    white-space: nowrap; /* Ngăn chữ bị xuống dòng */
+}
+
+/* Style cho các ô input số */
+.price-filter input[type="number"] {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 90px; /* Chiều rộng của ô input */
+    background-color: transparent; /* Nền trong suốt để lấy màu của cha */
+    padding: 2px;
+}
+
+/* Đoạn code để loại bỏ mũi tên lên/xuống của ô input số */
+.price-filter input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+}
+.price-filter input[type="number"]::-webkit-outer-spin-button,
+.price-filter input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Style cho dấu gạch ngang phân cách */
+.price-filter-separator {
+    color: #aaa;
+    font-weight: bold;
+}
+
+/* Style cho nút "Áp dụng" */
+.price-filter button {
+    border: none;
+    background-color: rgba(25, 122, 22, 0.603);
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 8px 20px;
+    border-radius: 25px; /* Bo tròn đồng bộ */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.price-filter button:hover {
+    background-color: #06a450; /* Màu đậm hơn khi hover */
 }

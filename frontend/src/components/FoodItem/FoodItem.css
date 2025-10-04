@@ -1,33 +1,52 @@
-.food-item{
+/* FoodItem.css */
+
+.food-item {
     width: 100%;
     margin: auto;
     border-radius: 15px;
-    box-shadow: 0px 0px 10px #00000015;
-    transition: 0.3s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Bóng đổ mềm mại hơn */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Hiệu ứng chuyển động mượt mà */
     animation: fadeIn 1s;
+    background-color: white;
+    display: flex; /* Sử dụng flexbox để dễ căn chỉnh */
+    flex-direction: column;
 }
-.food-item:hover{
-    transform: scale(1.02);
+
+.food-item:hover {
+    transform: translateY(-5px); /* Hiệu ứng nhấc lên khi hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
-.food-item-img-container{
-    position: relative;
+
+/* Phần chứa hình ảnh và nút */
+.food-item-img-container {
+    position: relative; /* Quan trọng: làm cha cho các nút con có position: absolute */
 }
-.food-item-img-container .add{
+
+.food-item-image {
+   width: 100%;
+   aspect-ratio: 1 / 0.8; /* Giữ tỷ lệ khung hình 1:0.8 */
+   object-fit: cover; /* Đảm bảo ảnh lấp đầy khung mà không bị méo */
+   border-radius: 15px 15px 0 0;
+}
+
+/* Nút "add" ban đầu */
+.food-item-img-container .add {
     width: 35px;
+    height: 35px; /* Thêm chiều cao để thành hình tròn */
     position: absolute;
     bottom: 15px;
     right: 15px;
     cursor: pointer;
     border-radius: 50%;
+    transition: transform 0.2s ease;
 }
-.food-item-img-container .add:hover{
-    border: 2px solid #FF4C24;
+
+.food-item-img-container .add:hover {
+    transform: scale(1.1); /* Phóng to nhẹ khi hover */
 }
-.food-item-image{
-   width: 100%;
-   border-radius: 15px 15px 0px 0px;
-}
-.food-item-counter{
+
+/* Bộ đếm số lượng (+, -, số) */
+.food-item-counter {
     position: absolute;
     bottom: 15px;
     right: 15px;
@@ -37,33 +56,56 @@
     padding: 6px;
     border-radius: 50px;
     background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Thêm bóng đổ cho nổi bật */
 }
-.food-item-counter img{
+
+.food-item-counter img {
     width: 30px;
+    cursor: pointer;
 }
-.food-item-info{
+
+.food-item-counter p {
+    font-size: 16px;
+    font-weight: 500;
+    min-width: 20px; /* Đảm bảo số không bị nhảy khi thay đổi */
+    text-align: center;
+}
+
+/* Phần thông tin sản phẩm */
+.food-item-info {
     padding: 20px;
+    flex-grow: 1; /* Giúp phần info chiếm hết không gian còn lại */
+    display: flex;
+    flex-direction: column;
 }
-.food-item-name-rating{
+
+.food-item-name-rating {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
 }
-.food-item-name-rating p{
+
+.food-item-name-rating p {
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 600; /* Tăng độ đậm */
+    color: #333;
 }
-.food-item-name-rating img{
+
+.food-item-name-rating img {
     width: 70px;
 }
-.food-item-desc{
+
+.food-item-desc {
     color: #676767;
-    font-size: 12px;
+    font-size: 13px; /* Tăng kích thước font một chút */
+    line-height: 1.5;
+    flex-grow: 1; /* Đẩy giá tiền xuống dưới cùng */
 }
-.food-item-price{
-    color: #FF4C24;
+
+.food-item-price {
+    color: tomato; /* Thay đổi màu cho nhất quán */
     font-size: 22px;
-    font-weight: 500;
-    margin: 10px 0px;
+    font-weight: 700;
+    margin: 15px 0 0 0; /* Chỉ thêm margin-top */
 }

@@ -1,0 +1,190 @@
+/* src/pages/OrderDetail/OrderDetail.css */
+
+.order-detail-page {
+  margin: 40px auto; /* Căn giữa và tạo khoảng cách trên dưới */
+  padding: 0 5%;
+  max-width: 1200px; /* Giới hạn chiều rộng tối đa */
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+/* --- PHẦN HEADER --- */
+.order-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 20px;
+}
+
+.order-detail-header h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #2c3e50; /* Màu xanh đậm */
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.back-button {
+  background-color: transparent;
+  border: 1px solid #bdc3c7; /* Màu xám nhạt */
+  padding: 10px 20px;
+  border-radius: 25px; /* Bo tròn */
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #34495e; /* Màu chữ đậm hơn */
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #ecf0f1; /* Màu nền khi hover */
+  border-color: #95a5a6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* --- CONTAINER CHÍNH --- */
+.order-detail-container {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr; /* Cột trái lớn hơn */
+  gap: 40px;
+}
+
+.order-detail-left h3, .order-detail-right h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #333;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/* --- CỘT BÊN TRÁI (SẢN PHẨM) --- */
+.order-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-item-detail {
+  display: grid;
+  grid-template-columns: 60px 1fr auto auto; /* Căn chỉnh các cột */
+  align-items: center;
+  gap: 15px;
+}
+
+.order-item-detail img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px; /* Bo tròn ảnh sản phẩm */
+  border: 1px solid #eee;
+}
+
+.order-item-detail p {
+  margin: 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.order-item-detail p:nth-child(2) { /* Tên sản phẩm */
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.order-item-detail p:last-child { /* Giá tiền */
+  font-weight: 600;
+  text-align: right;
+}
+
+/* Phần tổng tiền */
+.order-detail-left hr {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 20px 0;
+}
+
+.cart-total-details {
+    display: flex;
+    justify-content: space-between;
+    color: #555;
+    font-size: 16px;
+}
+
+.order-total {
+  text-align: right;
+  font-size: 20px;
+  font-weight: bold;
+  color: tomato;
+  margin-top: 20px;
+}
+
+.order-total strong {
+    color: #333;
+    font-weight: 600;
+}
+
+/* --- CỘT BÊN PHẢI (THÔNG TIN) --- */
+.order-detail-right {
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #e9e9e9;
+  height: fit-content; /* Chiều cao tự động */
+}
+
+.order-detail-right p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.order-detail-right strong {
+    color: #333;
+}
+
+.order-status-section {
+  margin-top: 30px;
+}
+
+.status {
+  font-weight: 600;
+  color: white;
+  padding: 6px 18px;
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 14px;
+  text-transform: capitalize; /* Viết hoa chữ cái đầu */
+}
+
+/* Màu sắc cho các trạng thái */
+.status.food-processing { background-color: #f39c12; } /* Vàng */
+.status.out-for-delivery { background-color: #3498db; } /* Xanh dương */
+.status.delivered { background-color: #2ecc71; } /* Xanh lá */
+.status.canceled { background-color: #e74c3c; } /* Đỏ */
+
+/* --- RESPONSIVE CHO THIẾT BỊ DI ĐỘNG --- */
+@media (max-width: 900px) {
+    .order-detail-container {
+        grid-template-columns: 1fr; /* Chuyển thành 1 cột */
+    }
+    .order-detail-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .order-item-detail {
+        grid-template-columns: 50px 1fr auto; /* Ẩn bớt 1 cột */
+    }
+    .order-item-detail p:nth-child(3) { /* Ẩn số lượng */
+        display: none;
+    }
+    .order-detail-header h2 {
+      font-size: 22px;
+    }
+}

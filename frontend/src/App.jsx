@@ -11,6 +11,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Verify from './pages/Verify/Verify'
 import ProductDetail from './pages/ProductDetail/ProductDetail'
+import OrderDetail from './pages/OrderDetail/OrderDetail'; // <-- IMPORT TRANG MỚI
+
 
 
 const App = () => {
@@ -29,7 +31,8 @@ const App = () => {
           <Route path='/order' element={<PlaceOrder />}/>
           <Route path='/myorders' element={<MyOrders />}/>
           <Route path='/verify' element={<Verify />}/>
-          <Route path='/product/:id' element={<ProductDetail />}/>        
+          <Route path='/product/:id' element={<ProductDetail />}/>     
+          <Route path='/order/:orderId' element={<OrderDetail />} />   
         </Routes>
       </div>
       <Footer />

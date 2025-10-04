@@ -8,33 +8,22 @@ const FoodItem = ({ id, image, name, price, desc }) => {
   const { cartItems, addToCart, removeFromCart, url, currency } =
     useContext(StoreContext);
 
+  const itemCount = cartItems[id] || 0;
+
   return (
     <div className="food-item">
-      {/* Bọc hình + tên bằng Link để dẫn sang ProductDetail */}
-      <Link to={`/product/${id}`} className="food-item-link">
-        <div className="food-item-img-container">
+      <div className="food-item-img-container">
+        {/* Link bao bọc hình ảnh */}
+        <Link to={`/product/${id}`}>
           <img
             className="food-item-image"
             src={`${url}/images/${image}`}
             alt={name}
           />
-        </div>
-      </Link>
-
-      <div className="food-item-info">
-        <div className="food-item-name-rating">
-          <p>{name}</p>
-          <img src={assets.rating_starts} alt="rating" />
-        </div>
-        <p className="food-item-desc">{desc}</p>
-        <p className="food-item-price">
-          {price.toLocaleString()}{currency}
-        </p>
-      </div>
-
-      {/* Nút add/remove giỏ hàng */}
-      <div className="food-item-actions">
-        {!cartItems[id] ? (
+        </Link>
+        
+        {/* Đặt các nút thêm/bớt vào đúng vị trí */}
+        {itemCount === 0 ? (
           <img
             className="add"
             onClick={() => addToCart(id)}
@@ -48,7 +37,7 @@ const FoodItem = ({ id, image, name, price, desc }) => {
               onClick={() => removeFromCart(id)}
               alt="remove"
             />
-            <p>{cartItems[id]}</p>
+            <p>{itemCount}</p>
             <img
               src={assets.add_icon_green}
               onClick={() => addToCart(id)}
@@ -56,6 +45,17 @@ const FoodItem = ({ id, image, name, price, desc }) => {
             />
           </div>
         )}
+      </div>
+
+      <div className="food-item-info">
+        <div className="food-item-name-rating">
+          <p>{name}</p>
+          <img src={assets.rating_starts} alt="rating" />
+        </div>
+        <p className="food-item-desc">{desc}</p>
+        <p className="food-item-price">
+          {price.toLocaleString('vi-VN')}{currency}
+        </p>
       </div>
     </div>
   );

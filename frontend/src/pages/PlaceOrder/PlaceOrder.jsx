@@ -83,46 +83,50 @@ const PlaceOrder = () => {
     return (
         <form onSubmit={placeOrder} className='place-order'>
             <div className="place-order-left">
-                <p className='title'>Delivery Information</p>
+                <p className='title'>Thông tin giao hàng</p>
                 <div className="multi-field">
-                    <input type="text" name='firstName' onChange={onChangeHandler} value={data.firstName} placeholder='First name' required />
-                    <input type="text" name='lastName' onChange={onChangeHandler} value={data.lastName} placeholder='Last name' required />
-                </div>
-                <input type="email" name='email' onChange={onChangeHandler} value={data.email} placeholder='Email address' required />
-                <input type="text" name='street' onChange={onChangeHandler} value={data.street} placeholder='Street' required />
-                <div className="multi-field">
-                    <input type="text" name='city' onChange={onChangeHandler} value={data.city} placeholder='City' required />
-                    <input type="text" name='state' onChange={onChangeHandler} value={data.state} placeholder='State' required />
-                </div>
-                <div className="multi-field">
-                    <input type="text" name='zipcode' onChange={onChangeHandler} value={data.zipcode} placeholder='Zip code' required />
-                    <input type="text" name='country' onChange={onChangeHandler} value={data.country} placeholder='Country' required />
-                </div>
-                <input type="text" name='phone' onChange={onChangeHandler} value={data.phone} placeholder='Phone' required />
+                     <input type="text" name='firstName' onChange={onChangeHandler} value={data.firstName} placeholder='Tên' required />
+        <input type="text" name='lastName' onChange={onChangeHandler} value={data.lastName} placeholder='Họ' required />
+    </div>
+    
+    <input type="email" name='email' onChange={onChangeHandler} value={data.email} placeholder='Địa chỉ email' required />
+    <input type="text" name='street' onChange={onChangeHandler} value={data.street} placeholder='Địa chỉ (Số nhà, tên đường, phường/xã)' required />
+    
+    <div className="multi-field">
+        <input type="text" name='city' onChange={onChangeHandler} value={data.city} placeholder='Thành phố / Tỉnh' required />
+        <input type="text" name='state' onChange={onChangeHandler} value={data.state} placeholder='Quận / Huyện' required />
+    </div>
+    
+    <div className="multi-field">
+        <input type="text" name='country' onChange={onChangeHandler} value={data.country} placeholder='Quốc gia' required />
+        <input type="text" name='zipcode' onChange={onChangeHandler} value={data.zipcode} placeholder='Mã bưu chính (nếu có)' />
+    </div>
+    
+    <input type="text" name='phone' onChange={onChangeHandler} value={data.phone} placeholder='Số điện thoại' required />
             </div>
             <div className="place-order-right">
                 <div className="cart-total">
-                    <h2>Cart Totals</h2>
+                    <h2>Tổng đơn hàng</h2>
                     <div>
-                        <div className="cart-total-details"><p>Subtotal</p><p>{currency}{getTotalCartAmount()}</p></div>
+                        <div className="cart-total-details"><p>Tổng phụ</p><p>{getTotalCartAmount()}{currency}</p></div>
                         <hr />
-                        <div className="cart-total-details"><p>Delivery Fee</p><p>{currency}{getTotalCartAmount() === 0 ? 0 : deliveryCharge}</p></div>
+                        <div className="cart-total-details"><p>Phí giao hàng</p><p>{getTotalCartAmount() === 0 ? 0 : deliveryCharge}{currency}</p></div>
                         <hr />
-                        <div className="cart-total-details"><b>Total</b><b>{currency}{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + deliveryCharge}</b></div>
+                        <div className="cart-total-details"><b>Tổng tiền</b><b>{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + deliveryCharge}{currency}</b></div>
                     </div>
                 </div>
                 <div className="payment">
                     <h2>Payment Method</h2>
                     <div onClick={() => setPayment("cod")} className="payment-option">
                         <img src={payment === "cod" ? assets.checked : assets.un_checked} alt="" />
-                        <p>COD ( Cash on delivery )</p>
+                        <p>COD ( Thanh toán khi nhận hàng )</p>
                     </div>
                     <div onClick={() => setPayment("stripe")} className="payment-option">
                         <img src={payment === "stripe" ? assets.checked : assets.un_checked} alt="" />
-                        <p>Stripe ( Credit / Debit )</p>
+                        <p>Stripe ( Tín dụng / Ghi nợ)</p>
                     </div>
                 </div>
-                <button className='place-order-submit' type='submit'>{payment==="cod"?"Place Order":"Proceed To Payment"}</button>
+                <button className='place-order-submit' type='submit'>{payment==="cod"?"Đặt hàng":"Proceed To Payment"}</button>
             </div>
         </form>
     )
