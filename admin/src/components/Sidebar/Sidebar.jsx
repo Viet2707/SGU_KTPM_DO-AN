@@ -47,6 +47,11 @@ const Sidebar = () => {
         >
           <p>Quản lí kho hàng</p>
         </NavLink>
+
+        {/* <NavLink to="/users" className={({isActive}) => isActive ? "sidebar-option active" : "sidebar-option"}>
+  <p>👥 Users</p>
+</NavLink> */}
+
         
       </div>
     </div>

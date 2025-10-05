@@ -12,7 +12,7 @@ const createToken = (id) => {
 const loginUser = async (req,res) => {
     const {email, password} = req.body;
     try{
-        const user = await userModel.findOne({email})
+        const user = await userModel.findOne({email})   
 
         if(!user){
             return res.json({success:false,message: "User does not exist"})

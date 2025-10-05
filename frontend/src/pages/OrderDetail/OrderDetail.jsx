@@ -1,11 +1,11 @@
 // src/pages/OrderDetail/OrderDetail.jsx
-import React, { useEffect, useState, useContext } from 'react';
+import  { useEffect, useState, useContext } from 'react';
 // ✅ BƯỚC 1: Import thêm useNavigate
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { StoreContext } from '../../Context/StoreContext';
 import './OrderDetail.css'; 
-import { assets } from '../../assets/assets';
+// import { assets } from '../../assets/assets';
 
 const OrderDetail = () => {
   const { url } = useContext(StoreContext);
@@ -71,7 +71,7 @@ const OrderDetail = () => {
             ))}
           </div>
           <hr />
-            <div className="cart-total-details"><p>Phí giao hàng</p><p>{getTotalCartAmount()===0?0:deliveryCharge}{currency}</p></div>
+            <div className="cart-total-details"><p>Phí giao hàng</p><p>{getTotalCartAmount()===0?50:deliveryCharge}{currency}</p></div>
             <hr />
           <hr />
           <p className='order-total'><strong>Tổng tiền:</strong> {order.amount.toLocaleString('vi-VN')}{currency}</p>
