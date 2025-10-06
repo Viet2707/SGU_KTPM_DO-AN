@@ -7,6 +7,7 @@ import Add from "./pages/Add/Add";
 import List from "./pages/List/List";
 import Orders from "./pages/Orders/Orders";
 import Stock from "./pages/Stock/Stock";
+import Users from "./pages/Users/Users";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -44,6 +45,8 @@ export default function App() {
           <Route path="/list" element={<List />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/stock" element={<Stock />} />
+            <Route path="/users" element={<Users />} />   
+
 
         </Routes>
       </div>

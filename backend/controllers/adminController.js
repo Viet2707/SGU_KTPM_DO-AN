@@ -2,7 +2,7 @@ import Admin from "../models/adminModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET || "dev-secret";
+const JWT_SECRET = process.env.JWT_SECRET || "123";
 
 export const loginAdmin = async (req, res) => {
   try {

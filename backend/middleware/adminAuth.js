@@ -14,7 +14,7 @@ export default function adminAuth(req, res, next) {
         .status(401)
         .json({ success: false, message: "Token không hợp lệ" });
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || "SECRET_KEY");
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || "123");
 
     if (decoded.role !== "admin")
       return res

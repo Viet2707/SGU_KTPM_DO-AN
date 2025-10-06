@@ -4,7 +4,10 @@ const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    cartData:{type:Object,default:{}}
+    cartData:{type:Object,default:{}},
+    status: { type: String, enum: ["unlock", "lock"], default: "unlock" }, // 👈
+  created_at: { type: Date, default: Date.now },
+    
 }, { minimize: false })
 
 const userModel = mongoose.models.user || mongoose.model("user", userSchema);

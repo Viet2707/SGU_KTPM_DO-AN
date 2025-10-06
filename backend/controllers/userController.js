@@ -2,6 +2,8 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import validator from "validator";
 import userModel from "../models/userModel.js";
+// import registerUser from "./userController.js";
+// import loginUser from "./userController.js";
 
 //create token
 const createToken = (id) => {
@@ -9,28 +11,44 @@ const createToken = (id) => {
 }
 
 //login user
-const loginUser = async (req,res) => {
-    const {email, password} = req.body;
-    try{
-        const user = await userModel.findOne({email})   
+ const loginUser = async (req, res) => {
+  const { email, password } = req.body;
 
-        if(!user){
-            return res.json({success:false,message: "User does not exist"})
-        }
-
-        const isMatch = await bcrypt.compare(password, user.password)
-
-        if(!isMatch){
-            return res.json({success:false,message: "Invalid credentials"})
-        }
-
-        const token = createToken(user._id)
-        res.json({success:true,token})
-    } catch (error) {
-        console.log(error);
-        res.json({success:false,message:"Error"})
+  try {
+    // 1️⃣ Kiểm tra tồn tại
+    const user = await userModel.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ success: false, message: "Email không tồn tại" });
     }
-}
+
+    // 2️⃣ Kiểm tra bị khóa chưa
+    if (user.status === "lock") {
+      return res.status(403).json({
+        success: false,
+        message: "Tài khoản đã bị khóa. Vui lòng liên hệ quản trị viên.",
+      });
+    }
+
+    // 3️⃣ So sánh mật khẩu
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(401).json({ success: false, message: "Sai mật khẩu" });
+    }
+
+    // 4️⃣ Tạo JWT token
+    const token = createToken(user._id);
+
+    // 5️⃣ Trả về cho FE
+    res.json({
+      success: true,
+      token,
+      message: "Đăng nhập thành công",
+    });
+  } catch (error) {
+    console.error("Lỗi đăng nhập:", error);
+    res.status(500).json({ success: false, message: "Lỗi máy chủ" });
+  }
+};
 
 //register user
 const registerUser = async (req,res) => {
