@@ -1,286 +1,253 @@
-
-# Full-Stack Food Delivery Web App using MERN
-
-A modern and responsive full-stack food delivery application built using **React JS**, **Node.js**, **Express**, **MongoDB**, and **Stripe** for secure payment integration. It features a user-friendly interface, dynamic cart management, and an admin panel for managing orders and products.
-This README includes **setup** and **deployment** instructions to help you get the project running locally and deploy it online.
-
-
----
-
-## Deployment Links :
-
-### User Frontend
-The user-facing frontend can be accessed here:
-[User Frontend - Live Deployment](https://mern-tomato-full-stack-food-delivery-0k15.onrender.com)
-
-### Admin Frontend
-The admin panel can be accessed here:
-[Admin Frontend - Live Deployment](https://mern-tomato-full-stack-food-delivery-5bj4.onrender.com)
-
-
----
-
-
-## 🚀 Features
-
-### **Frontend**:
-- Browse food categories.
-- Add items to the cart and proceed to checkout.
-- Online and cash-on-delivery payment options.
-- Dynamic cart management for adding, viewing, and modifying items.
-- Responsive design ensuring compatibility with all devices (mobile-first layout).
-- Routing handled using **React Router Dom** for smooth navigation.
-
-### **Admin Panel**:
-- Add, list, and manage food items through an intuitive interface.
-- Monitor and update order statuses.
-- View and manage user information efficiently.
-
-### **Backend**:
-- Node.js-based server with Express for API handling.
-- MongoDB as the database for storing user, product, and order data.
-- Secure API communication for frontend and admin panel integration.
-
-### **Other Features**:
-- **User Authentication**: Secure login and registration using **JWT (JSON Web Tokens)**.
-- **Stripe Integration**: Secure and reliable payment gateway for online transactions.
-- **State Management**: Efficient state handling using the **Context API**.
-- **Responsive Design**: Ensures seamless experience across all devices.
-
-
----
-
-## 📂 Folder Structure
-
-### Root Directory
-
-```
-.
-├── admin                 # Admin Panel Frontend
-│   ├── README.md
-│   ├── index.html
-│   ├── package.json
-│   ├── public/           # Public assets
-│   ├── src/              # Source code
-│   │   ├── assets/       # Images and assets
-│   │   ├── components/   # Navbar, Sidebar, etc.
-│   │   ├── pages/        # Add, List, Orders pages
-│   │   ├── App.jsx
-│   │   ├── index.css
-│   │   └── main.jsx
-│   └── vite.config.js    # Configuration
-├── backend               # Backend (Node.js & Express)
-│   ├── config/           # Database configuration
-│   ├── controllers/      # API Controllers
-│   ├── middleware/       # Auth Middleware
-│   ├── models/           # Mongoose Models
-│   ├── routes/           # API Routes
-│   ├── server.js         # Main server file
-│   └── uploads/          # File uploads (images, etc.)
-└── frontend              # User-Facing Frontend
-    ├── README.md
-    ├── index.html
-    ├── package.json
-    ├── public/           # Public assets
-    ├── src/              # Source code
-    │   ├── assets/       # Images and assets
-    │   ├── Context/      # Context API for state management
-    │   ├── components/   # Shared components (Navbar, Footer, etc.)
-    │   ├── pages/        # Pages (Cart, Home, PlaceOrder, etc.)
-    │   ├── App.jsx
-    │   ├── index.css
-    │   └── main.jsx
-    └── vite.config.js    # Configuration
-```
-
----
-
-## 🛠️ Setup Instructions
-
-### Prerequisites
-- Install **Node.js**: [Download Node.js](https://nodejs.org/en/download/)
-- Setup **MongoDB**: Use MongoDB Atlas [Guide](https://www.mongodb.com/cloud/atlas/register)
-- Obtain a **Stripe API Key**: Sign up at [Stripe](https://stripe.com/)
-
----
-
-### Backend Setup
-
-1. Navigate to the `backend` directory in your terminal:
-   ```bash
-   cd backend
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Configure environment variables:
-   - Create a `.env` file in the `backend` directory with the following keys:
-     ```env
-     PORT=5000
-     MONGO_URI=<Your MongoDB Connection String>
-     STRIPE_SECRET_KEY=<Your Stripe Secret Key>
-     JWT_SECRET=<Your JWT Secret>
-     ```
-4. Start the backend server:
-   ```bash
-   npm run server
-   ```
-5. Verify by visiting [http://localhost:4000](http://localhost:4000). You should see `API is working`.
-
----
-
-### Frontend Setup (User)
-
-1. Navigate to the `frontend` directory:
-   ```bash
-   cd frontend
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the frontend:
-   ```bash
-   npm run dev
-   ```
-4. Open the app in your browser at [http://localhost:5173](http://localhost:5173).
-
----
-
-### Admin Panel Setup
-
-1. Navigate to the `admin` directory:
-   ```bash
-   cd admin
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the admin panel:
-   ```bash
-   npm run dev
-   ```
-4. Access the admin panel in your browser at [http://localhost:5174](http://localhost:5174).
-
----
-
-### Stripe Integration
-1. Obtain your Stripe secret key from the Stripe dashboard.
-2. Add the secret key in `.env` in the `backend` folder:
-   ```
-   STRIPE_SECRET_KEY=<your-secret-key>
-   ```
-3. Update currency code in `controllers/orderController.js` to match your local currency.
-
----
-
-## 🌐 Deployment Instructions
-
-### Backend Deployment
-1. **Upload Backend to GitHub**:
-   - Commit and push the backend folder to GitHub.
-
-2. **Deploy Backend on Render**:
-   - Visit [Render](https://render.com).
-   - Create a new web service and connect your GitHub repository.
-   - Set the root directory to `backend`.
-   - Add environment variables from the `.env` file.
-   - Deploy the service and copy the backend URL.
-
-3. **Update Frontend and Admin URLs**:
-   - Replace all occurrences of the local backend URL (e.g., `http://localhost:4000`) with the deployed backend URL in:
-     - `frontend/src/Context/StoreContext.jsx`
-     - `admin/src/assets/properties.js`
-
----
-
-### Frontend Deployment
-1. **Upload Frontend to GitHub**:
-   - Commit and push the frontend folder to GitHub.
-
-2. **Deploy Frontend on Render**:
-   - Create a new static site on Render.
-   - Connect your GitHub repository.
-   - Set the root directory to `frontend`.
-   - Add build commands:
-     ```bash
-     npm install
-     npm run build
-     ```
-   - Set the publish directory to `dist`.
-   - Deploy the site and copy the frontend URL.
-
-3. **Add Rewrite Rules**:
-   - Go to the static site settings and add:
-     ```
-     Source: /*
-     Destination: /index.html
-     ```
-
----
-
-### Admin Panel Deployment
-1. **Upload Admin to GitHub**:
-   - Commit and push the admin folder to GitHub.
-
-2. **Deploy Admin Panel on Render**:
-   - Create a new static site on Render.
-   - Connect your GitHub repository.
-   - Set the root directory to `admin`.
-   - Add build commands:
-     ```bash
-     npm install
-     npm run build
-     ```
-   - Set the publish directory to `dist`.
-   - Deploy the site and copy the admin URL.
-
-3. **Add Rewrite Rules**:
-   - Go to the static site settings and add:
-     ```
-     Source: /*
-     Destination: /index.html
-     ```
-
-
----
-
-## 📸 Screenshots
-
-### 1. Home Page
-![Home Page](assets/screenshots/homepage.png)
-
-### 2. Menu Page
-![Menu Page](assets/screenshots/menu-page.png)
-
-### 3. Top Dishes Section
-![Top Dishes Section](assets/screenshots/top-dishes.png)
-
-### 4. Cart Page
-![Cart Page](assets/screenshots/cart-page.png)
-
-### 5. Checkout Page
-![Checkout Page](assets/screenshots/checkout-page.png)
-
-### 6. Order Placed Confirmation
-![Order Placed Confirmation](assets/screenshots/order-placed.png)
-
-### 7. Admin Panel - Add Item
-![Admin Panel - Add Item](assets/screenshots/admin-add-item.png)
-
-### 8. Admin Panel - List Items
-![Admin Panel - List Items](assets/screenshots/admin-list-items.png)
-
-### 9. Admin Panel - Orders Management
-![Admin Panel - Orders Management](assets/screenshots/admin-orders.png)
-
----
-
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
+SGU_KTPM_DO-AN
+Hệ thống web đặt món ăn (monorepo):
+
+backend: Node.js + Express + MongoDB (Mongoose)
+frontend: React + Vite (người dùng)
+admin: React + Vite (quản trị)
+CI/CD: GitHub Actions (test theo giai đoạn, build-check, build & push Docker images)
+Badges
+
+Backend Tests
+Frontends Build
+Docker Build (GHCR)
+Tính năng chính
+User: đăng ký/đăng nhập, xem món, giỏ hàng, đặt món, theo dõi đơn
+Product (Food): CRUD món ăn, danh mục
+Cart: quản lý giỏ hàng
+Inventory (Stock): quản lý kho
+Admin: quản trị món, đơn, user, kho, danh mục
+Upload ảnh (serve qua /images)
+Kiến trúc thư mục
+text
+
+SGU_KTPM_DO-AN/
+│
+├── admin/                 # React + Vite (giao diện quản trị)
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/ (Navbar, Sidebar, AdminHeader, AdminProtected, EditFood, ...)
+│   │   ├── pages/ (Add, List, Orders, Users, Stock, Update, ...)
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── index.css
+│   ├── public/
+│   ├── vite.config.js
+│   └── package.json
+│
+├── frontend/              # React + Vite (giao diện khách)
+│   ├── public/assets/
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/ (Navbar, Header, FoodItem, FoodDisplay, ExploreMenu, Cart, ...)
+│   │   ├── Context/StoreContext.jsx
+│   │   ├── pages/ (Home, ProductDetail, Cart, PlaceOrder, MyOrders, OrderDetail, Verify)
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── index.css
+│   ├── vite.config.js
+│   └── package.json
+│
+├── backend/               # Node.js + Express + MongoDB
+│   ├── config/
+│   │   └── db.js
+│   ├── controllers/
+│   │   ├── adminController.js
+│   │   ├── userController.js
+│   │   ├── foodController.js
+│   │   ├── orderController.js
+│   │   ├── stockController.js
+│   │   ├── cartController.js
+│   │   └── categoryController.js
+│   ├── middleware/
+│   │   ├── auth.js
+│   │   ├── adminAuth.js
+│   │   ├── requireAdmin.js
+│   │   └── upload.js
+│   ├── models/
+│   │   ├── userModel.js
+│   │   ├── adminModel.js
+│   │   ├── foodModel.js
+│   │   ├── orderModel.js
+│   │   ├── stockModel.js
+│   │   └── categoryModel.js
+│   ├── routes/
+│   │   ├── adminRoute.js
+│   │   ├── adminUserRoute.js
+│   │   ├── userRoute.js
+│   │   ├── foodRoute.js
+│   │   ├── cartRoute.js
+│   │   ├── orderRoute.js
+│   │   ├── stockRoutes.js          # (đặt tên trùng với import trong app.js)
+│   │   └── categoryRoute.js
+│   ├── uploads/                    # lưu ảnh upload
+│   ├── app.js                      # khai báo app, middleware, routes
+│   ├── server.js                   # connect DB + app.listen
+│   ├── genAdminHash.js
+│   ├── package.json
+│   └── (tùy chọn) .env, jest/vitest config & tests/
+│
+├── .github/workflows/
+│   ├── staged-tests.yml            # CI: test backend theo 4 giai đoạn
+│   ├── web-build.yml               # CI: build-check frontend & admin
+│   └── docker-build.yml            # CI: build & push Docker images lên GHCR
+│
+├── docker-compose.yml              # Compose build từ source (dev/local)
+├── docker-compose.ghcr.yml         # Compose dùng images GHCR (tải về chạy ngay)
+├── README.md
+└── LICENSE (nếu có)
+API endpoints (prefix thực tế trong app.js)
+GET / → “API Working 🌱”
+/api/user, /api/food, /api/cart, /api/order, /api/stocks, /api/category
+/api/admin, /api/admin/users
+Ảnh tĩnh: /images → backend/uploads
+Chạy nhanh nhất (không cần build) – dùng images trên GHCR
+Dành cho giảng viên/anh em “clone về chạy một lệnh”:
+
+Cài Docker Desktop
+Clone repo:
+git clone https://github.com/Viet2707/SGU_KTPM_DO-AN.git
+cd SGU_KTPM_DO-AN
+Kéo image và chạy:
+docker compose -f docker-compose.ghcr.yml pull
+docker compose -f docker-compose.ghcr.yml up -d
+Truy cập:
+API: http://localhost:5000
+Frontend: http://localhost:8080
+Admin: http://localhost:8081
+Dừng:
+docker compose -f docker-compose.ghcr.yml down
+Reset DB (xóa volume Mongo):
+docker compose -f docker-compose.ghcr.yml down -v
+Images GHCR (public)
+
+ghcr.io/viet2707/sgu_ktpm_do-an:api-latest
+ghcr.io/viet2707/sgu_ktpm_do-an:web-latest
+ghcr.io/viet2707/sgu_ktpm_do-an:admin-latest
+Lưu ý:
+
+Nếu “pull access denied”, vào GitHub → Packages → đặt các package Public.
+Nếu cổng bận: đổi cổng bên trái trong compose (“5001:5000”, “8082:80”, …).
+Chạy dev/local (build từ source)
+Yêu cầu: Docker Desktop
+
+docker compose up -d --build
+API: http://localhost:5000
+Frontend: http://localhost:8080
+Admin: http://localhost:8081
+Dừng: docker compose down
+Reset DB: docker compose down -v
+Uploads
+
+Ảnh được bind mount: ./backend/uploads ↔ /app/uploads (giữ dữ liệu ngoài container)
+Dùng MongoDB Atlas (tuỳ chọn)
+
+Sửa service api trong docker-compose.yml: MONGODB_URI=chuỗi Atlas
+Có thể bỏ service mongo trong compose
+Cấu hình môi trường
+Không commit file .env thật. Hãy thêm .env.example để tham khảo.
+
+Backend (backend/.env)
+
+Dùng khi chạy server thật. Test sẽ ưu tiên MONGODB_URI_TEST (DB test riêng).
+text
+
+PORT=5000
+MONGODB_URI=mongodb+srv://<user>:<pass>@<cluster>.mongodb.net/food_delivery_db?retryWrites=true&w=majority
+MONGODB_URI_TEST=mongodb+srv://<user>:<pass>@<cluster>.mongodb.net/food_delivery_test?retryWrites=true&w=majority
+JWT_SECRET=your_jwt_secret
+STRIPE_SECRET_KEY=your_stripe_secret
+Frontend/Admin (Vite)
+
+file .env.local trong từng app:
+text
+
+VITE_API_URL=http://localhost:5000
+Trong code: dùng import.meta.env.VITE_API_URL
+Test backend (staged)
+Công nghệ: Vitest + Supertest. Test theo 4 giai đoạn:
+
+1: user chạy được
+2: user + product (food)
+3: + cart
+4: + inventory (stock)
+Chạy local
+
+text
+
+cd backend
+npm run test:1
+npm run test:2
+npm run test:3
+npm run test:4
+CI/CD (GitHub Actions)
+Workflows
+
+.github/workflows/staged-tests.yml
+Spin-up Mongo container và chạy test 4 giai đoạn
+.github/workflows/web-build.yml
+Build-check 2 frontend (Vite)
+.github/workflows/docker-build.yml
+Build 3 Docker images (api/web/admin) và push lên GHCR
+Tag: {name}-latest và {name}-${GITHUB_SHA}
+Gợi ý bảo vệ nhánh
+
+Settings → Branches → main → Require status checks to pass
+Tick các job từ 3 workflow trên để đảm bảo chất lượng trước khi merge
+Cập nhật image GHCR
+
+Push vào main → workflow docker-build.yml tự build & push
+Người dùng chỉ cần: docker compose -f docker-compose.ghcr.yml pull && up -d
+Phát triển không Docker (tuỳ chọn)
+Backend
+
+text
+
+cd backend
+npm ci
+npm run server     # nodemon server.js (PORT=5000)
+Frontend
+
+text
+
+cd frontend
+npm ci
+npm run dev        # http://localhost:5173
+Admin
+
+text
+
+cd admin
+npm ci
+npm run dev        # ví dụ --port 5174
+Troubleshooting
+Port đang bận (5000/8080/8081)
+Đổi cổng bên trái trong compose (“5001:5000”, …)
+Windows: netstat -aon | findstr :5000 → taskkill /PID <pid> /F
+FE/Admin không gọi được API
+Images FE/Admin build với VITE_API_URL=http://localhost:5000 (xem docker-build.yml)
+Nếu đổi port API, sửa build_args trong workflow, rồi chạy lại CI
+Pull GHCR denied
+Đặt package Public
+“repository name must be lowercase”
+Đường dẫn image phải chữ thường: ghcr.io/viet2707/sgu_ktpm_do-an:api-latest
+Kết nối Mongo lỗi
+Với compose local: API dùng mongodb://mongo:27017/food_delivery_db
+Với Atlas: mở IP Access List (tạm 0.0.0.0/0 khi dev), encode mật khẩu nếu có ký tự đặc biệt
+Góp ý
+PR/Issue welcome
+Không commit secrets (.env). Dùng .env.example.
+License
+MIT (tuỳ chọn – thêm file LICENSE)
+Phụ lục: Lệnh nhanh
+
+Chạy bằng image GHCR:
+docker compose -f docker-compose.ghcr.yml pull && docker compose -f docker-compose.ghcr.yml up -d
+Chạy dev từ source:
+docker compose up -d --build
+Dừng:
+docker compose down
+Dừng + xoá dữ liệu Mongo:
+docker compose down -v
+Log:
+docker compose logs -f api
+docker compose logs -f mongo
