@@ -3,8 +3,23 @@ FROM node:20-alpine AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
+
 ARG VITE_API_URL
+ARG VITE_FRONTEND_URL
+
+RUN echo "=== DEBUG ARG ===" && \
+    echo "VITE_API_URL = [$VITE_API_URL]" && \
+    echo "VITE_FRONTEND_URL = [$VITE_FRONTEND_URL]" && \
+    echo "================="
+
 ENV VITE_API_URL=$VITE_API_URL
+ENV VITE_FRONTEND_URL=$VITE_FRONTEND_URL
+
+RUN echo "=== DEBUG ENV ===" && \
+    echo "VITE_API_URL = [$VITE_API_URL]" && \
+    echo "VITE_FRONTEND_URL = [$VITE_FRONTEND_URL]" && \
+    echo "================="
+
 COPY . .
 RUN npm run build
 

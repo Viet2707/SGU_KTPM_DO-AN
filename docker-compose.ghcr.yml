@@ -1,3 +1,4 @@
+version: "3.9"
 services:
   api:
     image: ghcr.io/viet2707/sgu_ktpm_do-an:api-latest
@@ -7,18 +8,23 @@ services:
       MONGODB_URI: "mongodb+srv://thanhongke1010_db_user:Nguyenthanhdat@cluster0.4o1narw.mongodb.net/food_delivery_db?retryWrites=true&w=majority"
       JWT_SECRET: dev-secret
       STRIPE_SECRET_KEY: dev-secret
-    ports: ["5000:5000"]
+    ports:
+      - "5000:5000"
     volumes:
       - ./backend/uploads:/app/uploads
 
   frontend:
     image: ghcr.io/viet2707/sgu_ktpm_do-an:web-latest
     restart: unless-stopped
-    ports: ["8080:80"]
-    depends_on: [api]
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
 
   admin:
     image: ghcr.io/viet2707/sgu_ktpm_do-an:admin-latest
     restart: unless-stopped
-    ports: ["8081:80"]
-    depends_on: [api]
+    ports:
+      - "8081:80"
+    depends_on:
+      - api

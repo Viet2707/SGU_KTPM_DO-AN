@@ -21,11 +21,8 @@ export default function AdminHeader() {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem('admin_token');
-      // localStorage.removeItem("token"); // ❗ Xóa luôn token người dùng
-
-    window.location.replace("http://localhost:5173/?logout=1");
-  };
+localStorage.removeItem('admin_token');
+window.location.reload();   };
 
   return (
     <header style={{display:'flex',justifyContent:'space-between',alignItems:'center',padding:'12px 16px',background:'#e8f5e9',borderBottom:'1px solid #c8e6c9'}}>

@@ -3,8 +3,15 @@ FROM node:20-alpine AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
+
+# 🔥 Nhận ARG từ docker-compose
 ARG VITE_API_URL
+ARG VITE_ADMIN_URL
+
+# 🔥 Chuyển thành ENV để Vite đọc được khi build
 ENV VITE_API_URL=$VITE_API_URL
+ENV VITE_ADMIN_URL=$VITE_ADMIN_URL
+
 COPY . .
 RUN npm run build
 

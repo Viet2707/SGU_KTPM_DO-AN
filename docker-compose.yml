@@ -1,9 +1,8 @@
-# docker-compose.yml (đặt ở gốc repo)
 services:
   mongo:
     image: mongo:7
     restart: unless-stopped
-    ports: ["27017:27017"]   # tiện debug; có thể bỏ nếu muốn
+    ports: ["27017:27017"]
     volumes:
       - mongodata:/data/db
 
@@ -12,7 +11,7 @@ services:
     restart: unless-stopped
     environment:
       PORT: 5000
-      MONGODB_URI: mongodb://mongo:27017/food_delivery_db
+      MONGODB_URI: mongodb+srv://thanhongke1010_db_user:Nguyenthanhdat@cluster0.4o1narw.mongodb.net/food_delivery_db?retryWrites=true&w=majority
       JWT_SECRET: dev-secret
       STRIPE_SECRET_KEY: dev-secret
     ports:
@@ -27,6 +26,7 @@ services:
       context: ./frontend
       args:
         VITE_API_URL: http://localhost:5000
+        VITE_ADMIN_URL: http://localhost:8081
     restart: unless-stopped
     ports:
       - "8080:80"
@@ -38,6 +38,7 @@ services:
       context: ./admin
       args:
         VITE_API_URL: http://localhost:5000
+        VITE_FRONTEND_URL: http://localhost:8080  # ← QUAN TRỌNG!
     restart: unless-stopped
     ports:
       - "8081:80"
