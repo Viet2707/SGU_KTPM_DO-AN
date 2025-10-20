@@ -39,10 +39,29 @@ const LoginPopup = ({ setShowLogin }) => {
                     localStorage.setItem("admin_token", response.data.token);
                     toast.success("Đăng nhập admin thành công!");
                     
-                    // 🔥 SỬA: Dùng biến môi trường
-                    const ADMIN_URL = import.meta.env.VITE_ADMIN_URL || "http://localhost:5174";
+                    // 🔥 AUTO DETECT PORT - hoạt động cả dev và Docker
+                    const { protocol, hostname } = window.location;
+                    const frontendPort = window.location.port;
+                    let adminPort;
+                    
+                    if (frontendPort === "5173" || frontendPort === "") {
+                        // Dev environment
+                        adminPort = "5174";
+                    } else if (frontendPort === "8080") {
+                        // Docker environment
+                        adminPort = "8081";
+                    } else {
+                        // Fallback: tăng port lên 1
+                        adminPort = (parseInt(frontendPort) + 1).toString();
+                    }
+                    
+                    const adminUrl = `${protocol}//${hostname}:${adminPort}`;
                     const t = encodeURIComponent(response.data.token);
-                    window.location.href = `${ADMIN_URL}/?token=${t}`;
+                    
+                    console.log("🔍 Frontend port:", frontendPort);
+                    console.log("🔍 Redirecting to admin:", adminUrl);
+                    
+                    window.location.href = `${adminUrl}/?token=${t}`;
                     return;
                 }
             } catch (err) {
