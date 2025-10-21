@@ -6,8 +6,7 @@ import {
     placeOrder, 
     updateStatus, 
     userOrders, 
-    verifyOrder, 
-    placeOrderCod,
+        placeOrderCod,
     getOrderById 
 } from '../controllers/orderController.js';
 
@@ -20,7 +19,7 @@ orderRouter.post("/status", updateStatus); // Cập nhật trạng thái đơn h
 // --- Routes cho User ---
 orderRouter.post("/place", authMiddleware, placeOrder); // Đặt hàng (thanh toán online)
 orderRouter.post("/placecod", authMiddleware, placeOrderCod); // Đặt hàng (COD)
-orderRouter.post("/verify", verifyOrder); // Xác nhận thanh toán (VNPAY/Momo callback)
+// orderRouter.post("/verify", verifyOrder); // Xác nhận thanh toán (VNPAY/Momo callback)
 orderRouter.post("/userorders", authMiddleware, userOrders); // Lấy lịch sử đơn hàng của user
 
 // ✅ BƯỚC 2: Thêm route mới để lấy chi tiết đơn hàng theo ID

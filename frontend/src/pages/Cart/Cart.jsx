@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import './Cart.css'
 import { StoreContext } from '../../Context/StoreContext'
 import { useNavigate } from 'react-router-dom';
@@ -22,9 +22,9 @@ const Cart = () => {
               <div className="cart-items-title cart-items-item">
                 <img src={url+"/images/"+item.image} alt="" />
                 <p>{item.name}</p>
-                <p>{item.price}{currency}</p>
+                <p>{item.price.toLocaleString('vi-VN')}{currency}</p>
                 <div>{cartItems[item._id]}</div>
-                <p>{item.price*cartItems[item._id]}{currency}</p>
+                <p>{(item.price*cartItems[item._id]).toLocaleString('vi-VN')}{currency}</p>
                 <p className='cart-items-remove-icon' onClick={()=>removeFromCart(item._id)}>x</p>
               </div>
               <hr />
@@ -36,15 +36,15 @@ const Cart = () => {
         <div className="cart-total">
           <h2>Tổng đơn hàng</h2>
           <div>
-            <div className="cart-total-details"><p>Tổng phụ</p><p>{getTotalCartAmount()}{currency}</p></div>
+            <div className="cart-total-details"><p>Tổng phụ</p><p>{getTotalCartAmount().toLocaleString('vi-VN')}{currency}</p></div>
             <hr />
-            <div className="cart-total-details"><p>Phí giao hàng</p><p>{getTotalCartAmount()===0?0:deliveryCharge}{currency}</p></div>
+            <div className="cart-total-details"><p>Phí giao hàng</p><p>{getTotalCartAmount()===0?0:deliveryCharge.toLocaleString('vi-VN')}{currency}</p></div>
             <hr />
-            <div className="cart-total-details"><b>Tổng tiền</b><b>{getTotalCartAmount()===0?0:getTotalCartAmount()+deliveryCharge}{currency}</b></div>
+            <div className="cart-total-details"><b>Tổng tiền</b><b>{(getTotalCartAmount()===0?0:getTotalCartAmount()+deliveryCharge).toLocaleString('vi-VN')}{currency}</b></div>
           </div>
           <button onClick={()=>navigate('/order')}>TIẾN HÀNH THANH TOÁN</button>
         </div>
-        <div className="cart-promocode">
+        {/* <div className="cart-promocode">
           <div>
             <p>Nếu bạn có mã khuyến mại, hãy nhập vào đây</p>
             <div className='cart-promocode-input'>
@@ -52,7 +52,7 @@ const Cart = () => {
               <button>Chọn</button>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )

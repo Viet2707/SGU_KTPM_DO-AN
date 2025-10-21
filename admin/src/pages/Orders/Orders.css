@@ -1,42 +1,204 @@
-.order-item{
-    display: grid;
-    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
-    align-items: start;
-    gap: 30px;
-    border: 1px solid tomato;
-    padding: 20px;
-    margin: 30px 0px;
-    font-size: 14px;
-    color: #505050;
+/* Main container */
+.order.add {
+  padding: 20px;
 }
-.order-item-food,.order-item-name{
-    font-weight: 600;
+
+.order h3 {
+  margin-bottom: 24px;
+  font-size: 24px;
+  color: #333;
 }
-.order-item-name{
-    margin-top: 30px;
-    margin-bottom: 5px;
+
+/* Order list container */
+.order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
-.order-item-address{
-    margin-bottom: 10px;
+
+/* Order card styling */
+.order-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
-.order-item select{
-    background-color: #ffe8e4;
-    border: 1px solid tomato;
-    width: max(10vw,120px);
-    padding: 10px;
-    outline:none;
+
+/* Order card header */
+.order-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eee;
 }
-@media(max-width:1000px){
-    .order-item{
-        font-size: 12px;
-        grid-template-columns: 0.5fr 2fr 1fr;
-        padding: 15px 8px;
-    }
-    .order-item select{
-        padding: 5px;
-        font-size: 12px;
-    }
-    .order-item img{
-        width: 40px;
-    }
+
+.order-code {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.order-code img {
+  width: 24px;
+  height: 24px;
+}
+
+.order-header-right {
+  display: flex;
+  gap: 8px;
+}
+
+/* Badge styles */
+.badge {
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+}
+
+.badge--payment {
+  background: #e6f4ea;
+  color: #1e8e3e;
+}
+
+.badge--method {
+  background: #fce8e6;
+  color: #d93025;
+}
+
+.badge--items {
+  background: #e8f0fe;
+  color: #1a73e8;
+}
+
+/* Order card body */
+.order-card__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding-top: 16px;
+}
+
+/* Order info section */
+.order-info h4,
+.order-summary h4 {
+  margin-bottom: 16px;
+  font-size: 16px;
+  color: #333;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.info-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-field--full {
+  grid-column: 1 / -1;
+}
+
+.info-field label {
+  font-size: 12px;
+  color: #666;
+}
+
+.info-field div {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Items list styling */
+.items-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px dashed #eee;
+}
+
+.item-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.item-name {
+  font-size: 14px;
+  color: #333;
+}
+
+.item-qty {
+  font-size: 13px;
+  color: #666;
+}
+
+.item-sub {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Summary section */
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 0;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+}
+
+.summary-line strong {
+  font-size: 16px;
+  color: #1a73e8;
+}
+
+/* Status section */
+.status-line {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.status-line label {
+  font-size: 12px;
+  color: #666;
+}
+
+.status-line select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background-color: white;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+}
+
+.status-line select:hover {
+  border-color: #1a73e8;
+}
+
+/* Empty state */
+.empty-note {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  font-style: italic;
 }

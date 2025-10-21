@@ -2,10 +2,9 @@ import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
 import Stock from "../models/Stock.js";
 import { decStock, incStock } from "./updateStock.js";
-import Stripe from "stripe";
 
 // Khởi tạo Stripe với secret key từ file .env
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+// const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 // Cấu hình
 const currency = "vnd"; // Thay đổi thành 'vnd'
@@ -36,80 +35,45 @@ const assertEnoughStock = async (items) => {
 /**
  * @desc Xử lý đặt hàng qua cổng thanh toán (Stripe)
  */
-const placeOrder = async (req, res) => {
-  try {
-    const items = req.body.items || [];
-    await assertEnoughStock(items);
-
-    const newOrder = new orderModel({
-      userId: req.body.userId,
-      items,
-      amount: req.body.amount,
-      address: req.body.address,
-    });
-    await newOrder.save();
-    await userModel.findByIdAndUpdate(req.body.userId, { cartData: {} });
-
-    const line_items = items.map((item) => ({
-      price_data: {
-        currency,
-        product_data: { name: item.name },
-        unit_amount: item.price,
-      },
-      quantity: pickQty(item),
-    }));
-    line_items.push({
-      price_data: {
-        currency,
-        product_data: { name: "Phí giao hàng" },
-        unit_amount: deliveryCharge,
-      },
-      quantity: 1,
-    });
-
-    const session = await stripe.checkout.sessions.create({
-      success_url: `${frontend_URL}/verify?success=true&orderId=${newOrder._id}`,
-      cancel_url: `${frontend_URL}/verify?success=false&orderId=${newOrder._id}`,
-      line_items,
-      mode: "payment",
-    });
-
-    res.json({ success: true, session_url: session.url });
-  } catch (error) {
-    if (error.code === "OUT_OF_STOCK") {
-      return res.status(409).json({ success: false, message: error.message });
-    }
-    console.error("Lỗi khi đặt hàng (Stripe):", error);
-    res.status(500).json({ success: false, message: "Lỗi Server" });
-  }
-};
-
-/**
- * @desc Xử lý đặt hàng nhận tiền mặt (COD)
- */
 const placeOrderCod = async (req, res) => {
   try {
     const items = req.body.items || [];
+    if (!Array.isArray(items) || items.length === 0) {
+      return res.status(400).json({ success: false, message: "Thiếu danh sách sản phẩm" });
+    }
+
+    // Kiểm tra & trừ kho
     await assertEnoughStock(items);
     await decStock(items);
 
     const newOrder = new orderModel({
       userId: req.body.userId,
       items,
-      amount: req.body.amount,
+      amount: req.body.amount,          // ví dụ: tổng phụ + phí ship (tính ở FE/BE đều được)
       address: req.body.address,
-      payment: true,
+      paymentMethod: "COD",             // <-- thêm field trong schema nếu chưa có
+      payment: false,                   // CHƯA THU TIỀN
+      status: "Food Processing",
     });
-    await newOrder.save();
-    await userModel.findByIdAndUpdate(req.body.userId, { cartData: {} });
 
-    res.json({ success: true, message: "Đặt hàng thành công" });
+    await newOrder.save();
+
+    // Xoá giỏ hàng user
+    if (req.body.userId) {
+      await userModel.findByIdAndUpdate(req.body.userId, { cartData: {} });
+    }
+
+    return res.json({
+      success: true,
+      message: "Đặt hàng thành công. Bạn sẽ thanh toán khi nhận hàng (COD).",
+      orderId: newOrder._id,
+    });
   } catch (error) {
     if (error.code === "OUT_OF_STOCK") {
       return res.status(409).json({ success: false, message: error.message });
     }
     console.error("Lỗi khi đặt hàng (COD):", error);
-    res.status(500).json({ success: false, message: "Lỗi Server" });
+    return res.status(500).json({ success: false, message: "Lỗi Server" });
   }
 };
 
@@ -128,13 +92,15 @@ const listOrders = async (req, res) => {
 
 /**
  * @desc User lấy lịch sử đơn hàng của mình
+ * - KHÔNG lọc theo payment để user thấy cả đơn COD chưa giao/ chưa thu tiền
  */
 const userOrders = async (req, res) => {
   try {
-    const orders = await orderModel.find({ userId: req.body.userId }).sort({ date: -1 });
+    const orders = await orderModel
+      .find({ userId: req.body.userId })
+      .sort({ date: -1 });
     res.json({ success: true, data: orders });
-  } catch (error)
-{
+  } catch (error) {
     console.error("Lỗi khi lấy lịch sử đơn hàng (User):", error);
     res.status(500).json({ success: false, message: "Lỗi Server" });
   }
@@ -142,86 +108,86 @@ const userOrders = async (req, res) => {
 
 /**
  * @desc Admin cập nhật trạng thái đơn hàng
+ * - Khi chuyển sang Delivered và là COD -> coi như đã thu tiền (payment=true, paidAt=now)
+ * - BỎ HOÀN KHO khi Cancel theo yêu cầu
  */
 const updateStatus = async (req, res) => {
   try {
     const { orderId, status } = req.body;
     const order = await orderModel.findById(orderId);
-    if (!order) return res.status(404).json({ success: false, message: "Không tìm thấy đơn hàng" });
-
-    const oldStatus = (order.status || "").toLowerCase();
-    const newStatus = (status || "").toLowerCase();
-    const goingToCancel = newStatus === "canceled" || newStatus === "cancelled";
-    const wasCanceled = oldStatus === "canceled" || oldStatus === "cancelled";
-
-    if (goingToCancel && !wasCanceled && order.payment === true) {
-      await incStock(order.items);
+    if (!order) {
+      return res.status(404).json({ success: false, message: "Không tìm thấy đơn hàng" });
     }
 
-    await orderModel.findByIdAndUpdate(orderId, { status: status });
-    res.json({ success: true, message: "Cập nhật trạng thái thành công" });
+    const curr = (order.status || "").toLowerCase();
+    const next = (status || "").toLowerCase();
+
+    // Đã chốt (Delivered/Canceled) thì KHÔNG cho đổi nữa
+    if ((curr === "delivered" || curr === "canceled") && next !== curr) {
+      return res.status(400).json({
+        success: false,
+        message: "Đơn đã chốt trạng thái, không thể thay đổi.",
+      });
+    }
+
+    // Chuẩn bị cập nhật
+    const update = { status };
+
+    // 1) Delivered: chốt đơn, thanh toán thành công
+    if (next === "delivered") {
+      if (!order.payment) {
+        update.payment = true;
+        update.paidAt = new Date();
+      }
+    }
+
+    // 2) Canceled: chốt đơn, chưa thanh toán, hoàn kho (chỉ 1 lần)
+    if (next === "canceled") {
+      update.payment = false;
+
+      if (curr !== "canceled") {
+        // Hoàn kho chỉ khi chuyển sang canceled lần đầu
+        try {
+          await incStock(order.items);
+        } catch (e) {
+          console.error("Hoàn kho khi canceled lỗi:", e);
+          // có thể quyết định trả lỗi nếu hoàn kho thất bại
+        }
+      }
+    }
+
+    await orderModel.findByIdAndUpdate(orderId, update, { new: true });
+    return res.json({ success: true, message: "Cập nhật trạng thái thành công" });
   } catch (error) {
     console.error("Lỗi khi cập nhật trạng thái:", error);
     res.status(500).json({ success: false, message: "Lỗi Server" });
   }
 };
-
 /**
- * @desc Xác nhận thanh toán từ Stripe và trừ kho
+ * @desc Lấy chi tiết đơn hàng theo ID
  */
-const verifyOrder = async (req, res) => {
-  const { orderId, success } = req.body;
+const getOrderById = async (req, res) => {
   try {
+    const orderId = req.params.id;
     const order = await orderModel.findById(orderId);
-    if (!order) return res.status(404).json({ success: false, message: "Không tìm thấy đơn hàng" });
 
-    if (success === "true") {
-      if (order.payment) {
-        return res.json({ success: true, message: "Đã thanh toán" });
-      }
-      await decStock(order.items);
-      await orderModel.findByIdAndUpdate(orderId, { payment: true });
-      return res.json({ success: true, message: "Thanh toán thành công" });
-    } else {
-      await orderModel.findByIdAndDelete(orderId);
-      return res.json({ success: false, message: "Thanh toán thất bại" });
+    if (!order) {
+      return res.status(404).json({ success: false, message: "Không tìm thấy đơn hàng" });
     }
+    res.json({ success: true, data: order });
   } catch (error) {
-    if (error.code === "OUT_OF_STOCK") {
-      return res.status(409).json({ success: false, message: error.message });
-    }
-    console.error("Lỗi khi xác nhận thanh toán:", error);
+    console.error("Lỗi khi lấy chi tiết đơn hàng:", error);
     res.status(500).json({ success: false, message: "Lỗi Server" });
   }
 };
 
-
-// 
-// ✅ HÀM MỚI ĐỂ LẤY CHI TIẾT ĐƠN HÀNG
-//
-const getOrderById = async (req, res) => {
-    try {
-        const orderId = req.params.id; // Lấy ID từ tham số URL
-        const order = await orderModel.findById(orderId);
-
-        if (!order) {
-            return res.status(404).json({ success: false, message: "Không tìm thấy đơn hàng" });
-        }
-        res.json({ success: true, data: order });
-
-    } catch (error) {
-        console.error("Lỗi khi lấy chi tiết đơn hàng:", error);
-        res.status(500).json({ success: false, message: "Lỗi Server" });
-    }
-};
-
-
+const placeOrder = placeOrderCod;
 export { 
-    placeOrder, 
+   placeOrder,
     listOrders, 
     userOrders, 
     updateStatus, 
-    verifyOrder, 
+  
     placeOrderCod,
     getOrderById // <-- THÊM VÀO ĐÂY
 };

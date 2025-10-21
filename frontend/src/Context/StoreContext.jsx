@@ -12,8 +12,8 @@ const StoreContextProvider = (props) => {
   const [food_list, setFoodList] = useState([]);
   const [cartItems, setCartItems] = useState({});
   const [token, setToken] = useState("");
-  const currency = ".000 vnđ";
-  const deliveryCharge = 50;
+  const currency = "vnđ";
+  const deliveryCharge = 50000;
 
   // --- Đăng xuất user: xóa token + state giỏ ---
   const logoutUser = (msg) => {

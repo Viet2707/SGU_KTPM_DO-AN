@@ -67,7 +67,7 @@ const List = () => {
             <img src={`${url}/images/${item.image}`} alt={item.name} />
             <p>{item.name}</p>
             <p>{item.category}</p>
-            <p>{currency}{item.price}</p>
+            <p>{item.price.toLocaleString('vi-VN')} {currency}</p>
             <p>{item.quantity}</p>   {/* ✅ hiển thị số lượng */}
             <div className="action-buttons">
               <span className="cursor edit" onClick={() => setEditingFood(item)}>Edit</span>

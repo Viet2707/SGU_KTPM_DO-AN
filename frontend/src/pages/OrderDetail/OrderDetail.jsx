@@ -12,7 +12,8 @@ const OrderDetail = () => {
   const { orderId } = useParams(); 
   const [order, setOrder] = useState(null);
   const [loading, setLoading] = useState(true);
-  const {getTotalCartAmount,currency,deliveryCharge} = useContext(StoreContext);
+  const {currency,deliveryCharge} = useContext(StoreContext);
+  
   // ✅ BƯỚC 2: Khởi tạo hook useNavigate
   const navigate = useNavigate();
 
@@ -71,7 +72,7 @@ const OrderDetail = () => {
             ))}
           </div>
           <hr />
-            <div className="cart-total-details"><p>Phí giao hàng</p><p>{getTotalCartAmount()===0?50:deliveryCharge}{currency}</p></div>
+            <div className="cart-total-details"><p>Phí giao hàng</p><p>{ deliveryCharge.toLocaleString('vi-VN')}{currency}</p></div>
             <hr />
           <hr />
           <p className='order-total'><strong>Tổng tiền:</strong> {order.amount.toLocaleString('vi-VN')}{currency}</p>
