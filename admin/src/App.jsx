@@ -71,11 +71,16 @@ export default function App() {
       <div style={{ textAlign: "center", padding: 60 }}>
         <h2>🚫 Bạn chưa đăng nhập quyền quản trị.</h2>
         <p style={{ marginTop: 8 }}>
-          Vui lòng quay lại{" "}
-          <a href={userBaseUrl} style={{ color: "blue", textDecoration: "underline" }}>
-            trang người dùng
-          </a>{" "}
-          để đăng nhập admin.
+          Vui lòng quay lại
+         <a
+  href={`${userBaseUrl}?logout=true`}
+  onClick={() => {
+    localStorage.removeItem(ADMIN_TOKEN_KEY); // xoá token admin trước
+  }}
+  style={{ color: "blue", textDecoration: "underline" }}
+>
+  trang người dùng
+</a>
         </p>
 
       

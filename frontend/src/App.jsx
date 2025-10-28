@@ -1,58 +1,61 @@
-import  { useState, useEffect } from "react";
-import Home from './pages/Home/Home'
-import Footer from './components/Footer/Footer'
-import Navbar from './components/Navbar/Navbar'
-import { Route, Routes } from 'react-router-dom'
-import Cart from './pages/Cart/Cart'
-import LoginPopup from './components/LoginPopup/LoginPopup'
-import PlaceOrder from './pages/PlaceOrder/PlaceOrder'
-import MyOrders from './pages/MyOrders/MyOrders'
+import { useState, useEffect } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
+
+import Home from './pages/Home/Home';
+import Cart from './pages/Cart/Cart';
+import PlaceOrder from './pages/PlaceOrder/PlaceOrder';
+import MyOrders from './pages/MyOrders/MyOrders';
+import OrderDetail from './pages/OrderDetail/OrderDetail';
+import Verify from './pages/Verify/Verify';
+import ProductDetail from './pages/ProductDetail/ProductDetail';
+
+import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer';
+import LoginPopup from './components/LoginPopup/LoginPopup';
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Verify from './pages/Verify/Verify'
-import ProductDetail from './pages/ProductDetail/ProductDetail'
-// import AdminLogin from './pages/AdminLogin/AdminLogin'  // ✅ import AdminLogin
-import OrderDetail from './pages/OrderDetail/OrderDetail'
 
 const App = () => {
+  const [showLogin, setShowLogin] = useState(false);
+  const navigate = useNavigate();
 
-  const [showLogin,setShowLogin] = useState(false);
-
-    useEffect(() => {
+  useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     if (params.get("logout") === "true") {
       console.log("Logout signal detected from admin.");
-      localStorage.removeItem("token"); // xoá token user
-      localStorage.removeItem("cart");  // nếu bạn có lưu giỏ hàng
-      // có thể reload để cập nhật Navbar, MyOrders,...
-      window.location.replace("http://localhost:5173/");
+      localStorage.removeItem("token");   // xoá token Buyer
+      localStorage.removeItem("cart");
+      localStorage.removeItem("admin_token");
+    // xoá giỏ hàng nếu có
+      setShowLogin(false);                // tắt popup login nếu đang bật
+      navigate("/");                      // quay về trang chủ Buyer
     }
-  }, []);
-
-  
+  }, [navigate]);
 
   return (
     <>
-    <ToastContainer/>
-    {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
-      <div className='app'>
-        <Navbar setShowLogin={setShowLogin}/>
+      <ToastContainer position="top-right" autoClose={2000} />
+      {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
+      <div className="app">
+        <Navbar setShowLogin={setShowLogin} />
         <Routes>
-          <Route path='/' element={<Home />}/>
-          <Route path='/cart' element={<Cart />}/>
-          <Route path='/order' element={<PlaceOrder />}/>
-          <Route path='/myorders' element={<MyOrders />}/>
-          <Route path='/order/:orderId' element={<OrderDetail />}/> {/* ✅ thêm route chi tiết đơn hàng */}
-          <Route path='/verify' element={<Verify />}/>
-          <Route path='/product/:id' element={<ProductDetail />}/>     
-            {/* <Route path='/admin-login' element={<AdminLogin />} />   ✅ thêm dòng này */}
-   
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/order" element={<PlaceOrder />} />
+          <Route path="/myorders" element={<MyOrders />} />
+          <Route path="/order/:orderId" element={<OrderDetail />} />
+          <Route path="/verify" element={<Verify />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          {/* Nếu deploy riêng admin SPA thì KHÔNG cần import ở đây */}
+          {/* <Route path="/admin-login" element={<AdminLogin />} /> */}
+          {/* Fallback route */}
+          <Route path="*" element={<h2 style={{textAlign:'center'}}>404 - Page Not Found</h2>} />
         </Routes>
       </div>
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default App
-
+export default App;

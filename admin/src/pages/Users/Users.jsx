@@ -5,8 +5,8 @@ import { toast } from "react-toastify";
 
 export default function Users() {
   const [list, setList] = useState([]);
-  const [search, setSearch] = useState("");
-  const [status, setStatus] = useState("");
+  const [search] = useState("");
+  const [status] = useState("");
 
   const fetchUsers = async () => {
     const qs = new URLSearchParams();
@@ -33,7 +33,7 @@ export default function Users() {
   return (
     <div style={{ padding: 16, width: "100%" }}>
       <h2>👥 Quản lý người dùng</h2>
-      <div style={{ display: "flex", gap: 8, margin: "12px 0" }}>
+      {/* <div style={{ display: "flex", gap: 8, margin: "12px 0" }}>
         <input placeholder="Tìm tên/email…" value={search} onChange={e=>setSearch(e.target.value)} style={{ padding:8, flex:1 }}/>
         <select value={status} onChange={e=>setStatus(e.target.value)} style={{ padding:8 }}>
           <option value="">Tất cả</option>
@@ -41,7 +41,7 @@ export default function Users() {
           <option value="lock">Đã khóa</option>
         </select>
         <button onClick={fetchUsers} style={{ padding:"8px 12px" }}>Lọc</button>
-      </div>
+      </div> */}
 
       <table width="100%" cellPadding="8" style={{ borderCollapse:"collapse" }}>
         <thead>
