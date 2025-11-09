@@ -49,16 +49,16 @@
     font-size: 15px;
     cursor: pointer;
 }
-.login-popup-condition{
+/* .login-popup-condition{
     display: flex;
     align-items: start;
     gap: 8px;
     margin-top: -15px;
-}
+} */
 
-.login-popup-condition input{
+/* .login-popup-condition input{
     margin-top: 5px;
-}
+} */
 
 
 .login-popup p span{
