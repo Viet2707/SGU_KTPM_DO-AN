@@ -6,7 +6,7 @@ const adminSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password_hash: { type: String, required: true },
   role: { type: String, default: "admin" },
-  status: { type: String, default: "active" },
+  // status: { type: String, default: "active" },
   created_at: { type: Date, default: Date.now }
 });
 
