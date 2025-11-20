@@ -8,10 +8,9 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "test:1": "vitest run tests/1-user",
-    "test:2": "vitest run tests/1-user tests/2-user-product",
-    "test:3": "vitest run tests/1-user tests/2-user-product tests/3-user-product-cart",
-    "test:4": "vitest run tests/1-user tests/2-user-product tests/3-user-product-cart tests/4-user-product-cart-inventory",
-    "test": "npm run test:4"
+    "test:vitest": "vitest run",
+    "test": "vitest run",
+    "test:watch": "vitest watch"
   },
   "author": "",
   "license": "ISC",
@@ -28,6 +27,7 @@
     "validator": "^13.11.0"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
     "nodemon": "^3.1.10",
     "supertest": "^7.1.4",
     "vitest": "^3.2.4"
