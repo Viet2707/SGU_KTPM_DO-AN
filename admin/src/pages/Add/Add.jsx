@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 const Add = () => {
   const [image, setImage] = useState(null);
-  const [categories, setCategories] = useState([]); // danh mục từ backend
+  const [categories, setCategories] = useState([]); // danh mục từ backend, mặc định là mảng rỗng
   const [data, setData] = useState({
     name: "",
     description: "",
@@ -75,19 +75,19 @@ const Add = () => {
 
   return (
     <div className='add'>
-      <form className='flex-col' onSubmit={onSubmitHandler}>
+      <form className='flex-col' onSubmit={onSubmitHandler} role="form">
         
         {/* Upload ảnh */}
         <div className='add-img-upload flex-col'>
-          <p>Upload image</p>
-          <input
-            onChange={(e) => { setImage(e.target.files[0]); e.target.value = ''; }}
-            type="file"
-            accept="image/*"
-            id="image"
-            hidden
-          />
           <label htmlFor="image">
+            <p>Upload image</p>
+            <input
+              onChange={(e) => { setImage(e.target.files[0]); e.target.value = ''; }}
+              type="file"
+              accept="image/*"
+              id="image"
+              hidden
+            />
             <img src={!image ? assets.upload_area : URL.createObjectURL(image)} alt="preview" />
           </label>
         </div>

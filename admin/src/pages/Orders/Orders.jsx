@@ -158,6 +158,7 @@ const Order = () => {
                       onChange={(e) => statusHandler(e, order._id)}
                       value={order.status}
                       disabled={isLocked}
+                      role="combobox"
                     >
                       <option value="Food Processing">Food Processing</option>
                       <option value="Out for delivery">Out for delivery</option>
