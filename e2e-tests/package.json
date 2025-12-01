@@ -1,0 +1,30 @@
+{
+    "name": "foodfast-e2e-tests",
+    "version": "1.0.0",
+    "description": "E2E and UI/UX tests for FoodFast application",
+    "scripts": {
+        "test": "playwright test",
+        "test:ui": "playwright test --ui",
+        "test:headed": "playwright test --headed",
+        "test:user": "playwright test user-frontend",
+        "test:admin": "playwright test admin-panel",
+        "test:chrome": "playwright test --project=chromium",
+        "test:firefox": "playwright test --project=firefox",
+        "test:mobile": "playwright test --project='Mobile Chrome'",
+        "test:debug": "playwright test --debug",
+        "show-report": "playwright show-report",
+        "codegen": "playwright codegen http://localhost:5173"
+    },
+    "keywords": [
+        "e2e",
+        "playwright",
+        "ui-testing",
+        "ux-testing"
+    ],
+    "author": "KTPM Student",
+    "license": "ISC",
+    "devDependencies": {
+        "@playwright/test": "^1.40.0",
+        "playwright": "^1.40.0"
+    }
+}

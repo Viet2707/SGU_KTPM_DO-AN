@@ -7,10 +7,16 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "test:1": "vitest run tests/1-user",
-    "test:vitest": "vitest run",
     "test": "vitest run",
-    "test:watch": "vitest watch"
+    "test:watch": "vitest watch",
+    "test:unit": "vitest run tests/unit",
+    "test:integration": "vitest run tests/integration",
+    "test:models": "vitest run tests/unit/models",
+    "test:api": "vitest run tests/integration/api",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui",
+    "test:1": "vitest run tests/1-user",
+    "test:vitest": "vitest run"
   },
   "author": "",
   "license": "ISC",

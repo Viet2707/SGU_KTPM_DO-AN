@@ -1,0 +1,186 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - link [ref=e5] [cursor=pointer]:
+        - /url: /
+      - list [ref=e6]:
+        - link "Trang chủ" [ref=e7] [cursor=pointer]:
+          - /url: /
+        - link "Danh mục" [ref=e8] [cursor=pointer]:
+          - /url: "#explore-menu"
+        - link "Liên hệ chúng tôi" [ref=e9] [cursor=pointer]:
+          - /url: "#footer"
+      - generic [ref=e10]:
+        - link [ref=e11] [cursor=pointer]:
+          - /url: /cart
+        - button "Đăng nhập" [ref=e12] [cursor=pointer]
+    - generic [ref=e13]:
+      - heading "Hãy lựa chọn sản phẩm" [level=1] [ref=e14]
+      - paragraph [ref=e15]: Mỗi bông hoa mang một câu chuyện tình yêu, nhẹ nhàng nhưng sâu sắc như trái tim bạn.
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - img "Cây dễ chăm" [ref=e18] [cursor=pointer]
+          - paragraph [ref=e19] [cursor=pointer]: Cây dễ chăm
+        - generic [ref=e20]:
+          - img "Cây văn phòng" [ref=e21] [cursor=pointer]
+          - paragraph [ref=e22] [cursor=pointer]: Cây văn phòng
+        - generic [ref=e23]:
+          - img "Cây phong thủy" [ref=e24] [cursor=pointer]
+          - paragraph [ref=e25] [cursor=pointer]: Cây phong thủy
+        - generic [ref=e26]:
+          - img "Cây để bàn" [ref=e27] [cursor=pointer]
+          - paragraph [ref=e28] [cursor=pointer]: Cây để bàn
+        - generic [ref=e29]:
+          - img "Cây trồng nước" [ref=e30] [cursor=pointer]
+          - paragraph [ref=e31] [cursor=pointer]: Cây trồng nước
+        - generic [ref=e32]:
+          - img "Cây cao cấp" [ref=e33] [cursor=pointer]
+          - paragraph [ref=e34] [cursor=pointer]: Cây cao cấp
+        - generic [ref=e35]:
+          - img "Chậu nung đất" [ref=e36] [cursor=pointer]
+          - paragraph [ref=e37] [cursor=pointer]: Chậu nung đất
+        - generic [ref=e38]:
+          - img "Chậu xi măng" [ref=e39] [cursor=pointer]
+          - paragraph [ref=e40] [cursor=pointer]: Chậu xi măng
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - text: Giá từ
+          - spinbutton [ref=e43]
+        - generic [ref=e44]: —
+        - generic [ref=e45]:
+          - text: Đến
+          - spinbutton [ref=e46]
+        - button "Áp dụng" [ref=e47] [cursor=pointer]
+      - separator [ref=e48]
+    - generic [ref=e49]:
+      - heading "Danh sách cây - Tất cả sản phẩm" [level=2] [ref=e50]
+      - generic [ref=e51]:
+        - generic [ref=e52]:
+          - generic [ref=e53]:
+            - link "Hoa chổi" [ref=e54] [cursor=pointer]:
+              - /url: /product/692b29015457a3d40a365667
+              - img "Hoa chổi" [ref=e55]
+            - img "add" [ref=e56] [cursor=pointer]
+          - generic [ref=e57]:
+            - generic [ref=e58]:
+              - paragraph [ref=e59]: Hoa chổi
+              - img "rating" [ref=e60]
+            - paragraph [ref=e61]: để quét nhà
+            - paragraph [ref=e62]: 200.000vnđ
+        - generic [ref=e63]:
+          - generic [ref=e64]:
+            - link "Cây cảnh" [ref=e65] [cursor=pointer]:
+              - /url: /product/692b291a5457a3d40a36566c
+              - img "Cây cảnh" [ref=e66]
+            - img "add" [ref=e67] [cursor=pointer]
+          - generic [ref=e68]:
+            - generic [ref=e69]:
+              - paragraph [ref=e70]: Cây cảnh
+              - img "rating" [ref=e71]
+            - paragraph [ref=e72]: để trưng
+            - paragraph [ref=e73]: 1.000.000vnđ
+        - generic [ref=e74]:
+          - generic [ref=e75]:
+            - link "Cây Việt" [ref=e76] [cursor=pointer]:
+              - /url: /product/692b293e5457a3d40a365671
+              - img "Cây Việt" [ref=e77]
+            - img "add" [ref=e78] [cursor=pointer]
+          - generic [ref=e79]:
+            - generic [ref=e80]:
+              - paragraph [ref=e81]: Cây Việt
+              - img "rating" [ref=e82]
+            - paragraph [ref=e83]: omg 1
+            - paragraph [ref=e84]: 20.000vnđ
+        - generic [ref=e85]:
+          - generic [ref=e86]:
+            - link "Cây Hải" [ref=e87] [cursor=pointer]:
+              - /url: /product/692b295c5457a3d40a365676
+              - img "Cây Hải" [ref=e88]
+            - img "add" [ref=e89] [cursor=pointer]
+          - generic [ref=e90]:
+            - generic [ref=e91]:
+              - paragraph [ref=e92]: Cây Hải
+              - img "rating" [ref=e93]
+            - paragraph [ref=e94]: Hải tặc
+            - paragraph [ref=e95]: 5.000.000vnđ
+        - generic [ref=e96]:
+          - generic [ref=e97]:
+            - link "cây hiếu" [ref=e98] [cursor=pointer]:
+              - /url: /product/692b297d5457a3d40a365681
+              - img "cây hiếu" [ref=e99]
+            - img "add" [ref=e100] [cursor=pointer]
+          - generic [ref=e101]:
+            - generic [ref=e102]:
+              - paragraph [ref=e103]: cây hiếu
+              - img "rating" [ref=e104]
+            - paragraph [ref=e105]: có hiếu
+            - paragraph [ref=e106]: 6.000.000vnđ
+        - generic [ref=e107]:
+          - generic [ref=e108]:
+            - link "Cây kiểng" [ref=e109] [cursor=pointer]:
+              - /url: /product/692b29a55457a3d40a365686
+              - img "Cây kiểng" [ref=e110]
+            - img "add" [ref=e111] [cursor=pointer]
+          - generic [ref=e112]:
+            - generic [ref=e113]:
+              - paragraph [ref=e114]: Cây kiểng
+              - img "rating" [ref=e115]
+            - paragraph [ref=e116]: rong riêu tạo điểm nhấn
+            - paragraph [ref=e117]: 5.000.000vnđ
+        - generic [ref=e118]:
+          - generic [ref=e119]:
+            - link "Dừa cảnh" [ref=e120] [cursor=pointer]:
+              - /url: /product/692b29be5457a3d40a36568b
+              - img "Dừa cảnh" [ref=e121]
+            - img "add" [ref=e122] [cursor=pointer]
+          - generic [ref=e123]:
+            - generic [ref=e124]:
+              - paragraph [ref=e125]: Dừa cảnh
+              - img "rating" [ref=e126]
+            - paragraph [ref=e127]: che mát trong nhà
+            - paragraph [ref=e128]: 5.000.000vnđ
+        - generic [ref=e129]:
+          - generic [ref=e130]:
+            - link "Cây lá cọ" [ref=e131] [cursor=pointer]:
+              - /url: /product/692b29e45457a3d40a365690
+              - img "Cây lá cọ" [ref=e132]
+            - img "add" [ref=e133] [cursor=pointer]
+          - generic [ref=e134]:
+            - generic [ref=e135]:
+              - paragraph [ref=e136]: Cây lá cọ
+              - img "rating" [ref=e137]
+            - paragraph [ref=e138]: cây đẹp
+            - paragraph [ref=e139]: 1.200.000vnđ
+        - generic [ref=e140]:
+          - generic [ref=e141]:
+            - link "cây hoa đen" [ref=e142] [cursor=pointer]:
+              - /url: /product/692b29ff5457a3d40a365695
+              - img "cây hoa đen" [ref=e143]
+            - img "add" [ref=e144] [cursor=pointer]
+          - generic [ref=e145]:
+            - generic [ref=e146]:
+              - paragraph [ref=e147]: cây hoa đen
+              - img "rating" [ref=e148]
+            - paragraph [ref=e149]: chưa ra hoa
+            - paragraph [ref=e150]: 4.500.000vnđ
+  - generic [ref=e151]:
+    - generic [ref=e152]:
+      - paragraph [ref=e154]: Mỗi đóa hoa không chỉ là một món quà, mà là lời thì thầm của yêu thương, là sự quan tâm dịu dàng được gửi trao qua từng cánh mỏng. Hãy để chúng tôi giúp bạn kể câu chuyện của riêng mình, một câu chuyện được dệt nên từ hương sắc và những xúc cảm chân thành nhất.
+      - generic [ref=e156]:
+        - heading "CÔNGTY" [level=2] [ref=e157]
+        - list [ref=e158]:
+          - listitem [ref=e159] [cursor=pointer]: NOW
+          - listitem [ref=e160] [cursor=pointer]: Trang chủ
+          - listitem [ref=e161] [cursor=pointer]: Danh mục
+          - listitem [ref=e162] [cursor=pointer]: Liên hệ với chúng tôi
+      - generic [ref=e163]:
+        - heading "LIÊN HỆ" [level=2] [ref=e164]
+        - list [ref=e165]:
+          - listitem [ref=e166] [cursor=pointer]: "0365986732"
+          - listitem [ref=e167] [cursor=pointer]: tdat07082004@gmail.com
+    - separator [ref=e168]
+    - paragraph [ref=e169]: https://www.facebook.com/nguyen.aat.2024
+```
