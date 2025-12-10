@@ -36,6 +36,22 @@ const removeFromCart = async (req, res) => {
 
 }
 
+// remove all quantity of an item from user cart
+const removeAllFromCart = async (req, res) => {
+   try {
+      let userData = await userModel.findById(req.body.userId);
+      let cartData = await userData.cartData;
+      if (cartData[req.body.itemId]) {
+         cartData[req.body.itemId] = 0;
+      }
+      await userModel.findByIdAndUpdate(req.body.userId, {cartData});
+      res.json({ success: true, message: "Item Removed Completely From Cart" });
+   } catch (error) {
+      console.log(error);
+      res.json({ success: false, message: "Error" })
+   }
+}
+
 // get user cart
 const getCart = async (req, res) => {
    try {
@@ -49,4 +65,4 @@ const getCart = async (req, res) => {
 }
 
 
-export { addToCart, removeFromCart, getCart }
+export { addToCart, removeFromCart, removeAllFromCart, getCart }

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
 
-  const {cartItems, food_list, removeFromCart,getTotalCartAmount,url,currency,deliveryCharge} = useContext(StoreContext);
+  const {cartItems, food_list, addToCart, removeFromCart, removeItemCompletely, getTotalCartAmount,url,currency,deliveryCharge} = useContext(StoreContext);
   const navigate = useNavigate();
 
   return (
@@ -23,9 +23,15 @@ const Cart = () => {
                 <img src={url+"/images/"+item.image} alt="" />
                 <p>{item.name}</p>
                 <p>{item.price.toLocaleString('vi-VN')}{currency}</p>
-                <div>{cartItems[item._id]}</div>
+                <div className="cart-quantity-controls">
+                  <button className="quantity-btn" onClick={()=>removeFromCart(item._id)}>-</button>
+                  <span className="quantity-display">{cartItems[item._id]}</span>
+                  <button className="quantity-btn" onClick={()=>addToCart(item._id)}>+</button>
+                </div>
                 <p>{(item.price*cartItems[item._id]).toLocaleString('vi-VN')}{currency}</p>
-                <p className='cart-items-remove-icon' onClick={()=>removeFromCart(item._id)}>x</p>
+                <button className='cart-remove-btn' onClick={()=>removeItemCompletely(item._id)}>
+                  Xóa
+                </button>
               </div>
               <hr />
             </div>)
