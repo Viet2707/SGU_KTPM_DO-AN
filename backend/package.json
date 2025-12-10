@@ -15,12 +15,14 @@
     "test:api": "vitest run tests/integration/api",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
-    "test:1": "vitest run tests/1-user",
-    "test:vitest": "vitest run"
+    "test:vitest": "vitest run",
+    "ai:generate": "node ai-tools/generate-tests-cli.js",
+    "ai:generate:all": "node ai-tools/generate-tests-cli.js --all"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@google/generative-ai": "^0.21.0",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
