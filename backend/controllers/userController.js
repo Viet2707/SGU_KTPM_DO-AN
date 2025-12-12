@@ -57,15 +57,15 @@ const registerUser = async (req,res) => {
         //check if user already exists
         const exists = await userModel.findOne({email})
         if(exists){
-            return res.json({success:false,message: "User already exists"})
+            return res.json({success:false,message: "Email này đã được sử dụng. Vui lòng chọn email khác!"})
         }
 
         // validating email format & strong password
         if(!validator.isEmail(email)){
-            return res.json({success:false,message: "Please enter a valid email"})
+            return res.json({success:false,message: "Vui lòng nhập đúng định dạng email!"})
         }
         if(password.length<8){
-            return res.json({success:false,message: "Please enter a strong password"})
+            return res.json({success:false,message: "Mật khẩu phải có ít nhất 8 ký tự!"})
         }
 
         // hashing user password
@@ -75,11 +75,11 @@ const registerUser = async (req,res) => {
         const newUser = new userModel({name, email, password: hashedPassword})
         const user = await newUser.save()
         const token = createToken(user._id)
-        res.json({success:true,token})
+        res.json({success:true,token,message:"Đăng ký thành công!"})
 
     } catch(error){
         console.log(error);
-        res.json({success:false,message:"Error"})
+        res.json({success:false,message:"Có lỗi xảy ra khi đăng ký. Vui lòng thử lại!"})
     }
 }
 

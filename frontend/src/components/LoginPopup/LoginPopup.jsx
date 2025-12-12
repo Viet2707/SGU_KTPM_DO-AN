@@ -18,6 +18,8 @@ const LoginPopup = ({ setShowLogin }) => {
         password: ""
     })
 
+    const [errorMessage, setErrorMessage] = useState("")
+
     const onChangeHandler = (event) => {
         const name = event.target.name
         const value = event.target.value
@@ -26,6 +28,7 @@ const LoginPopup = ({ setShowLogin }) => {
 
     const onLogin = async (e) => {
         e.preventDefault();
+        setErrorMessage(""); // Clear previous error
 
         try {
             let new_url = url;
@@ -82,13 +85,27 @@ const LoginPopup = ({ setShowLogin }) => {
                 localStorage.setItem("token", response.data.token);
                 loadCartData({ token: response.data.token });
                 setShowLogin(false);
-                toast.success("Đăng nhập thành công!");
+                toast.success(currState === "Đăng nhập" ? "Đăng nhập thành công!" : "Đăng ký thành công!");
             } else {
-                toast.error(response.data.message);
+                // Hiển thị thông báo lỗi cụ thể
+                const errorMsg = response.data.message || "Có lỗi xảy ra, vui lòng thử lại";
+                setErrorMessage(errorMsg);
+                toast.error(errorMsg);
             }
 
         } catch (error) {
             console.error(error);
+            // Hiển thị thông báo lỗi khi có exception
+            let errorMsg = "";
+            if (error.response && error.response.data && error.response.data.message) {
+                errorMsg = error.response.data.message;
+            } else if (currState === "Đăng nhập") {
+                errorMsg = "Email hoặc mật khẩu không đúng. Vui lòng kiểm tra lại!";
+            } else {
+                errorMsg = "Đăng ký thất bại. Vui lòng thử lại!";
+            }
+            setErrorMessage(errorMsg);
+            toast.error(errorMsg);
         }
     };
 
@@ -106,12 +123,18 @@ const LoginPopup = ({ setShowLogin }) => {
                     }
                     <input name='email' onChange={onChangeHandler} value={data.email} type="email" placeholder='Email của bạn' required />
                     <input name='password' onChange={onChangeHandler} value={data.password} type="password" placeholder='Mật khẩu' required />
+                    
+                    {errorMessage && (
+                        <div className="error-message">
+                            {errorMessage}
+                        </div>
+                    )}
                 </div>
                 <button type="submit">{currState === "Đăng nhập" ? "Đăng nhập" : "Tạo tài khoản"}</button>
                 
                 {currState === "Đăng nhập"
-                    ? <p>Tạo tài khoản mới? <span onClick={() => setCurrState('Đăng ký')}>Chọn ở đây</span></p>
-                    : <p>Bạn đã có tài khoản? <span onClick={() => setCurrState('Đăng nhập')}>Đăng nhập ở đây</span></p>
+                    ? <p>Tạo tài khoản mới? <span onClick={() => {setCurrState('Đăng ký'); setErrorMessage("");}}>Chọn ở đây</span></p>
+                    : <p>Bạn đã có tài khoản? <span onClick={() => {setCurrState('Đăng nhập'); setErrorMessage("");}}>Đăng nhập ở đây</span></p>
                 }
             </form>
         </div>
