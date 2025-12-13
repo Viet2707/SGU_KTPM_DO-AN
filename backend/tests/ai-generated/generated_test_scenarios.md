@@ -56,3 +56,19 @@
 18. should return error if user does not exist
 19. should return error if userId is missing from request body
 20. should handle internal server errors during database operations
+
+
+--- [12/12/2025, 1:55:09 PM] categoryController ---
+1. Should return a list of categories
+2. Should return an empty list when no categories exist
+3. Should handle errors and return 500
+4. Should return a list of categories (duplicate route)
+5. Should create a new category successfully
+6. Should return an error if the category name is missing
+7. Should handle errors during category creation
+8. Should update an existing category successfully
+9. Should return an error if the category is not found
+10. Should handle errors during category update
+11. Should delete an existing category successfully
+12. Should return an error if the category is not found for deletion
+13. Should handle errors during category deletion
