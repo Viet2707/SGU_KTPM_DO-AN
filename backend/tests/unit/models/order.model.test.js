@@ -106,22 +106,17 @@ describe("Order Model - Unit Tests", () => {
 
         it("should set default date to current date", async () => {
             const beforeCreate = new Date();
-            // Add small delay to avoid timing issues
-            await new Promise(resolve => setTimeout(resolve, 10));
-            
             const order = await orderModel.create({
                 userId: "user123",
                 items: [{ foodId: "food1", quantity: 2 }],
                 amount: 100,
                 address: { street: "123 Main St" },
             });
-            
             const afterCreate = new Date();
 
             expect(order.date).toBeDefined();
-            // Use more lenient timing check (allow 1 second difference)
-            const timeDiff = Math.abs(order.date.getTime() - beforeCreate.getTime());
-            expect(timeDiff).toBeLessThan(1000); // Less than 1 second difference
+            expect(order.date.getTime()).toBeGreaterThanOrEqual(beforeCreate.getTime());
+            expect(order.date.getTime()).toBeLessThanOrEqual(afterCreate.getTime());
         });
     });
 
