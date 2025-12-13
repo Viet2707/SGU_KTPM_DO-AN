@@ -1,32 +1,38 @@
-# 🍔 FoodFast - Ứng Dụng Giao Đồ Ăn & Bộ Kiểm Thử Tự Động
+# � MOW Garden - Website Bán Cây Cảnh & Bộ Kiểm Thử Tự Động
+
+<div align="center">
 
 ![Node.js](https://img.shields.io/badge/Node.js-18.x-green) ![React](https://img.shields.io/badge/React-18.x-blue) ![MongoDB](https://img.shields.io/badge/MongoDB-Latest-forestgreen) ![Vitest](https://img.shields.io/badge/Testing-Vitest-yellow) ![Playwright](https://img.shields.io/badge/E2E-Playwright-orange)
 
-> **Môn học:** Kiểm Thử Phần Mềm - SGU  
-> **Đồ án:** Xây dựng hệ thống Food Delivery và Bộ Test Suite tự động hóa toàn diện.
-
----
-
-## 📚 Tổng Quan
-
-**FoodFast** là một ứng dụng giao đồ ăn Full-stack được xây dựng để phục vụ nhu cầu đặt món trực tuyến nhanh chóng và tiện lợi. Điểm đặc biệt của dự án này không chỉ nằm ở tính năng ứng dụng mà còn ở hệ thống **Kiểm Thử Tự Động (Automated Testing)** mạnh mẽ, bao phủ từ Unit Test, Integration Test đến End-to-End (E2E) Test, đảm bảo chất lượng phần mềm ở mức cao nhất.
-
-Dự án tích hợp **AI (Google Gemini)** để hỗ trợ sinh test case tự động, tối ưu hóa quy trình kiểm thử.
-
-<!-- TODO: Chèn ảnh chụp màn hình trang chủ hoặc dashboard của ứng dụng tại đây -->
-![Giao diện FoodFast](./assets/dashboard-screenshot.png)
+</div>
 
 ---
 
 ## 📁 Mục Lục
 
-- [Công Nghệ Sử Dụng](#-công-nghệ-sử-dụng)
-- [Cài Đặt Môi Trường](#-cài-đặt-môi-trường)
-- [Hướng Dẫn Chạy Ứng Dụng](#-hướng-dẫn-chạy-ứng-dụng)
-- [Hệ Thống Kiểm Thử](#-hệ-thống-kiểm-thử)
-- [Kết Quả & Báo Cáo](#-kết-quả--báo-cáo)
-- [Tính Năng Chính](#-tính-năng-chính)
-- [Cấu Trúc Dự Án](#-cấu-trúc-dự-án)
+- [📚 Tổng Quan](#-tổng-quan)
+- [🛠 Công Nghệ Sử Dụng](#-công-nghệ-sử-dụng)
+- [⚙️ Cài Đặt Môi Trường](#-cài-đặt-môi-trường)
+- [🚀 Hướng Dẫn Chạy Ứng Dụng](#-hướng-dẫn-chạy-ứng-dụng)
+- [🧪 Hệ Thống Kiểm Thử](#-hệ-thống-kiểm-thử)
+- [📊 Kết Quả & Báo Cáo](#-kết-quả--báo-cáo)
+- [✨ Tính Năng Chính](#-tính-năng-chính)
+- [📂 Cấu Trúc Dự Án](#-cấu-trúc-dự-án)
+
+---
+
+## 📚 Tổng Quan
+
+**MOW Garden** là một nền tảng thương mại điện tử chuyên cung cấp các loại cây cảnh, cây văn phòng và phụ kiện làm vườn. Dự án được xây dựng với mục tiêu mang lại trải nghiệm mua sắm xanh, nhanh chóng và tiện lợi cho người yêu thiên nhiên.
+
+Điểm đặc biệt của dự án này không chỉ nằm ở tính năng bán hàng mà còn ở hệ thống **Kiểm Thử Tự Động (Automated Testing)** mạnh mẽ, bao phủ từ Unit Test, Integration Test đến End-to-End (E2E) Test, đảm bảo chất lượng phần mềm ở mức cao nhất.
+
+Dự án tích hợp **AI (Google Gemini)** để hỗ trợ sinh test case tự động, tối ưu hóa quy trình kiểm thử.
+
+> Dưới đây là giao diện chính của ứng dụng:
+
+<!-- TODO: Chèn ảnh chụp màn hình trang chủ hoặc dashboard của ứng dụng tại đây -->
+![Giao diện MOW Garden](./assets/dashboard-screenshot.png)
 
 ---
 
@@ -55,9 +61,9 @@ Dự án tích hợp **AI (Google Gemini)** để hỗ trợ sinh test case tự
 ## ⚙️ Cài Đặt Môi Trường
 
 ### Yêu cầu tiên quyết
-- Node.js (v18 trở lên)
-- MongoDB (đang chạy local hoặc Atlas URL)
-- Git
+- **Node.js** (v18 trở lên)
+- **MongoDB** (đang chạy local hoặc Atlas URL)
+- **Git**
 
 ### 1. Sao chép dự án (Clone)
 ```bash
@@ -83,7 +89,7 @@ npm install
 Tạo file `.env` trong thư mục `backend` với nội dung mẫu:
 ```env
 PORT=4000
-MONGODB_URI=mongodb://localhost:27017/food-del
+MONGODB_URI=mongodb://localhost:27017/mow-garden
 JWT_SECRET=your_jwt_secret
 STRIPE_SECRET_KEY=your_stripe_key
 GEMINI_API_KEY=your_gemini_key # Dành cho AI Test Generator
@@ -166,7 +172,7 @@ npm run ai:generate:all  # Tự động tạo test cho tất cả
 
 ## 📊 Kết Quả & Báo Cáo
 
-Dựa trên [Báo Cáo Tổng Kết Final](./BAO-CAO-TONG-KET-FINAL.md):
+Dựa trên **[Báo Cáo Tổng Kết Final](./BAO-CAO-TONG-KET-FINAL.md)**:
 
 | Bộ Test (Test Suite) | Độ Bao Phủ (Coverage) | Trạng Thái |
 |----------------------|-----------------------|------------|
@@ -184,12 +190,12 @@ Dựa trên [Báo Cáo Tổng Kết Final](./BAO-CAO-TONG-KET-FINAL.md):
 
 ### Client (Người dùng)
 - 🔐 **Xác thực:** Đăng nhập, Đăng ký, Quên mật khẩu.
-- 🛍️ **Mua sắm:** Duyệt món ăn, Tìm kiếm, Thêm vào giỏ hàng.
+- 🛍️ **Cửa hàng:** Duyệt danh mục cây cảnh, Tìm kiếm cây, Thêm vào giỏ.
 - 💳 **Thanh toán:** Đặt hàng, Thanh toán qua Stripe hoặc COD.
-- 📦 **Đơn hàng:** Theo dõi trạng thái đơn hàng (Đang xử lý -> Đã giao).
+- 📦 **Đơn hàng:** Theo dõi trạng thái vận chuyển (Xử lý -> Đã giao).
 
 ### Admin Dashboard (Quản trị)
-- ➕ **Quản lý món ăn:** Thêm, Sửa, Xóa món ăn.
+- ➕ **Quản lý sản phẩm:** Thêm, Sửa, Xóa cây và phụ kiện.
 - 📋 **Quản lý đơn hàng:** Cập nhật trạng thái và xem đơn hàng.
 
 ---
@@ -221,4 +227,6 @@ SGU_KTPM_DO-AN/
 
 ---
 
-Phát triển với ❤️ cho môn học Kiểm Thử Phần Mềm.
+<div align="center">
+  Phát triển với ❤️ cho môn học Kiểm Thử Phần Mềm.
+</div>
