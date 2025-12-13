@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   stage1_user:
-    name: "Stage 1: User Models"
+    name: 1) user
     runs-on: ubuntu-latest
     services:
       mongo:
@@ -34,29 +34,15 @@ jobs:
           cache: npm
           cache-dependency-path: backend/package-lock.json
       - run: npm ci
-      - run: sleep 10
-      - name: Wait for MongoDB
-        run: |
-          until nc -z localhost 27017; do
-            echo "Waiting for MongoDB..."
-            sleep 2
-          done
+      - run: sleep 5
       - run: npm run test:1
-        timeout-minutes: 5
 
   stage2_user_product:
-    name: "Stage 2: User + Product"
     needs: stage1_user
     runs-on: ubuntu-latest
-    services:
-      mongo:
-        image: mongo:7
-        ports: ["27017:27017"]
-    env:
-      MONGODB_URI_TEST: mongodb://localhost:27017/app-test
-    defaults:
-      run:
-        working-directory: backend
+    services: { mongo: { image: mongo:7, ports: ["27017:27017"] } }
+    env: { MONGODB_URI_TEST: mongodb://localhost:27017/app-test }
+    defaults: { run: { working-directory: backend } }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -65,29 +51,15 @@ jobs:
           cache: npm
           cache-dependency-path: backend/package-lock.json
       - run: npm ci
-      - run: sleep 10
-      - name: Wait for MongoDB
-        run: |
-          until nc -z localhost 27017; do
-            echo "Waiting for MongoDB..."
-            sleep 2
-          done
+      - run: sleep 5
       - run: npm run test:2
-        timeout-minutes: 5
 
   stage3_user_product_cart:
-    name: "Stage 3: User + Product + Cart"
     needs: stage2_user_product
     runs-on: ubuntu-latest
-    services:
-      mongo:
-        image: mongo:7
-        ports: ["27017:27017"]
-    env:
-      MONGODB_URI_TEST: mongodb://localhost:27017/app-test
-    defaults:
-      run:
-        working-directory: backend
+    services: { mongo: { image: mongo:7, ports: ["27017:27017"] } }
+    env: { MONGODB_URI_TEST: mongodb://localhost:27017/app-test }
+    defaults: { run: { working-directory: backend } }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -96,29 +68,15 @@ jobs:
           cache: npm
           cache-dependency-path: backend/package-lock.json
       - run: npm ci
-      - run: sleep 10
-      - name: Wait for MongoDB
-        run: |
-          until nc -z localhost 27017; do
-            echo "Waiting for MongoDB..."
-            sleep 2
-          done
+      - run: sleep 5
       - run: npm run test:3
-        timeout-minutes: 5
 
   stage4_user_product_cart_inventory:
-    name: "Stage 4: Full Integration"
     needs: stage3_user_product_cart
     runs-on: ubuntu-latest
-    services:
-      mongo:
-        image: mongo:7
-        ports: ["27017:27017"]
-    env:
-      MONGODB_URI_TEST: mongodb://localhost:27017/app-test
-    defaults:
-      run:
-        working-directory: backend
+    services: { mongo: { image: mongo:7, ports: ["27017:27017"] } }
+    env: { MONGODB_URI_TEST: mongodb://localhost:27017/app-test }
+    defaults: { run: { working-directory: backend } }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -127,12 +85,5 @@ jobs:
           cache: npm
           cache-dependency-path: backend/package-lock.json
       - run: npm ci
-      - run: sleep 10
-      - name: Wait for MongoDB
-        run: |
-          until nc -z localhost 27017; do
-            echo "Waiting for MongoDB..."
-            sleep 2
-          done
+      - run: sleep 5
       - run: npm run test:4
-        timeout-minutes: 5

@@ -16,10 +16,6 @@
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
     "test:vitest": "vitest run",
-    "test:1": "vitest run tests/unit/models --reporter=verbose --bail=1",
-    "test:2": "vitest run tests/unit/middleware --reporter=verbose --bail=1", 
-    "test:3": "vitest run tests/integration/api --reporter=verbose --bail=1",
-    "test:4": "vitest run tests/unit/business-logic --reporter=verbose --bail=1",
     "ai:generate": "node ai-tools/generate-tests-cli.js",
     "ai:generate:all": "node ai-tools/generate-tests-cli.js --all"
   },
