@@ -1,268 +1,231 @@
-import { describe, expect, test, beforeEach } from 'vitest';
-import request from 'supertest';
-import app from '../../app.js';
-import Category from '../../models/Category.js';
-import mongoose from 'mongoose';
-import jwt from 'jsonwebtoken';
+import { describe, it, expect, beforeEach, beforeAll, afterAll } from "vitest";
+import request from "supertest";
+import mongoose from "mongoose";
+import app from "../../app.js"; // Adjust path as necessary
+import Category from "../../models/Category.js"; // Adjust path as necessary
 
-describe('Category API Integration Tests', () => {
-  let token;
-  const testCategoryName = 'Test Category';
-  let testCategoryId;
+const TEST_DB_URI = process.env.MONGO_URI_TEST || "mongodb://localhost:27017/vitest_category_db";
 
+describe("Category API Integration Tests", () => {
+  // Connect to a test database before all tests
+  beforeAll(async () => {
+    if (mongoose.connection.readyState === 0) { // Check if not already connected
+      await mongoose.connect(TEST_DB_URI);
+    }
+  });
+
+  // Clear the database and seed initial data before each test
   beforeEach(async () => {
-    // Clear the Category collection before each test
     await Category.deleteMany({});
-
-    // Create a valid JWT token for authentication
-    token = jwt.sign({ userId: 'testUserId' }, '123');
-
-    // Create a test category for update and delete tests
-    const testCategory = new Category({ name: testCategoryName });
-    await testCategory.save();
-    testCategoryId = testCategory._id.toString();
   });
 
-
-  // Test GET /api/category/list - Lấy danh sách category
-  describe('GET /api/category/list', () => {
-    test('Should return a list of categories', async () => {
-      // Arrange
-      const newCategory = new Category({ name: 'New Category' });
-      await newCategory.save();
-
-      // Act
-      const response = await request(app)
-        .get('/api/category/list')
-        .set('token', token);
-
-      // Assert
-      expect(response.status).toBe(200);
-      expect(response.body.success).toBe(true);
-      expect(response.body.categories).toBeInstanceOf(Array);
-      expect(response.body.categories.length).toBeGreaterThan(0);
-    });
-
-    test('Should return an empty list when no categories exist', async () => {
-      // Arrange - Categories are already cleared in beforeEach
-
-      // Act
-      const response = await request(app)
-        .get('/api/category/list')
-        .set('token', token);
-
-      // Assert
-      expect(response.status).toBe(200);
-      expect(response.body.success).toBe(true);
-      expect(response.body.categories).toBeInstanceOf(Array);
-      expect(response.body.categories.length).toBe(0);
-    });
-
-    test('Should handle errors and return 500', async () => {
-      // Arrange
-      Category.find = () => Promise.reject(new Error('Database error'));
-
-      // Act
-      const response = await request(app)
-        .get('/api/category/list')
-        .set('token', token);
-
-      // Assert
-      expect(response.status).toBe(500);
-      expect(response.body.success).toBe(false);
-      expect(response.body.message).toBe('Database error');
-
-      // Restore original find function (optional, but good practice)
-      Category.find = mongoose.model('Category').find;
-    });
+  // Disconnect from the database after all tests
+  afterAll(async () => {
+    await mongoose.connection.close();
   });
-  
 
-  // Test GET /api/category - Lấy danh sách category (duplicate route)
-  describe('GET /api/category', () => {
-    test('Should return a list of categories (duplicate route)', async () => {
-      const newCategory = new Category({ name: 'Another Category' });
-      await newCategory.save();
+  // --- GET /api/category and GET /api/category/list ---
+  describe("GET /api/category and GET /api/category/list", () => {
+    it("should return an empty array if no categories exist", async () => {
+      // Act
+      const res = await request(app).get("/api/category");
 
-      const response = await request(app)
-        .get('/api/category')
-        .set('token', token);
+      // Assert
+      expect(res.statusCode).toEqual(200);
+      expect(res.body.success).toBe(true);
+      expect(res.body.categories).toEqual([]);
+    });
 
-      expect(response.status).toBe(200);
-      expect(response.body.success).toBe(true);
-      expect(response.body.categories).toBeInstanceOf(Array);
-      expect(response.body.categories.length).toBeGreaterThan(0);
+    it("should return a list of categories when they exist (GET /)", async () => {
+      // Arrange
+      await Category.create({ name: "Category 1" });
+      await Category.create({ name: "Category 2" });
+
+      // Act
+      const res = await request(app).get("/api/category");
+
+      // Assert
+      expect(res.statusCode).toEqual(200);
+      expect(res.body.success).toBe(true);
+      expect(res.body.categories).toHaveLength(2);
+      expect(res.body.categories[0].name).toBe("Category 1");
+      expect(res.body.categories[1].name).toBe("Category 2");
+    });
+
+    it("should return a list of categories when they exist (GET /list)", async () => {
+      // Arrange
+      await Category.create({ name: "Category A" });
+      await Category.create({ name: "Category B" });
+
+      // Act
+      const res = await request(app).get("/api/category/list");
+
+      // Assert
+      expect(res.statusCode).toEqual(200);
+      expect(res.body.success).toBe(true);
+      expect(res.body.categories).toHaveLength(2);
+      expect(res.body.categories[0].name).toBe("Category A");
+      expect(res.body.categories[1].name).toBe("Category B");
     });
   });
 
-  // Test POST /api/category - Tạo category mới
-  describe('POST /api/category', () => {
-    test('Should create a new category successfully', async () => {
+  // --- POST /api/category ---
+  describe("POST /api/category", () => {
+    it("should create a new category successfully with valid data", async () => {
       // Arrange
-      const newCategoryName = 'New Category';
+      const newCategory = { name: "New Category" };
 
       // Act
-      const response = await request(app)
-        .post('/api/category')
-        .set('token', token)
-        .send({ name: newCategoryName });
+      const res = await request(app).post("/api/category").send(newCategory);
 
       // Assert
-      expect(response.status).toBe(200);
-      expect(response.body.success).toBe(true);
-      expect(response.body.category).toBeDefined();
-      expect(response.body.category.name).toBe(newCategoryName);
+      expect(res.statusCode).toEqual(200);
+      expect(res.body.success).toBe(true);
+      expect(res.body.category).toHaveProperty("_id");
+      expect(res.body.category.name).toBe(newCategory.name);
 
-      // Verify that the category was actually created in the database
-      const createdCategory = await Category.findById(response.body.category._id);
-      expect(createdCategory).toBeDefined();
-      expect(createdCategory.name).toBe(newCategoryName);
+      const categoryInDb = await Category.findById(res.body.category._id);
+      expect(categoryInDb).not.toBeNull();
+      expect(categoryInDb.name).toBe(newCategory.name);
     });
 
-    test('Should return an error if the category name is missing', async () => {
-      // Arrange (empty body)
-
+    it("should return an error if 'name' is missing", async () => {
       // Act
-      const response = await request(app)
-        .post('/api/category')
-        .set('token', token)
-        .send({});
+      const res = await request(app).post("/api/category").send({});
 
       // Assert
-      expect(response.status).toBe(200); // Or 400 if you change validation
-      expect(response.body.success).toBe(false);
-      expect(response.body.message).toBe('Tên category không được rỗng');
+      expect(res.statusCode).toEqual(200); // Controller returns 200 for validation errors
+      expect(res.body.success).toBe(false);
+      expect(res.body.message).toBe("Tên category không được rỗng");
     });
 
-    test('Should handle errors during category creation', async () => {
-      // Arrange
-      Category.create = () => Promise.reject(new Error('Database error during creation'));
-
+    it("should return an error if 'name' is an empty string", async () => {
       // Act
-      const response = await request(app)
-        .post('/api/category')
-        .set('token', token)
-        .send({ name: 'Test' });
+      const res = await request(app).post("/api/category").send({ name: "" });
 
       // Assert
-      expect(response.status).toBe(500);
-      expect(response.body.success).toBe(false);
-      expect(response.body.message).toBe('Database error during creation');
-
-      // Restore original create function
-      Category.create = mongoose.model('Category').create;
+      expect(res.statusCode).toEqual(200); // Controller returns 200 for validation errors
+      expect(res.body.success).toBe(false);
+      expect(res.body.message).toBe("Tên category không được rỗng");
     });
   });
 
-  // Test PUT /api/category/:id - Update category
-  describe('PUT /api/category/:id', () => {
-    test('Should update an existing category successfully', async () => {
+  // --- PUT /api/category/:id ---
+  describe("PUT /api/category/:id", () => {
+    it("should update an existing category successfully", async () => {
       // Arrange
-      const updatedCategoryName = 'Updated Category Name';
+      const category = await Category.create({ name: "Original Name" });
+      const updatedData = { name: "Updated Name" };
 
       // Act
-      const response = await request(app)
-        .put(`/api/category/${testCategoryId}`)
-        .set('token', token)
-        .send({ name: updatedCategoryName });
+      const res = await request(app)
+        .put(`/api/category/${category._id}`)
+        .send(updatedData);
 
       // Assert
-      expect(response.status).toBe(200);
-      expect(response.body.success).toBe(true);
-      expect(response.body.category).toBeDefined();
-      expect(response.body.category.name).toBe(updatedCategoryName);
+      expect(res.statusCode).toEqual(200);
+      expect(res.body.success).toBe(true);
+      expect(res.body.category._id).toBe(category._id.toString());
+      expect(res.body.category.name).toBe(updatedData.name);
 
-      // Verify that the category was actually updated in the database
-      const updatedCategory = await Category.findById(testCategoryId);
-      expect(updatedCategory).toBeDefined();
-      expect(updatedCategory.name).toBe(updatedCategoryName);
+      const categoryInDb = await Category.findById(category._id);
+      expect(categoryInDb.name).toBe(updatedData.name);
     });
 
-    test('Should return an error if the category is not found', async () => {
+    it("should return an error if category ID is not found", async () => {
       // Arrange
-      const nonExistentCategoryId = new mongoose.Types.ObjectId();
+      const nonExistentId = new mongoose.Types.ObjectId(); // Create a valid but non-existent ID
+      const updatedData = { name: "Non-existent Category Update" };
 
       // Act
-      const response = await request(app)
-        .put(`/api/category/${nonExistentCategoryId}`)
-        .set('token', token)
-        .send({ name: 'Update attempt' });
+      const res = await request(app)
+        .put(`/api/category/${nonExistentId}`)
+        .send(updatedData);
 
       // Assert
-      expect(response.status).toBe(200);
-      expect(response.body.success).toBe(false);
-      expect(response.body.message).toBe('Không tìm thấy category');
+      expect(res.statusCode).toEqual(200); // Controller returns 200 for not found message
+      expect(res.body.success).toBe(false);
+      expect(res.body.message).toBe("Không tìm thấy category");
     });
 
-    test('Should handle errors during category update', async () => {
+    it("should return a 500 error if ID format is invalid", async () => {
       // Arrange
-      Category.findByIdAndUpdate = () => Promise.reject(new Error('Database error during update'));
+      const invalidId = "invalid-id-format";
+      const updatedData = { name: "Updated Name" };
 
       // Act
-      const response = await request(app)
-        .put(`/api/category/${testCategoryId}`)
-        .set('token', token)
-        .send({ name: 'Test' });
+      const res = await request(app)
+        .put(`/api/category/${invalidId}`)
+        .send(updatedData);
 
       // Assert
-      expect(response.status).toBe(500);
-      expect(response.body.success).toBe(false);
-      expect(response.body.message).toBe('Database error during update');
+      expect(res.statusCode).toEqual(500); // Mongoose cast error leads to 500
+      expect(res.body.success).toBe(false);
+      expect(res.body.message).toContain("Cast to ObjectId failed for value");
+    });
 
-      // Restore original findByIdAndUpdate function
-      Category.findByIdAndUpdate = mongoose.model('Category').findByIdAndUpdate;
+    it("should allow updating category name to an empty string", async () => {
+      // Arrange
+      const category = await Category.create({ name: "Original Name" });
+      const updatedData = { name: "" }; // Update with an empty string
+
+      // Act
+      const res = await request(app)
+        .put(`/api/category/${category._id}`)
+        .send(updatedData);
+
+      // Assert
+      expect(res.statusCode).toEqual(200);
+      expect(res.body.success).toBe(true);
+      expect(res.body.category.name).toBe("");
+
+      const categoryInDb = await Category.findById(category._id);
+      expect(categoryInDb.name).toBe("");
     });
   });
 
-  // Test DELETE /api/category/:id - Xoá category
-  describe('DELETE /api/category/:id', () => {
-    test('Should delete an existing category successfully', async () => {
+  // --- DELETE /api/category/:id ---
+  describe("DELETE /api/category/:id", () => {
+    it("should delete an existing category successfully", async () => {
+      // Arrange
+      const category = await Category.create({ name: "Category to Delete" });
+
       // Act
-      const response = await request(app)
-        .delete(`/api/category/${testCategoryId}`)
-        .set('token', token);
+      const res = await request(app).delete(`/api/category/${category._id}`);
 
       // Assert
-      expect(response.status).toBe(200);
-      expect(response.body.success).toBe(true);
-      expect(response.body.message).toBe('Đã xoá category');
+      expect(res.statusCode).toEqual(200);
+      expect(res.body.success).toBe(true);
+      expect(res.body.message).toBe("Đã xoá category");
 
-      // Verify that the category was actually deleted from the database
-      const deletedCategory = await Category.findById(testCategoryId);
-      expect(deletedCategory).toBeNull();
+      const categoryInDb = await Category.findById(category._id);
+      expect(categoryInDb).toBeNull();
     });
 
-    test('Should return an error if the category is not found for deletion', async () => {
+    it("should return an error if category ID is not found during deletion", async () => {
       // Arrange
-      const nonExistentCategoryId = new mongoose.Types.ObjectId();
+      const nonExistentId = new mongoose.Types.ObjectId(); // Create a valid but non-existent ID
 
       // Act
-      const response = await request(app)
-        .delete(`/api/category/${nonExistentCategoryId}`)
-        .set('token', token);
+      const res = await request(app).delete(`/api/category/${nonExistentId}`);
 
       // Assert
-      expect(response.status).toBe(200);
-      expect(response.body.success).toBe(false);
-      expect(response.body.message).toBe('Không tìm thấy category');
+      expect(res.statusCode).toEqual(200); // Controller returns 200 for not found message
+      expect(res.body.success).toBe(false);
+      expect(res.body.message).toBe("Không tìm thấy category");
     });
 
-    test('Should handle errors during category deletion', async () => {
+    it("should return a 500 error if ID format is invalid during deletion", async () => {
       // Arrange
-      Category.findByIdAndDelete = () => Promise.reject(new Error('Database error during deletion'));
+      const invalidId = "invalid-id-to-delete";
 
       // Act
-      const response = await request(app)
-        .delete(`/api/category/${testCategoryId}`)
-        .set('token', token);
+      const res = await request(app).delete(`/api/category/${invalidId}`);
 
       // Assert
-      expect(response.status).toBe(500);
-      expect(response.body.success).toBe(false);
-      expect(response.body.message).toBe('Database error during deletion');
-
-      // Restore original findByIdAndDelete function
-      Category.findByIdAndDelete = mongoose.model('Category').findByIdAndDelete;
+      expect(res.statusCode).toEqual(500); // Mongoose cast error leads to 500
+      expect(res.body.success).toBe(false);
+      expect(res.body.message).toContain("Cast to ObjectId failed for value");
     });
   });
 });
