@@ -1,0 +1,2182 @@
+﻿
+> food-del-backend@1.0.0 test:coverage
+> vitest run --coverage
+
+
+[1m[46m RUN [49m[22m [36mv3.2.4 [39m[90mD:/PMTK_2025_SGU/SGU_KTPM_DO-AN/backend[39m
+      [2mCoverage enabled with [22m[33mv8[39m
+
+[90mstdout[2m | tests/integration/api/food.api.test.js
+[22m[39mΓ£à Food routes loaded
+
+[90mstdout[2m | tests/integration/api/order.api.test.js
+[22m[39mΓ£à Food routes loaded
+
+[90mstdout[2m | tests/integration/api/cart.api.test.js
+[22m[39mΓ£à Food routes loaded
+
+[90mstdout[2m | tests/integration/api/user.api.test.js
+[22m[39mΓ£à Food routes loaded
+
+[90mstdout[2m | tests/integration/api/food.api.test.js[2m > [22m[2mFood API - Integration Tests[2m > [22m[2mGET /api/food - List All Foods[2m > [22m[2mshould return empty array when no foods exist
+[22m[39m≡ƒöÑ Food Router: GET /api/food
+
+node.exe : [90mstderr[2m | 
+tests/unit/middleware/auth.middleware.test.js[2m > 
+[22m[2mAuth Middleware - Unit Tests[2m > 
+[22m[2mToken Validation[2m > [22m[2mshould 
+reject request with invalid token
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([90mstd 
+   err[2m...h invalid token:String) [], RemoteExcep  
+  tion
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[22m[39mAuth error: jwt malformed
+
+[90mstderr[2m | 
+tests/unit/middleware/auth.middleware.test.js[2m > 
+[22m[2mAuth Middleware - Unit Tests[2m > 
+[22m[2mToken Validation[2m > [22m[2mshould 
+reject request with expired token
+[22m[39mAuth error: jwt expired
+
+ [31mΓ¥»[39m tests/unit/models/user.model.test.js [2m([22m[2m11 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[33m 3524[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m User Model - Unit Tests[2m > [22mSchema Validation[2m > [22mshould create a valid user with all required fields [33m 714[2mms[22m[39m
+   [32mΓ£ô[39m User Model - Unit Tests[2m > [22mSchema Validation[2m > [22mshould fail to create user without required name[32m 133[2mms[22m[39m
+   [32mΓ£ô[39m User Model - Unit Tests[2m > [22mSchema Validation[2m > [22mshould fail to create user without required email[32m 44[2mms[22m[39m
+   [32mΓ£ô[39m User Model - Unit Tests[2m > [22mSchema Validation[2m > [22mshould fail to create user without required password[32m 42[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m User Model - Unit Tests[2m > [22mSchema Validation[2m > [22mshould enforce unique email constraint [33m 520[2mms[22m[39m
+   [32mΓ£ô[39m User Model - Unit Tests[2m > [22mStatus Field[2m > [22mshould default status to 'unlock'[32m 127[2mms[22m[39m
+   [32mΓ£ô[39m User Model - Unit Tests[2m > [22mStatus Field[2m > [22mshould accept 'lock' as valid status[32m 88[2mms[22m[39m
+   [32mΓ£ô[39m User Model - Unit Tests[2m > [22mStatus Field[2m > [22mshould reject invalid status values[32m 46[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m User Model - Unit Tests[2m > [22mCartData Field[2m > [22mshould initialize cartData as empty object by default [33m 645[2mms[22m[39m
+[31m   [31m├ù[31m User Model - Unit Tests[2m > [22mCartData Field[2m > [22mshould allow custom cartData object[39m[32m 165[2mms[22m[39m
+[31m     ΓåÆ E11000 duplicate key error collection: food_delivery_test.users index: email_1 dup key: { email: "test@example.com" }[39m
+   [32mΓ£ô[39m User Model - Unit Tests[2m > [22mTimestamps[2m > [22mshould set created_at timestamp automatically[32m 107[2mms[22m[39m
+[90mstdout[2m | tests/integration/api/food.api.test.js[2m > [22m[2mFood API - Integration Tests[2m > [22m[2mGET /api/food - List All Foods[2m > [22m[2mshould return all foods with stock quantities
+[22m[39m≡ƒöÑ Food Router: GET /api/food
+
+[90mstdout[2m | tests/integration/api/food.api.test.js[2m > [22m[2mFood API - Integration Tests[2m > [22m[2mGET /api/food - List All Foods[2m > [22m[2mshould include category name in response
+[22m[39m≡ƒöÑ Food Router: GET /api/food
+
+[90mstdout[2m | tests/integration/api/food.api.test.js[2m > [22m[2mFood API - Integration Tests[2m > [22m[2mGET /api/food - List All Foods[2m > [22m[2mshould show quantity 0 for food without stock
+[22m[39m≡ƒöÑ Food Router: GET /api/food
+
+ [31mΓ¥»[39m tests/unit/models/order.model.test.js [2m([22m[2m21 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[33m 5205[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Order Model - Unit Tests[2m > [22mSchema Validation[2m > [22mshould create a valid order with all required fields [33m 765[2mms[22m[39m
+   [32mΓ£ô[39m Order Model - Unit Tests[2m > [22mSchema Validation[2m > [22mshould fail to create order without userId[32m 47[2mms[22m[39m
+[31m   [31m├ù[31m Order Model - Unit Tests[2m > [22mSchema Validation[2m > [22mshould fail to create order without items[39m[33m 508[2mms[22m[39m
+[31m     ΓåÆ promise resolved "{ userId: 'user123', items: [], ΓÇª(8) }" instead of rejecting[39m
+   [32mΓ£ô[39m Order Model - Unit Tests[2m > [22mSchema Validation[2m > [22mshould fail to create order without amount[32m 83[2mms[22m[39m
+   [32mΓ£ô[39m Order Model - Unit Tests[2m > [22mSchema Validation[2m > [22mshould fail to create order without address[32m 52[2mms[22m[39m
+   [32mΓ£ô[39m Order Model - Unit Tests[2m > [22mDefault Values[2m > [22mshould set default status to 'Food Processing'[32m 83[2mms[22m[39m
+   [32mΓ£ô[39m Order Model - Unit Tests[2m > [22mDefault Values[2m > [22mshould set default paymentMethod to 'COD'[32m 86[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Order Model - Unit Tests[2m > [22mDefault Values[2m > [22mshould set default payment to false [33m 637[2mms[22m[39m
+   [32mΓ£ô[39m Order Model - Unit Tests[2m > [22mDefault Values[2m > [22mshould set default date to current date[32m 159[2mms[22m[39m
+   [32mΓ£ô[39m Order Model - Unit Tests[2m > [22mPayment Fields[2m > [22mshould allow setting payment to true[32m 109[2mms[22m[39m
+   [32mΓ£ô[39m Order Model - Unit Tests[2m > [22mPayment Fields[2m > [22mshould allow setting paidAt timestamp[32m 139[2mms[22m[39m
+   [32mΓ£ô[39m Order Model - Unit Tests[2m > [22mStatus Field[2m > [22mshould allow status "Food Processing"[32m 90[2mms[22m[39m
+   [32mΓ£ô[39m Order Model - Unit Tests[2m > [22mStatus Field[2m > [22mshould allow status "Out for delivery"[32m 89[2mms[22m[39m
+   [32mΓ£ô[39m Order Model - Unit Tests[2m > [22mStatus Field[2m > [22mshould allow status "Delivered"[32m 99[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Order Model - Unit Tests[2m > [22mStatus Field[2m > [22mshould allow status "Canceled" [33m 376[2mms[22m[39m
+   [32mΓ£ô[39m Order Model - Unit Tests[2m > [22mStatus Field[2m > [22mshould allow custom status values[32m 102[2mms[22m[39m
+   [32mΓ£ô[39m Order Model - Unit Tests[2m > [22mItems Array[2m > [22mshould store multiple items with different properties[32m 87[2mms[22m[39m
+   [32mΓ£ô[39m Order Model - Unit Tests[2m > [22mItems Array[2m > [22mshould accept empty items array (though not recommended)[32m 92[2mms[22m[39m
+   [32mΓ£ô[39m Order Model - Unit Tests[2m > [22mAddress Object[2m > [22mshould store complex address object[32m 98[2mms[22m[39m
+   [32mΓ£ô[39m Order Model - Unit Tests[2m > [22mAmount Validation[2m > [22mshould accept positive amount[32m 105[2mms[22m[39m
+   [32mΓ£ô[39m Order Model - Unit Tests[2m > [22mAmount Validation[2m > [22mshould accept decimal amount[32m 88[2mms[22m[39m
+[90mstderr[2m | 
+tests/unit/middleware/auth.middleware.test.js[2m > 
+[22m[2mAuth Middleware - Unit Tests[2m > 
+[22m[2mToken Formats[2m > [22m[2mshould handle 
+malformed Authorization header
+[22m[39mAuth error: jwt malformed
+
+[90mstdout[2m | tests/integration/api/food.api.test.js[2m > [22m[2mFood API - Integration Tests[2m > [22m[2mPOST /api/food/add - Add New Food[2m > [22m[2mshould add new food successfully with admin token
+[22m[39m≡ƒöÑ Food Router: POST /api/food/add
+
+[90mstderr[2m | 
+tests/unit/middleware/auth.middleware.test.js[2m > 
+[22m[2mAuth Middleware - Unit Tests[2m > 
+[22m[2mError Handling[2m > [22m[2mshould handle 
+database errors gracefully
+[22m[39mAuth error: Cast to ObjectId failed for 
+value "invalid_object_id" (type string) at path "_id" 
+for model "user"
+
+[90mstderr[2m | 
+tests/unit/middleware/auth.middleware.test.js[2m > 
+[22m[2mAuth Middleware - Unit Tests[2m > 
+[22m[2mSecurity[2m > [22m[2mshould not expose 
+sensitive user data in error messages
+[22m[39mAuth error: jwt malformed
+
+[90mstdout[2m | tests/integration/api/food.api.test.js[2m > [22m[2mFood API - Integration Tests[2m > [22m[2mPOST /api/food/add - Add New Food[2m > [22m[2mshould reject adding food without authorization
+[22m[39m≡ƒöÑ Food Router: POST /api/food/add
+
+[90mstderr[2m | 
+tests/unit/middleware/auth.middleware.test.js[2m > 
+[22m[2mAuth Middleware - Unit Tests[2m > 
+[22m[2mSecurity[2m > [22m[2mshould validate 
+token signature
+[22m[39mAuth error: invalid signature
+
+ [31mΓ¥»[39m tests/unit/middleware/auth.middleware.test.js [2m([22m[2m17 tests[22m[2m | [22m[31m4 failed[39m[2m)[22m[33m 6306[2mms[22m[39m
+[31m   [31m├ù[31m Auth Middleware - Unit Tests[2m > [22mToken Validation[2m > [22mshould pass authentication with valid token[39m[33m 751[2mms[22m[39m
+[31m     ΓåÆ E11000 duplicate key error collection: food_delivery_test.users index: email_1 dup key: { email: "test@example.com" }[39m
+   [33m[2mΓ£ô[22m[39m Auth Middleware - Unit Tests[2m > [22mToken Validation[2m > [22mshould accept token from Authorization header with Bearer prefix [33m 608[2mms[22m[39m
+[31m   [31m├ù[31m Auth Middleware - Unit Tests[2m > [22mToken Validation[2m > [22mshould reject request without token[39m[32m 194[2mms[22m[39m
+[31m     ΓåÆ E11000 duplicate key error collection: food_delivery_test.users index: email_1 dup key: { email: "test@example.com" }[39m
+   [32mΓ£ô[39m Auth Middleware - Unit Tests[2m > [22mToken Validation[2m > [22mshould reject request with invalid token[32m 144[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Auth Middleware - Unit Tests[2m > [22mToken Validation[2m > [22mshould reject request with expired token [33m 752[2mms[22m[39m
+[31m   [31m├ù[31m Auth Middleware - Unit Tests[2m > [22mToken Validation[2m > [22mshould reject token for non-existent user[39m[32m 153[2mms[22m[39m
+[31m     ΓåÆ E11000 duplicate key error collection: food_delivery_test.users index: email_1 dup key: { email: "test@example.com" }[39m
+[31m   [31m├ù[31m Auth Middleware - Unit Tests[2m > [22mUser Status Check[2m > [22mshould reject locked user account[39m[32m 247[2mms[22m[39m
+[31m     ΓåÆ expected "spy" to be called with arguments: [ 403 ][90m
+
+Received: 
+
+[1m  1st spy call:
+
+[22m[2m  [[22m
+[32m-   403,[90m
+[31m+   404,[90m
+[2m  ][22m
+[31m[90m
+
+Number of calls: [1m1[22m
+[31m[39m
+   [33m[2mΓ£ô[22m[39m Auth Middleware - Unit Tests[2m > [22mUser Status Check[2m > [22mshould allow unlocked user to proceed [33m 451[2mms[22m[39m
+   [32mΓ£ô[39m Auth Middleware - Unit Tests[2m > [22mRequest Enhancement[2m > [22mshould add user object to request[32m 188[2mms[22m[39m
+   [32mΓ£ô[39m Auth Middleware - Unit Tests[2m > [22mRequest Enhancement[2m > [22mshould add userId to request body[32m 203[2mms[22m[39m
+   [32mΓ£ô[39m Auth Middleware - Unit Tests[2m > [22mToken Formats[2m > [22mshould handle token without Bearer prefix[32m 240[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Auth Middleware - Unit Tests[2m > [22mToken Formats[2m > [22mshould handle malformed Authorization header [33m 510[2mms[22m[39m
+   [32mΓ£ô[39m Auth Middleware - Unit Tests[2m > [22mToken Formats[2m > [22mshould prioritize token header over authorization header[32m 186[2mms[22m[39m
+   [32mΓ£ô[39m Auth Middleware - Unit Tests[2m > [22mError Handling[2m > [22mshould handle database errors gracefully[32m 169[2mms[22m[39m
+   [32mΓ£ô[39m Auth Middleware - Unit Tests[2m > [22mError Handling[2m > [22mshould handle missing JWT_SECRET[32m 210[2mms[22m[39m
+   [32mΓ£ô[39m Auth Middleware - Unit Tests[2m > [22mSecurity[2m > [22mshould not expose sensitive user data in error messages[32m 299[2mms[22m[39m
+   [32mΓ£ô[39m Auth Middleware - Unit Tests[2m > [22mSecurity[2m > [22mshould validate token signature[32m 147[2mms[22m[39m
+ [31mΓ¥»[39m tests/unit/models/food.model.test.js [2m([22m[2m15 tests[22m[2m | [22m[31m3 failed[39m[2m)[22m[33m 6522[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Food Model - Unit Tests[2m > [22mSchema Validation[2m > [22mshould create a valid food item with all required fields [33m 870[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Food Model - Unit Tests[2m > [22mSchema Validation[2m > [22mshould fail to create food without required name [33m 506[2mms[22m[39m
+   [32mΓ£ô[39m Food Model - Unit Tests[2m > [22mSchema Validation[2m > [22mshould fail to create food without required price[32m 177[2mms[22m[39m
+[31m   [31m├ù[31m Food Model - Unit Tests[2m > [22mSchema Validation[2m > [22mshould fail to create food without required categoryId[39m[32m 131[2mms[22m[39m
+[31m     ΓåÆ E11000 duplicate key error collection: food_delivery_test.categories index: name_1 dup key: { name: "Test Category" }[39m
+   [33m[2mΓ£ô[22m[39m Food Model - Unit Tests[2m > [22mSchema Validation[2m > [22mshould allow creating food without description [33m 805[2mms[22m[39m
+   [32mΓ£ô[39m Food Model - Unit Tests[2m > [22mSchema Validation[2m > [22mshould allow creating food without image[32m 244[2mms[22m[39m
+   [32mΓ£ô[39m Food Model - Unit Tests[2m > [22mUnique Index Constraint[2m > [22mshould allow same food name in different categories[32m 271[2mms[22m[39m
+[31m   [31m├ù[31m Food Model - Unit Tests[2m > [22mUnique Index Constraint[2m > [22mshould NOT allow duplicate food name in same category[39m[33m 496[2mms[22m[39m
+[31m     ΓåÆ promise resolved "{ name: 'Duplicate Food', ΓÇª(6) }" instead of rejecting[39m
+   [32mΓ£ô[39m Food Model - Unit Tests[2m > [22mName Trimming[2m > [22mshould trim whitespace from food name[32m 169[2mms[22m[39m
+   [32mΓ£ô[39m Food Model - Unit Tests[2m > [22mPrice Validation[2m > [22mshould accept positive price[32m 202[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Food Model - Unit Tests[2m > [22mPrice Validation[2m > [22mshould accept price as 0 [33m 539[2mms[22m[39m
+   [32mΓ£ô[39m Food Model - Unit Tests[2m > [22mPrice Validation[2m > [22mshould accept decimal price[32m 196[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Food Model - Unit Tests[2m > [22mCategory Reference[2m > [22mshould properly reference category [33m 334[2mms[22m[39m
+   [32mΓ£ô[39m Food Model - Unit Tests[2m > [22mTimestamps[2m > [22mshould have createdAt and updatedAt timestamps[32m 170[2mms[22m[39m
+[31m   [31m├ù[31m Food Model - Unit Tests[2m > [22mTimestamps[2m > [22mshould update updatedAt on modification[39m[33m 507[2mms[22m[39m
+[31m     ΓåÆ No document found for query "{ _id: new ObjectId('693e92748fa034857c9be6fa') }" on model "Food"[39m
+[90mstdout[2m | tests/integration/api/food.api.test.js[2m > [22m[2mFood API - Integration Tests[2m > [22m[2mPOST /api/food/add - Add New Food[2m > [22m[2mshould reject duplicate food in same category
+[22m[39m≡ƒöÑ Food Router: POST /api/food/add
+
+[90mstdout[2m | tests/integration/api/food.api.test.js[2m > [22m[2mFood API - Integration Tests[2m > [22m[2mPOST /api/food/add - Add New Food[2m > [22m[2mshould reject duplicate food in same category
+[22m[39m≡ƒöÑ Food Router: POST /api/food/add
+
+ [31mΓ¥»[39m tests/integration/api/user.api.test.js [2m([22m[2m18 tests[22m[2m | [22m[31m9 failed[39m[2m)[22m[33m 6696[2mms[22m[39m
+[31m   [31m├ù[31m User API - Integration Tests[2m > [22mPOST /api/user/register[2m > [22mshould register a new user successfully[39m[33m 1084[2mms[22m[39m
+[31m     ΓåÆ expected false to be true // Object.is equality[39m
+[31m   [31m├ù[31m User API - Integration Tests[2m > [22mPOST /api/user/register[2m > [22mshould hash the password before storing[39m[32m 129[2mms[22m[39m
+[31m     ΓåÆ Cannot read properties of null (reading 'password')[39m
+[31m   [31m├ù[31m User API - Integration Tests[2m > [22mPOST /api/user/register[2m > [22mshould reject registration with existing email[39m[33m 1038[2mms[22m[39m
+[31m     ΓåÆ expected true to be false // Object.is equality[39m
+[31m   [31m├ù[31m User API - Integration Tests[2m > [22mPOST /api/user/register[2m > [22mshould reject registration with invalid email[39m[32m 91[2mms[22m[39m
+[31m     ΓåÆ expected 'Vui l├▓ng nhß║¡p ─æ├║ng ─æß╗ïnh dß║íng email!' to contain 'valid email'[39m
+[31m   [31m├ù[31m User API - Integration Tests[2m > [22mPOST /api/user/register[2m > [22mshould reject registration with short password (< 8 chars)[39m[32m 94[2mms[22m[39m
+[31m     ΓåÆ expected 'Mß║¡t khß║⌐u phß║úi c├│ ├¡t nhß║Ñt 8 k├╜ tß╗▒!' to contain 'strong password'[39m
+[31m   [31m├ù[31m User API - Integration Tests[2m > [22mPOST /api/user/register[2m > [22mshould initialize user with default status 'unlock'[39m[33m 400[2mms[22m[39m
+[31m     ΓåÆ Cannot read properties of null (reading 'status')[39m
+   [32mΓ£ô[39m User API - Integration Tests[2m > [22mPOST /api/user/register[2m > [22mshould initialize user with empty cart[32m 229[2mms[22m[39m
+[31m   [31m├ù[31m User API - Integration Tests[2m > [22mPOST /api/user/login[2m > [22mshould login successfully with correct credentials[39m[32m 220[2mms[22m[39m
+[31m     ΓåÆ expected false to be true // Object.is equality[39m
+   [32mΓ£ô[39m User API - Integration Tests[2m > [22mPOST /api/user/login[2m > [22mshould reject login with non-existent email[32m 195[2mms[22m[39m
+[31m   [31m├ù[31m User API - Integration Tests[2m > [22mPOST /api/user/login[2m > [22mshould reject login with incorrect password[39m[33m 534[2mms[22m[39m
+[31m     ΓåÆ expected 404 to be 401 // Object.is equality[39m
+[31m   [31m├ù[31m User API - Integration Tests[2m > [22mPOST /api/user/login[2m > [22mshould reject login for locked user account[39m[32m 267[2mms[22m[39m
+[31m     ΓåÆ expected 404 to be 403 // Object.is equality[39m
+   [33m[2mΓ£ô[22m[39m User API - Integration Tests[2m > [22mPOST /api/user/login[2m > [22mshould return JWT token that can be verified [33m 307[2mms[22m[39m
+   [32mΓ£ô[39m User API - Integration Tests[2m > [22mPOST /api/user/login[2m > [22mshould handle missing email field[32m 298[2mms[22m[39m
+   [32mΓ£ô[39m User API - Integration Tests[2m > [22mPOST /api/user/login[2m > [22mshould handle missing password field[32m 207[2mms[22m[39m
+   [32mΓ£ô[39m User API - Integration Tests[2m > [22mPOST /api/user/login[2m > [22mshould handle empty request body[32m 222[2mms[22m[39m
+   [32mΓ£ô[39m User API - Integration Tests[2m > [22mEdge Cases[2m > [22mshould handle very long email during registration[32m 101[2mms[22m[39m
+   [32mΓ£ô[39m User API - Integration Tests[2m > [22mEdge Cases[2m > [22mshould handle special characters in name[32m 189[2mms[22m[39m
+   [32mΓ£ô[39m User API - Integration Tests[2m > [22mEdge Cases[2m > [22mshould handle SQL injection attempt in email[32m 93[2mms[22m[39m
+[90mstdout[2m | tests/integration/api/food.api.test.js[2m > [22m[2mFood API - Integration Tests[2m > [22m[2mPOST /api/food/add - Add New Food[2m > [22m[2mshould allow same food name in different categories
+[22m[39m≡ƒöÑ Food Router: POST /api/food/add
+
+[90mstdout[2m | tests/integration/api/food.api.test.js[2m > [22m[2mFood API - Integration Tests[2m > [22m[2mPOST /api/food/add - Add New Food[2m > [22m[2mshould allow same food name in different categories
+[22m[39m≡ƒöÑ Food Router: POST /api/food/add
+
+[90mstdout[2m | tests/integration/api/cart.api.test.js[2m > [22m[2mCart API - Integration Tests[2m > [22m[2mCart Operations - Complex Scenarios[2m > [22m[2mshould handle add and remove operations in sequence
+[22m[39mTypeError: Cannot read properties of null (reading 'cartData')
+    at addToCart [90m(D:\PMTK_2025_SGU\SGU_KTPM_DO-AN\backend\[39mcontrollers\cartController.js:7:37[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+
+[90mstdout[2m | tests/integration/api/food.api.test.js[2m > [22m[2mFood API - Integration Tests[2m > [22m[2mPOST /api/food/add - Add New Food[2m > [22m[2mshould trim whitespace from food name
+[22m[39m≡ƒöÑ Food Router: POST /api/food/add
+
+[90mstdout[2m | tests/integration/api/food.api.test.js[2m > [22m[2mFood API - Integration Tests[2m > [22m[2mPUT /api/food/update/:id - Update Food[2m > [22m[2mshould update food successfully
+[22m[39m≡ƒöÑ Food Router: PUT /api/food/update/693e927744868b5c00b0bc2b
+
+[90mstdout[2m | tests/integration/api/food.api.test.js[2m > [22m[2mFood API - Integration Tests[2m > [22m[2mPUT /api/food/update/:id - Update Food[2m > [22m[2mshould reject update with invalid ID
+[22m[39m≡ƒöÑ Food Router: PUT /api/food/update/undefined
+
+[90mstdout[2m | tests/integration/api/food.api.test.js[2m > [22m[2mFood API - Integration Tests[2m > [22m[2mPUT /api/food/update/:id - Update Food[2m > [22m[2mshould return 404 for non-existent food
+[22m[39m≡ƒöÑ Food Router: PUT /api/food/update/693e927844868b5c00b0bc47
+
+[90mstdout[2m | tests/integration/api/food.api.test.js[2m > [22m[2mFood API - Integration Tests[2m > [22m[2mPUT /api/food/update/:id - Update Food[2m > [22m[2mshould update only specified fields
+[22m[39m≡ƒöÑ Food Router: PUT /api/food/update/693e927844868b5c00b0bc50
+
+[90mstdout[2m | tests/integration/api/food.api.test.js[2m > [22m[2mFood API - Integration Tests[2m > [22m[2mPOST /api/food/remove - Delete Food[2m > [22m[2mshould delete food and its stock successfully
+[22m[39m≡ƒöÑ Food Router: POST /api/food/remove
+
+[90mstderr[2m | 
+tests/integration/api/cart.api.test.js[2m > 
+[22m[2mCart API - Integration Tests[2m > 
+[22m[2mAuthentication and Authorization[2m > 
+[22m[2mshould reject request with invalid token
+[22m[39mAuth error: jwt malformed
+
+[90mstderr[2m | 
+tests/integration/api/cart.api.test.js[2m > 
+[22m[2mCart API - Integration Tests[2m > 
+[22m[2mAuthentication and Authorization[2m > 
+[22m[2mshould reject request with expired token
+[22m[39mAuth error: jwt expired
+
+[90mstdout[2m | tests/integration/api/food.api.test.js[2m > [22m[2mFood API - Integration Tests[2m > [22m[2mPOST /api/food/remove - Delete Food[2m > [22m[2mshould return 404 for non-existent food
+[22m[39m≡ƒöÑ Food Router: POST /api/food/remove
+
+ [31mΓ¥»[39m tests/integration/api/cart.api.test.js [2m([22m[2m23 tests[22m[2m | [22m[31m14 failed[39m[2m)[22m[33m 10972[2mms[22m[39m
+[31m   [31m├ù[31m Cart API - Integration Tests[2m > [22mPOST /api/cart/add - Add to Cart[2m > [22mshould add item to empty cart[39m[33m 1249[2mms[22m[39m
+[31m     ΓåÆ expected false to be true // Object.is equality[39m
+[31m   [31m├ù[31m Cart API - Integration Tests[2m > [22mPOST /api/cart/add - Add to Cart[2m > [22mshould increment quantity when adding existing item[39m[33m 887[2mms[22m[39m
+[31m     ΓåÆ expected false to be true // Object.is equality[39m
+[31m   [31m├ù[31m Cart API - Integration Tests[2m > [22mPOST /api/cart/add - Add to Cart[2m > [22mshould add multiple different items[39m[32m 295[2mms[22m[39m
+[31m     ΓåÆ Cannot read properties of null (reading 'cartData')[39m
+   [32mΓ£ô[39m Cart API - Integration Tests[2m > [22mPOST /api/cart/add - Add to Cart[2m > [22mshould require authentication[32m 150[2mms[22m[39m
+[31m   [31m├ù[31m Cart API - Integration Tests[2m > [22mPOST /api/cart/add - Add to Cart[2m > [22mshould handle adding same item multiple times in sequence[39m[33m 699[2mms[22m[39m
+[31m     ΓåÆ Cannot read properties of null (reading 'cartData')[39m
+[31m   [31m├ù[31m Cart API - Integration Tests[2m > [22mPOST /api/cart/remove - Remove from Cart[2m > [22mshould decrease item quantity by 1[39m[33m 598[2mms[22m[39m
+[31m     ΓåÆ expected false to be true // Object.is equality[39m
+[31m   [31m├ù[31m Cart API - Integration Tests[2m > [22mPOST /api/cart/remove - Remove from Cart[2m > [22mshould not decrease quantity below 0[39m[33m 323[2mms[22m[39m
+[31m     ΓåÆ Cannot read properties of null (reading 'cartData')[39m
+[31m   [31m├ù[31m Cart API - Integration Tests[2m > [22mPOST /api/cart/remove - Remove from Cart[2m > [22mshould handle removing non-existent item gracefully[39m[32m 261[2mms[22m[39m
+[31m     ΓåÆ expected false to be true // Object.is equality[39m
+   [33m[2mΓ£ô[22m[39m Cart API - Integration Tests[2m > [22mPOST /api/cart/remove - Remove from Cart[2m > [22mshould require authentication [33m 421[2mms[22m[39m
+[31m   [31m├ù[31m Cart API - Integration Tests[2m > [22mPOST /api/cart/remove - Remove from Cart[2m > [22mshould remove item completely when quantity reaches 0[39m[32m 297[2mms[22m[39m
+[31m     ΓåÆ Cannot read properties of null (reading 'cartData')[39m
+[31m   [31m├ù[31m Cart API - Integration Tests[2m > [22mPOST /api/cart/get - Get Cart[2m > [22mshould return empty cart for new user[39m[32m 231[2mms[22m[39m
+[31m     ΓåÆ expected false to be true // Object.is equality[39m
+[31m   [31m├ù[31m Cart API - Integration Tests[2m > [22mPOST /api/cart/get - Get Cart[2m > [22mshould return cart with items[39m[32m 252[2mms[22m[39m
+[31m     ΓåÆ expected false to be true // Object.is equality[39m
+   [32mΓ£ô[39m Cart API - Integration Tests[2m > [22mPOST /api/cart/get - Get Cart[2m > [22mshould require authentication[32m 180[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Cart API - Integration Tests[2m > [22mPOST /api/cart/get - Get Cart[2m > [22mshould return only current user's cart [33m 339[2mms[22m[39m
+[31m   [31m├ù[31m Cart API - Integration Tests[2m > [22mCart Operations - Complex Scenarios[2m > [22mshould handle add and remove operations in sequence[39m[33m 847[2mms[22m[39m
+[31m     ΓåÆ Cannot read properties of null (reading 'cartData')[39m
+[31m   [31m├ù[31m Cart API - Integration Tests[2m > [22mCart Operations - Complex Scenarios[2m > [22mshould handle multiple items with different quantities[39m[33m 690[2mms[22m[39m
+[31m     ΓåÆ Cannot read properties of null (reading 'cartData')[39m
+   [33m[2mΓ£ô[22m[39m Cart API - Integration Tests[2m > [22mCart Operations - Complex Scenarios[2m > [22mshould preserve cart data after get operation [33m 440[2mms[22m[39m
+[31m   [31m├ù[31m Cart API - Integration Tests[2m > [22mCart Operations - Complex Scenarios[2m > [22mshould handle rapid concurrent operations[39m[33m 594[2mms[22m[39m
+[31m     ΓåÆ Cannot read properties of null (reading 'cartData')[39m
+[31m   [31m├ù[31m Cart API - Integration Tests[2m > [22mEdge Cases[2m > [22mshould handle very long item IDs[39m[33m 315[2mms[22m[39m
+[31m     ΓåÆ Cannot read properties of null (reading 'cartData')[39m
+   [33m[2mΓ£ô[22m[39m Cart API - Integration Tests[2m > [22mEdge Cases[2m > [22mshould handle special characters in item IDs [33m 307[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Cart API - Integration Tests[2m > [22mEdge Cases[2m > [22mshould handle adding 0 quantity items (edge case) [33m 363[2mms[22m[39m
+   [32mΓ£ô[39m Cart API - Integration Tests[2m > [22mAuthentication and Authorization[2m > [22mshould reject request with invalid token[32m 160[2mms[22m[39m
+   [32mΓ£ô[39m Cart API - Integration Tests[2m > [22mAuthentication and Authorization[2m > [22mshould reject request with expired token[32m 143[2mms[22m[39m
+[90mstdout[2m | tests/integration/api/food.api.test.js[2m > [22m[2mFood API - Integration Tests[2m > [22m[2mPOST /api/food/remove - Delete Food[2m > [22m[2mshould require authentication
+[22m[39m≡ƒöÑ Food Router: POST /api/food/remove
+
+[90mstdout[2m | tests/integration/api/food.api.test.js[2m > [22m[2mFood API - Integration Tests[2m > [22m[2mEdge Cases and Error Handling[2m > [22m[2mshould reject negative price
+[22m[39m≡ƒöÑ Food Router: POST /api/food/add
+
+[90mstdout[2m | tests/integration/api/food.api.test.js[2m > [22m[2mFood API - Integration Tests[2m > [22m[2mEdge Cases and Error Handling[2m > [22m[2mshould handle very long food name
+[22m[39m≡ƒöÑ Food Router: POST /api/food/add
+
+ [31mΓ¥»[39m tests/integration/api/food.api.test.js [2m([22m[2m19 tests[22m[2m | [22m[31m11 failed[39m[2m)[22m[33m 13097[2mms[22m[39m
+[31m   [31m├ù[31m Food API - Integration Tests[2m > [22mGET /api/food - List All Foods[2m > [22mshould return empty array when no foods exist[39m[33m 1228[2mms[22m[39m
+[31m     ΓåÆ expected undefined to be true // Object.is equality[39m
+[31m   [31m├ù[31m Food API - Integration Tests[2m > [22mGET /api/food - List All Foods[2m > [22mshould return all foods with stock quantities[39m[33m 1168[2mms[22m[39m
+[31m     ΓåÆ expected undefined to be true // Object.is equality[39m
+[31m   [31m├ù[31m Food API - Integration Tests[2m > [22mGET /api/food - List All Foods[2m > [22mshould include category name in response[39m[33m 634[2mms[22m[39m
+[31m     ΓåÆ Cannot read properties of undefined (reading '0')[39m
+[31m   [31m├ù[31m Food API - Integration Tests[2m > [22mGET /api/food - List All Foods[2m > [22mshould show quantity 0 for food without stock[39m[33m 390[2mms[22m[39m
+[31m     ΓåÆ Cannot read properties of undefined (reading '0')[39m
+   [33m[2mΓ£ô[22m[39m Food API - Integration Tests[2m > [22mPOST /api/food/add - Add New Food[2m > [22mshould add new food successfully with admin token [33m 956[2mms[22m[39m
+[31m   [31m├ù[31m Food API - Integration Tests[2m > [22mPOST /api/food/add - Add New Food[2m > [22mshould reject adding food without authorization[39m[33m 622[2mms[22m[39m
+[31m     ΓåÆ expected 200 to be 401 // Object.is equality[39m
+   [33m[2mΓ£ô[22m[39m Food API - Integration Tests[2m > [22mPOST /api/food/add - Add New Food[2m > [22mshould reject duplicate food in same category [33m 583[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Food API - Integration Tests[2m > [22mPOST /api/food/add - Add New Food[2m > [22mshould allow same food name in different categories [33m 1053[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Food API - Integration Tests[2m > [22mPOST /api/food/add - Add New Food[2m > [22mshould trim whitespace from food name [33m 675[2mms[22m[39m
+[31m   [31m├ù[31m Food API - Integration Tests[2m > [22mPUT /api/food/update/:id - Update Food[2m > [22mshould update food successfully[39m[33m 523[2mms[22m[39m
+[31m     ΓåÆ expected undefined to be true // Object.is equality[39m
+[31m   [31m├ù[31m Food API - Integration Tests[2m > [22mPUT /api/food/update/:id - Update Food[2m > [22mshould reject update with invalid ID[39m[33m 433[2mms[22m[39m
+[31m     ΓåÆ expected 404 to be 400 // Object.is equality[39m
+[31m   [31m├ù[31m Food API - Integration Tests[2m > [22mPUT /api/food/update/:id - Update Food[2m > [22mshould return 404 for non-existent food[39m[33m 454[2mms[22m[39m
+[31m     ΓåÆ the given combination of arguments (undefined and string) is invalid for this assertion. You can use an array, a map, an object, a set, a string, or a weakset instead of a string[39m
+[31m   [31m├ù[31m Food API - Integration Tests[2m > [22mPUT /api/food/update/:id - Update Food[2m > [22mshould update only specified fields[39m[33m 429[2mms[22m[39m
+[31m     ΓåÆ Cannot read properties of undefined (reading 'name')[39m
+[31m   [31m├ù[31m Food API - Integration Tests[2m > [22mPOST /api/food/remove - Delete Food[2m > [22mshould delete food and its stock successfully[39m[33m 480[2mms[22m[39m
+[31m     ΓåÆ expected false to be true // Object.is equality[39m
+   [33m[2mΓ£ô[22m[39m Food API - Integration Tests[2m > [22mPOST /api/food/remove - Delete Food[2m > [22mshould return 404 for non-existent food [33m 462[2mms[22m[39m
+[31m   [31m├ù[31m Food API - Integration Tests[2m > [22mPOST /api/food/remove - Delete Food[2m > [22mshould require authentication[39m[33m 492[2mms[22m[39m
+[31m     ΓåÆ expected 404 to be 401 // Object.is equality[39m
+   [33m[2mΓ£ô[22m[39m Food API - Integration Tests[2m > [22mEdge Cases and Error Handling[2m > [22mshould handle malformed JSON [33m 336[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Food API - Integration Tests[2m > [22mEdge Cases and Error Handling[2m > [22mshould reject negative price [33m 641[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Food API - Integration Tests[2m > [22mEdge Cases and Error Handling[2m > [22mshould handle very long food name [33m 576[2mms[22m[39m
+ [31mΓ¥»[39m tests/unit/business-logic/stock.logic.test.js [2m([22m[2m25 tests[22m[2m | [22m[31m14 failed[39m[2m)[22m[33m 15196[2mms[22m[39m
+[31m   [31m├ù[31m Stock Update Logic - Unit Tests[2m > [22mdecStock - Decrease Stock[2m > [22mshould decrease stock by specified quantity[39m[33m 1395[2mms[22m[39m
+[31m     ΓåÆ Cannot read properties of null (reading 'quantity')[39m
+[31m   [31m├ù[31m Stock Update Logic - Unit Tests[2m > [22mdecStock - Decrease Stock[2m > [22mshould decrease stock for multiple items[39m[32m 191[2mms[22m[39m
+[31m     ΓåÆ E11000 duplicate key error collection: food_delivery_test.categories index: name_1 dup key: { name: "Test Category" }[39m
+[31m   [31m├ù[31m Stock Update Logic - Unit Tests[2m > [22mdecStock - Decrease Stock[2m > [22mshould handle items with different ID field names (foodId)[39m[33m 808[2mms[22m[39m
+[31m     ΓåÆ E11000 duplicate key error collection: food_delivery_test.categories index: name_1 dup key: { name: "Test Category" }[39m
+[31m   [31m├ù[31m Stock Update Logic - Unit Tests[2m > [22mdecStock - Decrease Stock[2m > [22mshould handle items with productId field[39m[33m 493[2mms[22m[39m
+[31m     ΓåÆ OUT_OF_STOCK[39m
+[31m   [31m├ù[31m Stock Update Logic - Unit Tests[2m > [22mdecStock - Decrease Stock[2m > [22mshould handle items with _id field[39m[33m 674[2mms[22m[39m
+[31m     ΓåÆ OUT_OF_STOCK[39m
+[31m   [31m├ù[31m Stock Update Logic - Unit Tests[2m > [22mdecStock - Decrease Stock[2m > [22mshould default quantity to 1 if not specified[39m[33m 742[2mms[22m[39m
+[31m     ΓåÆ OUT_OF_STOCK[39m
+   [33m[2mΓ£ô[22m[39m Stock Update Logic - Unit Tests[2m > [22mdecStock - Decrease Stock[2m > [22mshould handle qty field as alternative to quantity [33m 496[2mms[22m[39m
+[31m   [31m├ù[31m Stock Update Logic - Unit Tests[2m > [22mdecStock - Decrease Stock[2m > [22mshould not allow negative stock[39m[33m 577[2mms[22m[39m
+[31m     ΓåÆ OUT_OF_STOCK[39m
+   [33m[2mΓ£ô[22m[39m Stock Update Logic - Unit Tests[2m > [22mdecStock - Decrease Stock[2m > [22mshould handle empty items array [33m 544[2mms[22m[39m
+[31m   [31m├ù[31m Stock Update Logic - Unit Tests[2m > [22mdecStock - Decrease Stock[2m > [22mshould process all items even if one fails[39m[33m 537[2mms[22m[39m
+[31m     ΓåÆ OUT_OF_STOCK[39m
+[31m   [31m├ù[31m Stock Update Logic - Unit Tests[2m > [22mincStock - Increase Stock[2m > [22mshould increase stock by specified quantity[39m[33m 826[2mms[22m[39m
+[31m     ΓåÆ Cannot read properties of null (reading 'quantity')[39m
+[31m   [31m├ù[31m Stock Update Logic - Unit Tests[2m > [22mincStock - Increase Stock[2m > [22mshould increase stock for multiple items[39m[33m 751[2mms[22m[39m
+[31m     ΓåÆ Cannot read properties of null (reading 'quantity')[39m
+   [33m[2mΓ£ô[22m[39m Stock Update Logic - Unit Tests[2m > [22mincStock - Increase Stock[2m > [22mshould handle items with different ID field names [33m 492[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Stock Update Logic - Unit Tests[2m > [22mincStock - Increase Stock[2m > [22mshould default quantity to 1 if not specified [33m 483[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Stock Update Logic - Unit Tests[2m > [22mincStock - Increase Stock[2m > [22mshould handle qty field [33m 448[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Stock Update Logic - Unit Tests[2m > [22mincStock - Increase Stock[2m > [22mshould handle empty items array [33m 406[2mms[22m[39m
+[31m   [31m├ù[31m Stock Update Logic - Unit Tests[2m > [22mincStock - Increase Stock[2m > [22mshould restore stock after order cancellation[39m[33m 423[2mms[22m[39m
+[31m     ΓåÆ OUT_OF_STOCK[39m
+   [33m[2mΓ£ô[22m[39m Stock Update Logic - Unit Tests[2m > [22mStock Operations - Edge Cases[2m > [22mshould handle very large quantities [33m 496[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Stock Update Logic - Unit Tests[2m > [22mStock Operations - Edge Cases[2m > [22mshould handle decimal quantities (should convert to integer) [33m 458[2mms[22m[39m
+[31m   [31m├ù[31m Stock Update Logic - Unit Tests[2m > [22mStock Operations - Edge Cases[2m > [22mshould handle zero quantity[39m[33m 544[2mms[22m[39m
+[31m     ΓåÆ Cannot read properties of null (reading 'quantity')[39m
+   [33m[2mΓ£ô[22m[39m Stock Update Logic - Unit Tests[2m > [22mStock Operations - Edge Cases[2m > [22mshould handle negative quantity values [33m 630[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Stock Update Logic - Unit Tests[2m > [22mConcurrent Stock Operations[2m > [22mshould handle concurrent decrease operations [33m 479[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Stock Update Logic - Unit Tests[2m > [22mConcurrent Stock Operations[2m > [22mshould handle mixed concurrent operations [33m 443[2mms[22m[39m
+[31m   [31m├ù[31m Stock Update Logic - Unit Tests[2m > [22mError Recovery[2m > [22mshould not modify stock if item not found[39m[33m 435[2mms[22m[39m
+[31m     ΓåÆ OUT_OF_STOCK[39m
+[31m   [31m├ù[31m Stock Update Logic - Unit Tests[2m > [22mError Recovery[2m > [22mshould handle malformed item objects[39m[33m 427[2mms[22m[39m
+[31m     ΓåÆ promise rejected "Error: OUT_OF_STOCK" instead of resolving[39m
+ [31mΓ¥»[39m tests/integration/api/order.api.test.js [2m([22m[2m21 tests[22m[2m | [22m[31m9 failed[39m[2m)[22m[33m 21328[2mms[22m[39m
+[31m   [31m├ù[31m Order API - Integration Tests[2m > [22mPOST /api/order/place - Place Order (COD)[2m > [22mshould place order successfully with sufficient stock[39m[33m 2755[2mms[22m[39m
+[31m     ΓåÆ expected false to be true // Object.is equality[39m
+[31m   [31m├ù[31m Order API - Integration Tests[2m > [22mPOST /api/order/place - Place Order (COD)[2m > [22mshould decrease stock quantity after placing order[39m[33m 1024[2mms[22m[39m
+[31m     ΓåÆ Cannot read properties of null (reading 'quantity')[39m
+[31m   [31m├ù[31m Order API - Integration Tests[2m > [22mPOST /api/order/place - Place Order (COD)[2m > [22mshould clear user cart after order is placed[39m[33m 743[2mms[22m[39m
+[31m     ΓåÆ Cannot read properties of null (reading 'cartData')[39m
+[31m   [31m├ù[31m Order API - Integration Tests[2m > [22mPOST /api/order/place - Place Order (COD)[2m > [22mshould reject order when stock is insufficient[39m[33m 898[2mms[22m[39m
+[31m     ΓåÆ expected 404 to be 409 // Object.is equality[39m
+[31m   [31m├ù[31m Order API - Integration Tests[2m > [22mPOST /api/order/place - Place Order (COD)[2m > [22mshould reject order with empty items array[39m[33m 741[2mms[22m[39m
+[31m     ΓåÆ expected 404 to be 400 // Object.is equality[39m
+[31m   [31m├ù[31m Order API - Integration Tests[2m > [22mPOST /api/order/place - Place Order (COD)[2m > [22mshould reject order without items field[39m[33m 1145[2mms[22m[39m
+[31m     ΓåÆ expected 404 to be 400 // Object.is equality[39m
+   [33m[2mΓ£ô[22m[39m Order API - Integration Tests[2m > [22mGET /api/order/list - List All Orders (Admin)[2m > [22mshould return all orders [33m 781[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Order API - Integration Tests[2m > [22mGET /api/order/list - List All Orders (Admin)[2m > [22mshould return orders sorted by date (newest first) [33m 718[2mms[22m[39m
+[31m   [31m├ù[31m Order API - Integration Tests[2m > [22mPOST /api/order/userorders - Get User Orders[2m > [22mshould return only orders for the authenticated user[39m[33m 739[2mms[22m[39m
+[31m     ΓåÆ expected false to be true // Object.is equality[39m
+[31m   [31m├ù[31m Order API - Integration Tests[2m > [22mPOST /api/order/userorders - Get User Orders[2m > [22mshould return empty array if user has no orders[39m[33m 646[2mms[22m[39m
+[31m     ΓåÆ expected false to be true // Object.is equality[39m
+   [33m[2mΓ£ô[22m[39m Order API - Integration Tests[2m > [22mPOST /api/order/status - Update Order Status[2m > [22mshould update order status to 'Out for delivery' [33m 775[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Order API - Integration Tests[2m > [22mPOST /api/order/status - Update Order Status[2m > [22mshould mark payment as true when status is Delivered [33m 1031[2mms[22m[39m
+[31m   [31m├ù[31m Order API - Integration Tests[2m > [22mPOST /api/order/status - Update Order Status[2m > [22mshould restore stock when order is Canceled[39m[33m 877[2mms[22m[39m
+[31m     ΓåÆ Cannot read properties of null (reading 'quantity')[39m
+   [33m[2mΓ£ô[22m[39m Order API - Integration Tests[2m > [22mPOST /api/order/status - Update Order Status[2m > [22mshould NOT allow status change from Delivered [33m 757[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Order API - Integration Tests[2m > [22mPOST /api/order/status - Update Order Status[2m > [22mshould NOT allow status change from Canceled [33m 823[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Order API - Integration Tests[2m > [22mPOST /api/order/status - Update Order Status[2m > [22mshould return 404 for non-existent order [33m 756[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Order API - Integration Tests[2m > [22mPOST /api/order/status - Update Order Status[2m > [22mshould NOT restore stock twice when canceling already canceled order [33m 993[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Order API - Integration Tests[2m > [22mGET /api/order/:id - Get Order By ID[2m > [22mshould return order details [33m 757[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Order API - Integration Tests[2m > [22mGET /api/order/:id - Get Order By ID[2m > [22mshould return 404 for non-existent order [33m 761[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Order API - Integration Tests[2m > [22mOrder Workflow - Complete Lifecycle[2m > [22mshould handle complete order lifecycle: Place ΓåÆ Out for delivery ΓåÆ Delivered [33m 1245[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m Order API - Integration Tests[2m > [22mOrder Workflow - Complete Lifecycle[2m > [22mshould handle canceled order workflow with stock restoration [33m 1267[2mms[22m[39m
+
+[31mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[39m[1m[41m Failed Tests 66 
+[49m[22m[31mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[39m
+
+[41m[1m FAIL [22m[49m 
+tests/unit/middleware/auth.middleware.test.js[2m > 
+[22mAuth Middleware - Unit Tests[2m > [22mToken 
+Validation[2m > [22mshould pass authentication with 
+valid token
+[41m[1m FAIL [22m[49m 
+tests/unit/middleware/auth.middleware.test.js[2m > 
+[22mAuth Middleware - Unit Tests[2m > [22mToken 
+Validation[2m > [22mshould reject request without 
+token
+[41m[1m FAIL [22m[49m 
+tests/unit/middleware/auth.middleware.test.js[2m > 
+[22mAuth Middleware - Unit Tests[2m > [22mToken 
+Validation[2m > [22mshould reject token for 
+non-existent user
+[41m[1m FAIL [22m[49m 
+tests/unit/models/user.model.test.js[2m > [22mUser 
+Model - Unit Tests[2m > [22mCartData Field[2m > 
+[22mshould allow custom cartData object
+[31m[1mMongoServerError[22m: E11000 duplicate key 
+error collection: food_delivery_test.users index: 
+email_1 dup key: { email: "test@example.com" }[39m
+[90m [2mΓ¥»[22m InsertOneOperation.handleOk node_mo
+dules/mongodb/src/operations/insert.ts:[2m79:13[22m
+[39m
+[90m [2mΓ¥»[22m tryOperation node_modules/mongodb/s
+rc/operations/execute_operation.ts:[2m290:26[22m[39
+m
+[90m [2mΓ¥»[22m executeOperation node_modules/mongo
+db/src/operations/execute_operation.ts:[2m119:12[22m
+[39m
+[90m [2mΓ¥»[22m Collection.insertOne node_modules/m
+ongodb/src/collection.ts:[2m294:12[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[1/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/unit/middleware/auth.middleware.test.js[2m > 
+[22mAuth Middleware - Unit Tests[2m > [22mUser 
+Status Check[2m > [22mshould reject locked user 
+account
+[31m[1mAssertionError[22m: expected "spy" to be 
+called with arguments: [ 403 ][90m
+
+Received: 
+
+[1m  1st spy call:
+
+[22m[2m  [[22m
+[32m-   403,[90m
+[31m+   404,[90m
+[2m  ][22m
+[31m[90m
+
+Number of calls: [1m1[22m
+[31m[39m
+[36m [2mΓ¥»[22m tests/unit/middleware/auth.middlewa
+re.test.js:[2m150:32[22m[39m
+    [90m148| [39m            [35mawait[39m 
+[34mauthMiddleware[39m(req[33m,[39m 
+res[33m,[39m next)[33m;[39m
+    [90m149| [39m
+    [90m150| [39m            [34mexpect[39m(res[3
+3m.[39mstatus)[33m.[39m[34mtoHaveBeenCalledWith[3
+9m([34m403[39m)[33m;[39m
+    [90m   | [39m                               
+[31m^[39m
+    [90m151| [39m            [34mexpect[39m(res[3
+3m.[39mjson)[33m.[39m[34mtoHaveBeenCalledWith[39m
+(
+    [90m152| [39m                
+expect[33m.[39m[34mobjectContaining[39m({
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[2/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/unit/models/food.model.test.js[2m > [22mFood 
+Model - Unit Tests[2m > [22mSchema Validation[2m > 
+[22mshould fail to create food without required 
+categoryId
+[41m[1m FAIL [22m[49m 
+tests/unit/business-logic/stock.logic.test.js[2m > 
+[22mStock Update Logic - Unit Tests[2m > 
+[22mdecStock - Decrease Stock[2m > [22mshould 
+decrease stock for multiple items
+[41m[1m FAIL [22m[49m 
+tests/unit/business-logic/stock.logic.test.js[2m > 
+[22mStock Update Logic - Unit Tests[2m > 
+[22mdecStock - Decrease Stock[2m > [22mshould 
+handle items with different ID field names (foodId)
+[31m[1mMongoServerError[22m: E11000 duplicate key 
+error collection: food_delivery_test.categories 
+index: name_1 dup key: { name: "Test Category" }[39m
+[90m [2mΓ¥»[22m InsertOneOperation.handleOk node_mo
+dules/mongodb/src/operations/insert.ts:[2m79:13[22m
+[39m
+[90m [2mΓ¥»[22m tryOperation node_modules/mongodb/s
+rc/operations/execute_operation.ts:[2m290:26[22m[39
+m
+[90m [2mΓ¥»[22m executeOperation node_modules/mongo
+db/src/operations/execute_operation.ts:[2m119:12[22m
+[39m
+[90m [2mΓ¥»[22m Collection.insertOne node_modules/m
+ongodb/src/collection.ts:[2m294:12[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[3/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/unit/models/food.model.test.js[2m > [22mFood 
+Model - Unit Tests[2m > [22mUnique Index 
+Constraint[2m > [22mshould NOT allow duplicate food 
+name in same category
+[31m[1mAssertionError[22m: promise resolved "{ 
+name: 'Duplicate Food', ΓÇª(6) }" instead of 
+rejecting[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- Error {[39m
+[32m-   "message": "rejected promise",[39m
+[31m+ {[39m
+[31m+   "__v": 0,[39m
+[31m+   "_id": "693e92728fa034857c9be6ce",[39m
+[31m+   "categoryId": 
+"693e92728fa034857c9be6ca",[39m
+[31m+   "createdAt": 2025-12-14T10:33:22.355Z,[39m
+[31m+   "name": "Duplicate Food",[39m
+[31m+   "price": 200,[39m
+[31m+   "updatedAt": 2025-12-14T10:33:22.355Z,[39m
+[2m  }[22m
+
+[36m [2mΓ¥»[22m tests/unit/models/food.model.test.j
+s:[2m125:14[22m[39m
+    [90m123| [39m                    
+categoryId[33m:[39m 
+testCategory[33m.[39m_id[33m,[39m
+    [90m124| [39m                })
+    [90m125| [39m            )[33m.[39mrejects[33
+m.[39m[34mtoThrow[39m()[33m;[39m
+    [90m   | [39m             [31m^[39m
+    [90m126| [39m        })[33m;[39m
+    [90m127| [39m    })[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[4/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/unit/models/food.model.test.js[2m > [22mFood 
+Model - Unit Tests[2m > [22mTimestamps[2m > 
+[22mshould update updatedAt on modification
+[31m[1mDocumentNotFoundError[22m: No document 
+found for query "{ _id: new 
+ObjectId('693e92748fa034857c9be6fa') }" on model 
+"Food"[39m
+[90m [2mΓ¥»[22m node_modules/mongoose/lib/model.js:
+[2m545:17[22m[39m
+[90m [2mΓ¥»[22m 
+node_modules/mongoose/lib/model.js:[2m450:9[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[5/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/unit/models/order.model.test.js[2m > 
+[22mOrder Model - Unit Tests[2m > [22mSchema 
+Validation[2m > [22mshould fail to create order 
+without items
+[31m[1mAssertionError[22m: promise resolved "{ 
+userId: 'user123', items: [], ΓÇª(8) }" instead of 
+rejecting[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- Error {[39m
+[32m-   "message": "rejected promise",[39m
+[31m+ {[39m
+[31m+   "__v": 0,[39m
+[31m+   "_id": "693e9270cea3132f5601e73f",[39m
+[31m+   "address": {[39m
+[31m+     "street": "123 Main St",[39m
+[31m+   },[39m
+[31m+   "amount": 100,[39m
+[31m+   "date": 2025-12-14T10:33:20.245Z,[39m
+[31m+   "items": [],[39m
+[31m+   "payment": false,[39m
+[31m+   "paymentMethod": "COD",[39m
+[31m+   "status": "Food Processing",[39m
+[31m+   "userId": "user123",[39m
+[2m  }[22m
+
+[36m [2mΓ¥»[22m tests/unit/models/order.model.test.
+js:[2m49:58[22m[39m
+    [90m 47| [39m            }[33m;[39m
+    [90m 48| [39m
+    [90m 49| [39m            await expect(orderModel
+.create(invalidOrder)).rejects.toThΓÇª
+    [90m   | [39m                                   
+                      [31m^[39m
+    [90m 50| [39m        })[33m;[39m
+    [90m 51| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[6/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/cart.api.test.js[2m > 
+[22mCart API - Integration Tests[2m > [22mPOST 
+/api/cart/add - Add to Cart[2m > [22mshould add 
+item to empty cart
+[31m[1mAssertionError[22m: expected false to be 
+true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2mΓ¥»[22m tests/integration/api/cart.api.test
+.js:[2m38:38[22m[39m
+    [90m 36| [39m                
+[33m.[39m[34msend[39m({ userId[33m,[39m 
+itemId[33m:[39m itemId1 })[33m;[39m
+    [90m 37| [39m
+    [90m 38| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39msuccess)[33m.[39m[34mtoBe[3
+9m([35mtrue[39m)[33m;[39m
+    [90m   | [39m                                   
+  [31m^[39m
+    [90m 39| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mmessage)[33m.[39m[34mtoConta
+in[39m([32m"Added To Cart"[39m)[33m;[39m
+    [90m 40| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[7/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/cart.api.test.js[2m > 
+[22mCart API - Integration Tests[2m > [22mPOST 
+/api/cart/add - Add to Cart[2m > [22mshould 
+increment quantity when adding existing item
+[31m[1mAssertionError[22m: expected false to be 
+true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2mΓ¥»[22m tests/integration/api/cart.api.test
+.js:[2m59:38[22m[39m
+    [90m 57| [39m                
+[33m.[39m[34msend[39m({ userId[33m,[39m 
+itemId[33m:[39m itemId1 })[33m;[39m
+    [90m 58| [39m
+    [90m 59| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39msuccess)[33m.[39m[34mtoBe[3
+9m([35mtrue[39m)[33m;[39m
+    [90m   | [39m                                   
+  [31m^[39m
+    [90m 60| [39m
+    [90m 61| [39m            [90m// Verify 
+quantity is 2[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[8/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/cart.api.test.js[2m > 
+[22mCart API - Integration Tests[2m > [22mPOST 
+/api/cart/add - Add to Cart[2m > [22mshould add 
+multiple different items
+[31m[1mTypeError[22m: Cannot read properties of 
+null (reading 'cartData')[39m
+[36m [2mΓ¥»[22m tests/integration/api/cart.api.test
+.js:[2m78:25[22m[39m
+    [90m 76| [39m
+    [90m 77| [39m            [35mconst[39m user 
+[33m=[39m [35mawait[39m userModel[33m.[39m[34mf
+indById[39m(userId)[33m;[39m
+    [90m 78| [39m            [34mexpect[39m(user[
+33m.[39mcartData[itemId1])[33m.[39m[34mtoBe[39m(
+[34m1[39m)[33m;[39m
+    [90m   | [39m                        [31m^[39m
+    [90m 79| [39m            [34mexpect[39m(user[
+33m.[39mcartData[itemId2])[33m.[39m[34mtoBe[39m(
+[34m1[39m)[33m;[39m
+    [90m 80| [39m        })[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[9/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/cart.api.test.js[2m > 
+[22mCart API - Integration Tests[2m > [22mPOST 
+/api/cart/add - Add to Cart[2m > [22mshould handle 
+adding same item multiple times in sequence
+[31m[1mTypeError[22m: Cannot read properties of 
+null (reading 'cartData')[39m
+[36m [2mΓ¥»[22m tests/integration/api/cart.api.test
+.js:[2m99:25[22m[39m
+    [90m 97| [39m
+    [90m 98| [39m            [35mconst[39m user 
+[33m=[39m [35mawait[39m userModel[33m.[39m[34mf
+indById[39m(userId)[33m;[39m
+    [90m 99| [39m            [34mexpect[39m(user[
+33m.[39mcartData[itemId1])[33m.[39m[34mtoBe[39m(
+[34m5[39m)[33m;[39m
+    [90m   | [39m                        [31m^[39m
+    [90m100| [39m        })[33m;[39m
+    [90m101| [39m    })[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[10/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/cart.api.test.js[2m > 
+[22mCart API - Integration Tests[2m > [22mPOST 
+/api/cart/remove - Remove from Cart[2m > [22mshould 
+decrease item quantity by 1
+[31m[1mAssertionError[22m: expected false to be 
+true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2mΓ¥»[22m tests/integration/api/cart.api.test
+.js:[2m120:38[22m[39m
+    [90m118| [39m                
+[33m.[39m[34msend[39m({ userId[33m,[39m 
+itemId[33m:[39m itemId1 })[33m;[39m
+    [90m119| [39m
+    [90m120| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39msuccess)[33m.[39m[34mtoBe[3
+9m([35mtrue[39m)[33m;[39m
+    [90m   | [39m                                   
+  [31m^[39m
+    [90m121| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mmessage)[33m.[39m[34mtoConta
+in[39m([32m"Removed From Cart"[39m)[33m;[39m
+    [90m122| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[11/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/cart.api.test.js[2m > 
+[22mCart API - Integration Tests[2m > [22mPOST 
+/api/cart/remove - Remove from Cart[2m > [22mshould 
+not decrease quantity below 0
+[31m[1mTypeError[22m: Cannot read properties of 
+null (reading 'cartData')[39m
+[36m [2mΓ¥»[22m tests/integration/api/cart.api.test
+.js:[2m141:25[22m[39m
+    [90m139| [39m
+    [90m140| [39m            [35mconst[39m user 
+[33m=[39m [35mawait[39m userModel[33m.[39m[34mf
+indById[39m(userId)[33m;[39m
+    [90m141| [39m            [34mexpect[39m(user[
+33m.[39mcartData[itemId2])[33m.[39m[34mtoBe[39m(
+[34m0[39m)[33m;[39m
+    [90m   | [39m                        [31m^[39m
+    [90m142| [39m        })[33m;[39m
+    [90m143| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[12/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/cart.api.test.js[2m > 
+[22mCart API - Integration Tests[2m > [22mPOST 
+/api/cart/remove - Remove from Cart[2m > [22mshould 
+handle removing non-existent item gracefully
+[31m[1mAssertionError[22m: expected false to be 
+true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2mΓ¥»[22m tests/integration/api/cart.api.test
+.js:[2m150:38[22m[39m
+    [90m148| [39m                
+[33m.[39m[34msend[39m({ userId[33m,[39m 
+itemId[33m:[39m [32m"non_existent_item"[39m 
+})[33m;[39m
+    [90m149| [39m
+    [90m150| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39msuccess)[33m.[39m[34mtoBe[3
+9m([35mtrue[39m)[33m;[39m
+    [90m   | [39m                                   
+  [31m^[39m
+    [90m151| [39m        })[33m;[39m
+    [90m152| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[13/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/cart.api.test.js[2m > 
+[22mCart API - Integration Tests[2m > [22mPOST 
+/api/cart/remove - Remove from Cart[2m > [22mshould 
+remove item completely when quantity reaches 0
+[31m[1mTypeError[22m: Cannot read properties of 
+null (reading 'cartData')[39m
+[36m [2mΓ¥»[22m tests/integration/api/cart.api.test
+.js:[2m169:25[22m[39m
+    [90m167| [39m
+    [90m168| [39m            [35mconst[39m user 
+[33m=[39m [35mawait[39m userModel[33m.[39m[34mf
+indById[39m(userId)[33m;[39m
+    [90m169| [39m            [34mexpect[39m(user[
+33m.[39mcartData[itemId2])[33m.[39m[34mtoBe[39m(
+[34m0[39m)[33m;[39m
+    [90m   | [39m                        [31m^[39m
+    [90m170| [39m        })[33m;[39m
+    [90m171| [39m    })[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[14/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/cart.api.test.js[2m > 
+[22mCart API - Integration Tests[2m > [22mPOST 
+/api/cart/get - Get Cart[2m > [22mshould return 
+empty cart for new user
+[31m[1mAssertionError[22m: expected false to be 
+true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2mΓ¥»[22m tests/integration/api/cart.api.test
+.js:[2m180:38[22m[39m
+    [90m178| [39m                
+[33m.[39m[34msend[39m({ userId })[33m;[39m
+    [90m179| [39m
+    [90m180| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39msuccess)[33m.[39m[34mtoBe[3
+9m([35mtrue[39m)[33m;[39m
+    [90m   | [39m                                   
+  [31m^[39m
+    [90m181| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mcartData)[33m.[39m[34mtoEqua
+l[39m({})[33m;[39m
+    [90m182| [39m        })[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[15/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/cart.api.test.js[2m > 
+[22mCart API - Integration Tests[2m > [22mPOST 
+/api/cart/get - Get Cart[2m > [22mshould return 
+cart with items
+[31m[1mAssertionError[22m: expected false to be 
+true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2mΓ¥»[22m tests/integration/api/cart.api.test
+.js:[2m198:38[22m[39m
+    [90m196| [39m                
+[33m.[39m[34msend[39m({ userId })[33m;[39m
+    [90m197| [39m
+    [90m198| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39msuccess)[33m.[39m[34mtoBe[3
+9m([35mtrue[39m)[33m;[39m
+    [90m   | [39m                                   
+  [31m^[39m
+    [90m199| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mcartData)[33m.[39m[34mtoEqua
+l[39m(cartData)[33m;[39m
+    [90m200| [39m        })[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[16/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/cart.api.test.js[2m > 
+[22mCart API - Integration Tests[2m > [22mCart 
+Operations - Complex Scenarios[2m > [22mshould 
+handle add and remove operations in sequence
+[31m[1mTypeError[22m: Cannot read properties of 
+null (reading 'cartData')[39m
+[36m [2mΓ¥»[22m tests/integration/api/cart.api.test
+.js:[2m259:25[22m[39m
+    [90m257| [39m
+    [90m258| [39m            [35mconst[39m user 
+[33m=[39m [35mawait[39m userModel[33m.[39m[34mf
+indById[39m(userId)[33m;[39m
+    [90m259| [39m            [34mexpect[39m(user[
+33m.[39mcartData[itemId1])[33m.[39m[34mtoBe[39m(
+[34m2[39m)[33m;[39m
+    [90m   | [39m                        [31m^[39m
+    [90m260| [39m        })[33m;[39m
+    [90m261| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[17/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/cart.api.test.js[2m > 
+[22mCart API - Integration Tests[2m > [22mCart 
+Operations - Complex Scenarios[2m > [22mshould 
+handle multiple items with different quantities
+[31m[1mTypeError[22m: Cannot read properties of 
+null (reading 'cartData')[39m
+[36m [2mΓ¥»[22m tests/integration/api/cart.api.test
+.js:[2m281:25[22m[39m
+    [90m279| [39m
+    [90m280| [39m            [35mconst[39m user 
+[33m=[39m [35mawait[39m userModel[33m.[39m[34mf
+indById[39m(userId)[33m;[39m
+    [90m281| [39m            [34mexpect[39m(user[
+33m.[39mcartData[itemId1])[33m.[39m[34mtoBe[39m(
+[34m2[39m)[33m;[39m
+    [90m   | [39m                        [31m^[39m
+    [90m282| [39m            [34mexpect[39m(user[
+33m.[39mcartData[itemId2])[33m.[39m[34mtoBe[39m(
+[34m1[39m)[33m;[39m
+    [90m283| [39m        })[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[18/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/cart.api.test.js[2m > 
+[22mCart API - Integration Tests[2m > [22mCart 
+Operations - Complex Scenarios[2m > [22mshould 
+handle rapid concurrent operations
+[31m[1mTypeError[22m: Cannot read properties of 
+null (reading 'cartData')[39m
+[36m [2mΓ¥»[22m tests/integration/api/cart.api.test
+.js:[2m322:25[22m[39m
+    [90m320| [39m            [90m// Due to race 
+conditions, quantity might not be exactly 10[39m
+    [90m321| [39m            [90m// But should be 
+a reasonable number[39m
+    [90m322| [39m            [34mexpect[39m(user[
+33m.[39mcartData[itemId1])[33m.[39m[34mtoBeGreater
+Than[39m([34m0[39m)[33m;[39m
+    [90m   | [39m                        [31m^[39m
+    [90m323| [39m            [34mexpect[39m(user[
+33m.[39mcartData[itemId1])[33m.[39m[34mtoBeLessTha
+nOrEqual[39m([34m10[39m)[33m;[39m
+    [90m324| [39m        })[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[19/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/cart.api.test.js[2m > 
+[22mCart API - Integration Tests[2m > [22mEdge 
+Cases[2m > [22mshould handle very long item IDs
+[31m[1mTypeError[22m: Cannot read properties of 
+null (reading 'cartData')[39m
+[36m [2mΓ¥»[22m tests/integration/api/cart.api.test
+.js:[2m339:25[22m[39m
+    [90m337| [39m
+    [90m338| [39m            [35mconst[39m user 
+[33m=[39m [35mawait[39m userModel[33m.[39m[34mf
+indById[39m(userId)[33m;[39m
+    [90m339| [39m            [34mexpect[39m(user[
+33m.[39mcartData[longItemId])[33m.[39m[34mtoBe[39
+m([34m1[39m)[33m;[39m
+    [90m   | [39m                        [31m^[39m
+    [90m340| [39m        })[33m;[39m
+    [90m341| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[20/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/food.api.test.js[2m > 
+[22mFood API - Integration Tests[2m > [22mGET 
+/api/food - List All Foods[2m > [22mshould return 
+empty array when no foods exist
+[31m[1mAssertionError[22m: expected undefined to 
+be true // Object.is equality[39m
+
+[32m- Expected:[39m 
+true
+
+[31m+ Received:[39m 
+undefined
+
+[36m [2mΓ¥»[22m tests/integration/api/food.api.test
+.js:[2m45:38[22m[39m
+    [90m 43| [39m            [35mconst[39m res 
+[33m=[39m [35mawait[39m [34mrequest[39m(app)[33
+m.[39m[35mget[39m([32m"/api/food"[39m)[33m;[39m
+    [90m 44| [39m
+    [90m 45| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39msuccess)[33m.[39m[34mtoBe[3
+9m([35mtrue[39m)[33m;[39m
+    [90m   | [39m                                   
+  [31m^[39m
+    [90m 46| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mdata)[33m.[39m[34mtoEqual[3
+9m([])[33m;[39m
+    [90m 47| [39m        })[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[21/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/food.api.test.js[2m > 
+[22mFood API - Integration Tests[2m > [22mGET 
+/api/food - List All Foods[2m > [22mshould return 
+all foods with stock quantities
+[31m[1mAssertionError[22m: expected undefined to 
+be true // Object.is equality[39m
+
+[32m- Expected:[39m 
+true
+
+[31m+ Received:[39m 
+undefined
+
+[36m [2mΓ¥»[22m tests/integration/api/food.api.test
+.js:[2m69:38[22m[39m
+    [90m 67| [39m            [35mconst[39m res 
+[33m=[39m [35mawait[39m [34mrequest[39m(app)[33
+m.[39m[35mget[39m([32m"/api/food"[39m)[33m;[39m
+    [90m 68| [39m
+    [90m 69| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39msuccess)[33m.[39m[34mtoBe[3
+9m([35mtrue[39m)[33m;[39m
+    [90m   | [39m                                   
+  [31m^[39m
+    [90m 70| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mdata)[33m.[39m[34mtoHaveLeng
+th[39m([34m2[39m)[33m;[39m
+    [90m 71| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mdata[[34m0[39m])[33m.[39m[
+34mtoHaveProperty[39m([32m"quantity"[39m)[33m;[39
+m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[22/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/food.api.test.js[2m > 
+[22mFood API - Integration Tests[2m > [22mGET 
+/api/food - List All Foods[2m > [22mshould include 
+category name in response
+[31m[1mTypeError[22m: Cannot read properties of 
+undefined (reading '0')[39m
+[36m [2mΓ¥»[22m tests/integration/api/food.api.test
+.js:[2m86:33[22m[39m
+    [90m 84| [39m            [35mconst[39m res 
+[33m=[39m [35mawait[39m [34mrequest[39m(app)[33
+m.[39m[35mget[39m([32m"/api/food"[39m)[33m;[39m
+    [90m 85| [39m
+    [90m 86| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mdata[[34m0[39m][33m.[39mcat
+egory)[33m.[39m[34mtoBe[39m([32m"Test 
+Category"[39m)[33m;[39m
+    [90m   | [39m                                
+[31m^[39m
+    [90m 87| [39m        })[33m;[39m
+    [90m 88| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[23/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/food.api.test.js[2m > 
+[22mFood API - Integration Tests[2m > [22mGET 
+/api/food - List All Foods[2m > [22mshould show 
+quantity 0 for food without stock
+[31m[1mTypeError[22m: Cannot read properties of 
+undefined (reading '0')[39m
+[36m [2mΓ¥»[22m tests/integration/api/food.api.test
+.js:[2m98:33[22m[39m
+    [90m 96| [39m            [35mconst[39m res 
+[33m=[39m [35mawait[39m [34mrequest[39m(app)[33
+m.[39m[35mget[39m([32m"/api/food"[39m)[33m;[39m
+    [90m 97| [39m
+    [90m 98| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mdata[[34m0[39m][33m.[39mqua
+ntity)[33m.[39m[34mtoBe[39m([34m0[39m)[33m;[39
+m
+    [90m   | [39m                                
+[31m^[39m
+    [90m 99| [39m        })[33m;[39m
+    [90m100| [39m    })[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[24/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/food.api.test.js[2m > 
+[22mFood API - Integration Tests[2m > [22mPOST 
+/api/food/add - Add New Food[2m > [22mshould reject 
+adding food without authorization
+[31m[1mAssertionError[22m: expected 200 to be 401 
+// Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- 401[39m
+[31m+ 200[39m
+
+[36m [2mΓ¥»[22m tests/integration/api/food.api.test
+.js:[2m142:32[22m[39m
+    [90m140| [39m                [33m.[39m[34mfie
+ld[39m([32m"categoryId"[39m[33m,[39m 
+newFood[33m.[39mcategoryId)[33m;[39m
+    [90m141| [39m
+    [90m142| [39m            [34mexpect[39m(res[3
+3m.[39mstatus)[33m.[39m[34mtoBe[39m([34m401[39m
+)[33m;[39m
+    [90m   | [39m                               
+[31m^[39m
+    [90m143| [39m        })[33m;[39m
+    [90m144| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[25/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/food.api.test.js[2m > 
+[22mFood API - Integration Tests[2m > [22mPUT 
+/api/food/update/:id - Update Food[2m > [22mshould 
+update food successfully
+[31m[1mAssertionError[22m: expected undefined to 
+be true // Object.is equality[39m
+
+[32m- Expected:[39m 
+true
+
+[31m+ Received:[39m 
+undefined
+
+[36m [2mΓ¥»[22m tests/integration/api/food.api.test
+.js:[2m235:38[22m[39m
+    [90m233| [39m                [33m.[39m[34mfie
+ld[39m([32m"categoryId"[39m[33m,[39m 
+updatedData[33m.[39mcategoryId)[33m;[39m
+    [90m234| [39m
+    [90m235| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39msuccess)[33m.[39m[34mtoBe[3
+9m([35mtrue[39m)[33m;[39m
+    [90m   | [39m                                   
+  [31m^[39m
+    [90m236| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mdata[33m.[39mname)[33m.[39m
+[34mtoBe[39m(updatedData[33m.[39mname)[33m;[39m
+    [90m237| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mdata[33m.[39mprice)[33m.[39
+m[34mtoBe[39m(updatedData[33m.[39mprice)[33m;[39
+m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[26/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/food.api.test.js[2m > 
+[22mFood API - Integration Tests[2m > [22mPUT 
+/api/food/update/:id - Update Food[2m > [22mshould 
+reject update with invalid ID
+[31m[1mAssertionError[22m: expected 404 to be 400 
+// Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- 400[39m
+[31m+ 404[39m
+
+[36m [2mΓ¥»[22m tests/integration/api/food.api.test
+.js:[2m248:32[22m[39m
+    [90m246| [39m                [33m.[39m[34mfie
+ld[39m([32m"categoryId"[39m[33m,[39m testCategory
+[33m.[39m_id[33m.[39m[34mtoString[39m())[33m;[
+39m
+    [90m247| [39m
+    [90m248| [39m            [34mexpect[39m(res[3
+3m.[39mstatus)[33m.[39m[34mtoBe[39m([34m400[39m
+)[33m;[39m
+    [90m   | [39m                               
+[31m^[39m
+    [90m249| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mmessage)[33m.[39m[34mtoConta
+in[39m([32m"kh├┤ng hß╗úp lß╗ç"[39m)[33m;[39m
+    [90m250| [39m        })[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[27/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/food.api.test.js[2m > 
+[22mFood API - Integration Tests[2m > [22mPUT 
+/api/food/update/:id - Update Food[2m > [22mshould 
+return 404 for non-existent food
+[31m[1mAssertionError[22m: the given combination 
+of arguments (undefined and string) is invalid for 
+this assertion. You can use an array, a map, an 
+object, a set, a string, or a weakset instead of a 
+string[39m
+[36m [2mΓ¥»[22m tests/integration/api/food.api.test
+.js:[2m263:38[22m[39m
+    [90m261| [39m
+    [90m262| [39m            [34mexpect[39m(res[3
+3m.[39mstatus)[33m.[39m[34mtoBe[39m([34m404[39m
+)[33m;[39m
+    [90m263| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mmessage)[33m.[39m[34mtoConta
+in[39m([32m"Kh├┤ng t├¼m thß║Ñy"[39m)[33m;[39m
+    [90m   | [39m                                   
+  [31m^[39m
+    [90m264| [39m        })[33m;[39m
+    [90m265| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[28/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/food.api.test.js[2m > 
+[22mFood API - Integration Tests[2m > [22mPUT 
+/api/food/update/:id - Update Food[2m > [22mshould 
+update only specified fields
+[31m[1mTypeError[22m: Cannot read properties of 
+undefined (reading 'name')[39m
+[36m [2mΓ¥»[22m tests/integration/api/food.api.test
+.js:[2m275:34[22m[39m
+    [90m273| [39m                [33m.[39m[34mfie
+ld[39m([32m"categoryId"[39m[33m,[39m testCategory
+[33m.[39m_id[33m.[39m[34mtoString[39m())[33m;[
+39m
+    [90m274| [39m
+    [90m275| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mdata[33m.[39mname)[33m.[39m
+[34mtoBe[39m(existingFood[33m.[39mname)[33m;[39m
+    [90m   | [39m                                 
+[31m^[39m
+    [90m276| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mdata[33m.[39mprice)[33m.[39
+m[34mtoBe[39m([34m250[39m)[33m;[39m
+    [90m277| [39m        })[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[29/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/food.api.test.js[2m > 
+[22mFood API - Integration Tests[2m > [22mPOST 
+/api/food/remove - Delete Food[2m > [22mshould 
+delete food and its stock successfully
+[31m[1mAssertionError[22m: expected false to be 
+true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2mΓ¥»[22m tests/integration/api/food.api.test
+.js:[2m298:38[22m[39m
+    [90m296| [39m                
+[33m.[39m[34msend[39m({ id[33m:[39m existingFood
+[33m.[39m_id[33m.[39m[34mtoString[39m() 
+})[33m;[39m
+    [90m297| [39m
+    [90m298| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39msuccess)[33m.[39m[34mtoBe[3
+9m([35mtrue[39m)[33m;[39m
+    [90m   | [39m                                   
+  [31m^[39m
+    [90m299| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mmessage)[33m.[39m[34mtoConta
+in[39m([32m"─É├ú x├│a"[39m)[33m;[39m
+    [90m300| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[30/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/food.api.test.js[2m > 
+[22mFood API - Integration Tests[2m > [22mPOST 
+/api/food/remove - Delete Food[2m > [22mshould 
+require authentication
+[31m[1mAssertionError[22m: expected 404 to be 401 
+// Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- 401[39m
+[31m+ 404[39m
+
+[36m [2mΓ¥»[22m tests/integration/api/food.api.test
+.js:[2m328:32[22m[39m
+    [90m326| [39m                
+[33m.[39m[34msend[39m({ id[33m:[39m existingFood
+[33m.[39m_id[33m.[39m[34mtoString[39m() 
+})[33m;[39m
+    [90m327| [39m
+    [90m328| [39m            [34mexpect[39m(res[3
+3m.[39mstatus)[33m.[39m[34mtoBe[39m([34m401[39m
+)[33m;[39m
+    [90m   | [39m                               
+[31m^[39m
+    [90m329| [39m        })[33m;[39m
+    [90m330| [39m    })[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[31/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/order.api.test.js[2m > 
+[22mOrder API - Integration Tests[2m > [22mPOST 
+/api/order/place - Place Order (COD)[2m > 
+[22mshould place order successfully with sufficient 
+stock
+[31m[1mAssertionError[22m: expected false to be 
+true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2mΓ¥»[22m tests/integration/api/order.api.tes
+t.js:[2m85:38[22m[39m
+    [90m 83| [39m                
+[33m.[39m[34msend[39m(orderData)[33m;[39m
+    [90m 84| [39m
+    [90m 85| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39msuccess)[33m.[39m[34mtoBe[3
+9m([35mtrue[39m)[33m;[39m
+    [90m   | [39m                                   
+  [31m^[39m
+    [90m 86| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39morderId)[33m.[39m[34mtoBeDef
+ined[39m()[33m;[39m
+    [90m 87| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mmessage)[33m.[39m[34mtoConta
+in[39m([32m"─Éß║╖t h├áng th├ánh 
+c├┤ng"[39m)[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[32/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/order.api.test.js[2m > 
+[22mOrder API - Integration Tests[2m > [22mPOST 
+/api/order/place - Place Order (COD)[2m > 
+[22mshould decrease stock quantity after placing 
+order
+[31m[1mTypeError[22m: Cannot read properties of 
+null (reading 'quantity')[39m
+[36m [2mΓ¥»[22m tests/integration/api/order.api.tes
+t.js:[2m115:26[22m[39m
+    [90m113| [39m            [90m// Check stock 
+was decreased[39m
+    [90m114| [39m            const stock = await 
+Stock.findOne({ foodId: testFood1._id ΓÇª
+    [90m115| [39m            [34mexpect[39m(stock
+[33m.[39mquantity)[33m.[39m[34mtoBe[39m([34m7[3
+9m)[33m;[39m [90m// 10 - 3 = 7[39m
+    [90m   | [39m                         
+[31m^[39m
+    [90m116| [39m        })[33m;[39m
+    [90m117| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[33/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/order.api.test.js[2m > 
+[22mOrder API - Integration Tests[2m > [22mPOST 
+/api/order/place - Place Order (COD)[2m > 
+[22mshould clear user cart after order is placed
+[31m[1mTypeError[22m: Cannot read properties of 
+null (reading 'cartData')[39m
+[36m [2mΓ¥»[22m tests/integration/api/order.api.tes
+t.js:[2m140:25[22m[39m
+    [90m138| [39m            [90m// Verify cart is 
+empty[39m
+    [90m139| [39m            [35mconst[39m user 
+[33m=[39m [35mawait[39m userModel[33m.[39m[34mf
+indById[39m(userId)[33m;[39m
+    [90m140| [39m            [34mexpect[39m(user[
+33m.[39mcartData)[33m.[39m[34mtoEqual[39m({})[33
+m;[39m
+    [90m   | [39m                        [31m^[39m
+    [90m141| [39m        })[33m;[39m
+    [90m142| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[34/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/order.api.test.js[2m > 
+[22mOrder API - Integration Tests[2m > [22mPOST 
+/api/order/place - Place Order (COD)[2m > 
+[22mshould reject order when stock is insufficient
+[31m[1mAssertionError[22m: expected 404 to be 409 
+// Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- 409[39m
+[31m+ 404[39m
+
+[36m [2mΓ¥»[22m tests/integration/api/order.api.tes
+t.js:[2m158:32[22m[39m
+    [90m156| [39m                
+[33m.[39m[34msend[39m(orderData)[33m;[39m
+    [90m157| [39m
+    [90m158| [39m            [34mexpect[39m(res[3
+3m.[39mstatus)[33m.[39m[34mtoBe[39m([34m409[39m
+)[33m;[39m
+    [90m   | [39m                               
+[31m^[39m
+    [90m159| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39msuccess)[33m.[39m[34mtoBe[3
+9m([35mfalse[39m)[33m;[39m
+    [90m160| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mmessage)[33m.[39m[34mtoConta
+in[39m([32m"kh├┤ng ─æß╗º tß╗ôn kho"[39m)[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[35/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/order.api.test.js[2m > 
+[22mOrder API - Integration Tests[2m > [22mPOST 
+/api/order/place - Place Order (COD)[2m > 
+[22mshould reject order with empty items array
+[31m[1mAssertionError[22m: expected 404 to be 400 
+// Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- 400[39m
+[31m+ 404[39m
+
+[36m [2mΓ¥»[22m tests/integration/api/order.api.tes
+t.js:[2m180:32[22m[39m
+    [90m178| [39m                
+[33m.[39m[34msend[39m(orderData)[33m;[39m
+    [90m179| [39m
+    [90m180| [39m            [34mexpect[39m(res[3
+3m.[39mstatus)[33m.[39m[34mtoBe[39m([34m400[39m
+)[33m;[39m
+    [90m   | [39m                               
+[31m^[39m
+    [90m181| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39msuccess)[33m.[39m[34mtoBe[3
+9m([35mfalse[39m)[33m;[39m
+    [90m182| [39m            
+expect(res.body.message).toContain("Thiß║┐u danh 
+s├ích sß║ún phΓÇª
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[36/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/order.api.test.js[2m > 
+[22mOrder API - Integration Tests[2m > [22mPOST 
+/api/order/place - Place Order (COD)[2m > 
+[22mshould reject order without items field
+[31m[1mAssertionError[22m: expected 404 to be 400 
+// Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- 400[39m
+[31m+ 404[39m
+
+[36m [2mΓ¥»[22m tests/integration/api/order.api.tes
+t.js:[2m197:32[22m[39m
+    [90m195| [39m                
+[33m.[39m[34msend[39m(orderData)[33m;[39m
+    [90m196| [39m
+    [90m197| [39m            [34mexpect[39m(res[3
+3m.[39mstatus)[33m.[39m[34mtoBe[39m([34m400[39m
+)[33m;[39m
+    [90m   | [39m                               
+[31m^[39m
+    [90m198| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39msuccess)[33m.[39m[34mtoBe[3
+9m([35mfalse[39m)[33m;[39m
+    [90m199| [39m        })[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[37/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/order.api.test.js[2m > 
+[22mOrder API - Integration Tests[2m > [22mPOST 
+/api/order/userorders - Get User Orders[2m > 
+[22mshould return only orders for the authenticated 
+user
+[31m[1mAssertionError[22m: expected false to be 
+true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2mΓ¥»[22m tests/integration/api/order.api.tes
+t.js:[2m278:38[22m[39m
+    [90m276| [39m                
+[33m.[39m[34msend[39m({ userId })[33m;[39m
+    [90m277| [39m
+    [90m278| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39msuccess)[33m.[39m[34mtoBe[3
+9m([35mtrue[39m)[33m;[39m
+    [90m   | [39m                                   
+  [31m^[39m
+    [90m279| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mdata)[33m.[39m[34mtoHaveLeng
+th[39m([34m1[39m)[33m;[39m
+    [90m280| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mdata[[34m0[39m][33m.[39muse
+rId)[33m.[39m[34mtoBe[39m(userId)[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[38/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/order.api.test.js[2m > 
+[22mOrder API - Integration Tests[2m > [22mPOST 
+/api/order/userorders - Get User Orders[2m > 
+[22mshould return empty array if user has no orders
+[31m[1mAssertionError[22m: expected false to be 
+true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2mΓ¥»[22m tests/integration/api/order.api.tes
+t.js:[2m289:38[22m[39m
+    [90m287| [39m                
+[33m.[39m[34msend[39m({ userId })[33m;[39m
+    [90m288| [39m
+    [90m289| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39msuccess)[33m.[39m[34mtoBe[3
+9m([35mtrue[39m)[33m;[39m
+    [90m   | [39m                                   
+  [31m^[39m
+    [90m290| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mdata)[33m.[39m[34mtoEqual[3
+9m([])[33m;[39m
+    [90m291| [39m        })[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[39/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/order.api.test.js[2m > 
+[22mOrder API - Integration Tests[2m > [22mPOST 
+/api/order/status - Update Order Status[2m > 
+[22mshould restore stock when order is Canceled
+[31m[1mTypeError[22m: Cannot read properties of 
+null (reading 'quantity')[39m
+[36m [2mΓ¥»[22m tests/integration/api/order.api.tes
+t.js:[2m356:31[22m[39m
+    [90m354| [39m
+    [90m355| [39m            const stockAfter = 
+await Stock.findOne({ foodId: testFood1ΓÇª
+    [90m356| [39m            
+expect(stockAfter.quantity).toBe(quantityBefore + 2); 
+// RΓÇª
+    [90m   | [39m                              
+[31m^[39m
+    [90m357| [39m        })[33m;[39m
+    [90m358| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[40/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/user.api.test.js[2m > 
+[22mUser API - Integration Tests[2m > [22mPOST 
+/api/user/register[2m > [22mshould register a new 
+user successfully
+[31m[1mAssertionError[22m: expected false to be 
+true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2mΓ¥»[22m tests/integration/api/user.api.test
+.js:[2m25:38[22m[39m
+    [90m 23| [39m                
+[33m.[39m[34msend[39m(newUser)[33m;[39m
+    [90m 24| [39m
+    [90m 25| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39msuccess)[33m.[39m[34mtoBe[3
+9m([35mtrue[39m)[33m;[39m
+    [90m   | [39m                                   
+  [31m^[39m
+    [90m 26| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mtoken)[33m.[39m[34mtoBeDefin
+ed[39m()[33m;[39m
+    [90m 27| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[41/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/user.api.test.js[2m > 
+[22mUser API - Integration Tests[2m > [22mPOST 
+/api/user/register[2m > [22mshould hash the 
+password before storing
+[31m[1mTypeError[22m: Cannot read properties of 
+null (reading 'password')[39m
+[36m [2mΓ¥»[22m tests/integration/api/user.api.test
+.js:[2m45:25[22m[39m
+    [90m 43| [39m
+    [90m 44| [39m            const user = await 
+userModel.findOne({ email: newUser.emaiΓÇª
+    [90m 45| [39m            [34mexpect[39m(user[
+33m.[39mpassword)[33m.[39mnot[33m.[39m[34mtoBe[
+39m(newUser[33m.[39mpassword)[33m;[39m
+    [90m   | [39m                        [31m^[39m
+    [90m 46| [39m
+    [90m 47| [39m            [90m// Verify 
+password is hashed correctly[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[42/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/user.api.test.js[2m > 
+[22mUser API - Integration Tests[2m > [22mPOST 
+/api/user/register[2m > [22mshould reject 
+registration with existing email
+[31m[1mAssertionError[22m: expected true to be 
+false // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- false[39m
+[31m+ true[39m
+
+[36m [2mΓ¥»[22m tests/integration/api/user.api.test
+.js:[2m71:38[22m[39m
+    [90m 69| [39m                })[33m;[39m
+    [90m 70| [39m
+    [90m 71| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39msuccess)[33m.[39m[34mtoBe[3
+9m([35mfalse[39m)[33m;[39m
+    [90m   | [39m                                   
+  [31m^[39m
+    [90m 72| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mmessage)[33m.[39m[34mtoConta
+in[39m([32m"already exists"[39m)[33m;[39m
+    [90m 73| [39m        })[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[43/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/user.api.test.js[2m > 
+[22mUser API - Integration Tests[2m > [22mPOST 
+/api/user/register[2m > [22mshould reject 
+registration with invalid email
+[31m[1mAssertionError[22m: expected 'Vui l├▓ng 
+nhß║¡p ─æ├║ng ─æß╗ïnh dß║íng email!' to contain 
+'valid email'[39m
+
+Expected: [32m"[7mvalid[27m email"[39m
+Received: [31m"[7mVui l├▓ng nhß║¡p ─æ├║ng ─æß╗ïnh 
+dß║íng[27m email[7m![27m"[39m
+
+[36m [2mΓ¥»[22m tests/integration/api/user.api.test
+.js:[2m87:38[22m[39m
+    [90m 85| [39m
+    [90m 86| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39msuccess)[33m.[39m[34mtoBe[3
+9m([35mfalse[39m)[33m;[39m
+    [90m 87| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mmessage)[33m.[39m[34mtoConta
+in[39m([32m"valid email"[39m)[33m;[39m
+    [90m   | [39m                                   
+  [31m^[39m
+    [90m 88| [39m        })[33m;[39m
+    [90m 89| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[44/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/user.api.test.js[2m > 
+[22mUser API - Integration Tests[2m > [22mPOST 
+/api/user/register[2m > [22mshould reject 
+registration with short password (< 8 chars)
+[31m[1mAssertionError[22m: expected 'Mß║¡t khß║⌐u 
+phß║úi c├│ ├¡t nhß║Ñt 8 k├╜ tß╗▒!' to contain 'strong 
+password'[39m
+
+Expected: [32m"strong password"[39m
+Received: [31m"Mß║¡t khß║⌐u phß║úi c├│ ├¡t nhß║Ñt 8 
+k├╜ tß╗▒!"[39m
+
+[36m [2mΓ¥»[22m tests/integration/api/user.api.test
+.js:[2m102:38[22m[39m
+    [90m100| [39m
+    [90m101| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39msuccess)[33m.[39m[34mtoBe[3
+9m([35mfalse[39m)[33m;[39m
+    [90m102| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mmessage)[33m.[39m[34mtoConta
+in[39m([32m"strong password"[39m)[33m;[39m
+    [90m   | [39m                                   
+  [31m^[39m
+    [90m103| [39m        })[33m;[39m
+    [90m104| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[45/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/user.api.test.js[2m > 
+[22mUser API - Integration Tests[2m > [22mPOST 
+/api/user/register[2m > [22mshould initialize user 
+with default status 'unlock'
+[31m[1mTypeError[22m: Cannot read properties of 
+null (reading 'status')[39m
+[36m [2mΓ¥»[22m tests/integration/api/user.api.test
+.js:[2m115:25[22m[39m
+    [90m113| [39m
+    [90m114| [39m            const user = await 
+userModel.findOne({ email: newUser.emaiΓÇª
+    [90m115| [39m            [34mexpect[39m(user[
+33m.[39mstatus)[33m.[39m[34mtoBe[39m([32m"unlock
+"[39m)[33m;[39m
+    [90m   | [39m                        [31m^[39m
+    [90m116| [39m        })[33m;[39m
+    [90m117| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[46/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/user.api.test.js[2m > 
+[22mUser API - Integration Tests[2m > [22mPOST 
+/api/user/login[2m > [22mshould login successfully 
+with correct credentials
+[31m[1mAssertionError[22m: expected false to be 
+true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2mΓ¥»[22m tests/integration/api/user.api.test
+.js:[2m157:38[22m[39m
+    [90m155| [39m                })[33m;[39m
+    [90m156| [39m
+    [90m157| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39msuccess)[33m.[39m[34mtoBe[3
+9m([35mtrue[39m)[33m;[39m
+    [90m   | [39m                                   
+  [31m^[39m
+    [90m158| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mtoken)[33m.[39m[34mtoBeDefin
+ed[39m()[33m;[39m
+    [90m159| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mmessage)[33m.[39m[34mtoConta
+in[39m([32m"th├ánh c├┤ng"[39m)[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[47/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/user.api.test.js[2m > 
+[22mUser API - Integration Tests[2m > [22mPOST 
+/api/user/login[2m > [22mshould reject login with 
+incorrect password
+[31m[1mAssertionError[22m: expected 404 to be 401 
+// Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- 401[39m
+[31m+ 404[39m
+
+[36m [2mΓ¥»[22m tests/integration/api/user.api.test
+.js:[2m183:32[22m[39m
+    [90m181| [39m                })[33m;[39m
+    [90m182| [39m
+    [90m183| [39m            [34mexpect[39m(res[3
+3m.[39mstatus)[33m.[39m[34mtoBe[39m([34m401[39m
+)[33m;[39m
+    [90m   | [39m                               
+[31m^[39m
+    [90m184| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39msuccess)[33m.[39m[34mtoBe[3
+9m([35mfalse[39m)[33m;[39m
+    [90m185| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mmessage)[33m.[39m[34mtoConta
+in[39m([32m"Sai mß║¡t khß║⌐u"[39m)[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[48/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/integration/api/user.api.test.js[2m > 
+[22mUser API - Integration Tests[2m > [22mPOST 
+/api/user/login[2m > [22mshould reject login for 
+locked user account
+[31m[1mAssertionError[22m: expected 404 to be 403 
+// Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- 403[39m
+[31m+ 404[39m
+
+[36m [2mΓ¥»[22m tests/integration/api/user.api.test
+.js:[2m202:32[22m[39m
+    [90m200| [39m                })[33m;[39m
+    [90m201| [39m
+    [90m202| [39m            [34mexpect[39m(res[3
+3m.[39mstatus)[33m.[39m[34mtoBe[39m([34m403[39m
+)[33m;[39m
+    [90m   | [39m                               
+[31m^[39m
+    [90m203| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39msuccess)[33m.[39m[34mtoBe[3
+9m([35mfalse[39m)[33m;[39m
+    [90m204| [39m            [34mexpect[39m(res[3
+3m.[39mbody[33m.[39mmessage)[33m.[39m[34mtoConta
+in[39m([32m"bß╗ï kh├│a"[39m)[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[49/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/unit/business-logic/stock.logic.test.js[2m > 
+[22mStock Update Logic - Unit Tests[2m > 
+[22mdecStock - Decrease Stock[2m > [22mshould 
+decrease stock by specified quantity
+[31m[1mTypeError[22m: Cannot read properties of 
+null (reading 'quantity')[39m
+[36m [2mΓ¥»[22m tests/unit/business-logic/stock.log
+ic.test.js:[2m46:26[22m[39m
+    [90m 44| [39m
+    [90m 45| [39m            const stock = await 
+Stock.findOne({ foodId: testFood1._id ΓÇª
+    [90m 46| [39m            [34mexpect[39m(stock
+[33m.[39mquantity)[33m.[39m[34mtoBe[39m([34m90[
+39m)[33m;[39m [90m// 100 - 10[39m
+    [90m   | [39m                         
+[31m^[39m
+    [90m 47| [39m        })[33m;[39m
+    [90m 48| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[50/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/unit/business-logic/stock.logic.test.js[2m > 
+[22mStock Update Logic - Unit Tests[2m > 
+[22mdecStock - Decrease Stock[2m > [22mshould 
+handle items with productId field
+[31m[1mError[22m: OUT_OF_STOCK[39m
+[36m [2mΓ¥»[22m decStock 
+controllers/updateStock.js:[2m45:13[22m[39m
+    [90m 43| [39m
+    [90m 44| [39m    [35mif[39m 
+([33m![39mres[33m.[39mmodifiedCount) {
+    [90m 45| [39m      [35mthrow[39m 
+[35mnew[39m 
+[33mError[39m([32m"OUT_OF_STOCK"[39m)[33m;[39m
+    [90m   | [39m            [31m^[39m
+    [90m 46| [39m    }
+    [90m 47| [39m  }
+[90m [2mΓ¥»[22m tests/unit/business-logic/stock.log
+ic.test.js:[2m80:13[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[51/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/unit/business-logic/stock.logic.test.js[2m > 
+[22mStock Update Logic - Unit Tests[2m > 
+[22mdecStock - Decrease Stock[2m > [22mshould 
+handle items with _id field
+[31m[1mError[22m: OUT_OF_STOCK[39m
+[36m [2mΓ¥»[22m decStock 
+controllers/updateStock.js:[2m45:13[22m[39m
+    [90m 43| [39m
+    [90m 44| [39m    [35mif[39m 
+([33m![39mres[33m.[39mmodifiedCount) {
+    [90m 45| [39m      [35mthrow[39m 
+[35mnew[39m 
+[33mError[39m([32m"OUT_OF_STOCK"[39m)[33m;[39m
+    [90m   | [39m            [31m^[39m
+    [90m 46| [39m    }
+    [90m 47| [39m  }
+[90m [2mΓ¥»[22m tests/unit/business-logic/stock.log
+ic.test.js:[2m91:13[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[52/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/unit/business-logic/stock.logic.test.js[2m > 
+[22mStock Update Logic - Unit Tests[2m > 
+[22mdecStock - Decrease Stock[2m > [22mshould 
+default quantity to 1 if not specified
+[31m[1mError[22m: OUT_OF_STOCK[39m
+[36m [2mΓ¥»[22m decStock 
+controllers/updateStock.js:[2m45:13[22m[39m
+    [90m 43| [39m
+    [90m 44| [39m    [35mif[39m 
+([33m![39mres[33m.[39mmodifiedCount) {
+    [90m 45| [39m      [35mthrow[39m 
+[35mnew[39m 
+[33mError[39m([32m"OUT_OF_STOCK"[39m)[33m;[39m
+    [90m   | [39m            [31m^[39m
+    [90m 46| [39m    }
+    [90m 47| [39m  }
+[90m [2mΓ¥»[22m tests/unit/business-logic/stock.log
+ic.test.js:[2m102:13[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[53/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/unit/business-logic/stock.logic.test.js[2m > 
+[22mStock Update Logic - Unit Tests[2m > 
+[22mdecStock - Decrease Stock[2m > [22mshould not 
+allow negative stock
+[31m[1mError[22m: OUT_OF_STOCK[39m
+[36m [2mΓ¥»[22m decStock 
+controllers/updateStock.js:[2m45:13[22m[39m
+    [90m 43| [39m
+    [90m 44| [39m    [35mif[39m 
+([33m![39mres[33m.[39mmodifiedCount) {
+    [90m 45| [39m      [35mthrow[39m 
+[35mnew[39m 
+[33mError[39m([32m"OUT_OF_STOCK"[39m)[33m;[39m
+    [90m   | [39m            [31m^[39m
+    [90m 46| [39m    }
+    [90m 47| [39m  }
+[90m [2mΓ¥»[22m tests/unit/business-logic/stock.log
+ic.test.js:[2m124:13[22m[39m
+
+[2m Test Files [22m [1m[31m9 failed[39m[22m[90m (9)[39m
+[2m      Tests [22m [1m[31m66 failed[39m[22m[2m | [22m[1m[32m104 passed[39m[22m[90m (170)[39m
+[2m   Start at [22m 17:33:16
+[2m   Duration [22m 23.34s[2m (transform 378ms, setup 3.29s, collect 2.66s, tests 88.85s, environment 3ms, prepare 1.96s)[22m
+
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[54/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/unit/business-logic/stock.logic.test.js[2m > 
+[22mStock Update Logic - Unit Tests[2m > 
+[22mdecStock - Decrease Stock[2m > [22mshould 
+process all items even if one fails
+[31m[1mError[22m: OUT_OF_STOCK[39m
+[36m [2mΓ¥»[22m decStock 
+controllers/updateStock.js:[2m45:13[22m[39m
+    [90m 43| [39m
+    [90m 44| [39m    [35mif[39m 
+([33m![39mres[33m.[39mmodifiedCount) {
+    [90m 45| [39m      [35mthrow[39m 
+[35mnew[39m 
+[33mError[39m([32m"OUT_OF_STOCK"[39m)[33m;[39m
+    [90m   | [39m            [31m^[39m
+    [90m 46| [39m    }
+    [90m 47| [39m  }
+[90m [2mΓ¥»[22m tests/unit/business-logic/stock.log
+ic.test.js:[2m151:13[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[55/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/unit/business-logic/stock.logic.test.js[2m > 
+[22mStock Update Logic - Unit Tests[2m > 
+[22mincStock - Increase Stock[2m > [22mshould 
+increase stock by specified quantity
+[31m[1mTypeError[22m: Cannot read properties of 
+null (reading 'quantity')[39m
+[36m [2mΓ¥»[22m tests/unit/business-logic/stock.log
+ic.test.js:[2m171:26[22m[39m
+    [90m169| [39m
+    [90m170| [39m            const stock = await 
+Stock.findOne({ foodId: testFood1._id ΓÇª
+    [90m171| [39m            [34mexpect[39m(stock
+[33m.[39mquantity)[33m.[39m[34mtoBe[39m([34m125
+[39m)[33m;[39m [90m// 100 + 25[39m
+    [90m   | [39m                         
+[31m^[39m
+    [90m172| [39m        })[33m;[39m
+    [90m173| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[56/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/unit/business-logic/stock.logic.test.js[2m > 
+[22mStock Update Logic - Unit Tests[2m > 
+[22mincStock - Increase Stock[2m > [22mshould 
+increase stock for multiple items
+[31m[1mTypeError[22m: Cannot read properties of 
+null (reading 'quantity')[39m
+[36m [2mΓ¥»[22m tests/unit/business-logic/stock.log
+ic.test.js:[2m185:27[22m[39m
+    [90m183| [39m            const stock2 = await 
+Stock.findOne({ foodId: testFood2._idΓÇª
+    [90m184| [39m
+    [90m185| [39m            [34mexpect[39m(stock1
+[33m.[39mquantity)[33m.[39m[34mtoBe[39m([34m130
+[39m)[33m;[39m [90m// 100 + 30[39m
+    [90m   | [39m                          
+[31m^[39m
+    [90m186| [39m            [34mexpect[39m(stock2
+[33m.[39mquantity)[33m.[39m[34mtoBe[39m([34m60
+[39m)[33m;[39m [90m// 50 + 10[39m
+    [90m187| [39m        })[33m;[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[57/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/unit/business-logic/stock.logic.test.js[2m > 
+[22mStock Update Logic - Unit Tests[2m > 
+[22mincStock - Increase Stock[2m > [22mshould 
+restore stock after order cancellation
+[31m[1mError[22m: OUT_OF_STOCK[39m
+[36m [2mΓ¥»[22m decStock 
+controllers/updateStock.js:[2m45:13[22m[39m
+    [90m 43| [39m
+    [90m 44| [39m    [35mif[39m 
+([33m![39mres[33m.[39mmodifiedCount) {
+    [90m 45| [39m      [35mthrow[39m 
+[35mnew[39m 
+[33mError[39m([32m"OUT_OF_STOCK"[39m)[33m;[39m
+    [90m   | [39m            [31m^[39m
+    [90m 46| [39m    }
+    [90m 47| [39m  }
+[90m [2mΓ¥»[22m tests/unit/business-logic/stock.log
+ic.test.js:[2m239:13[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[58/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/unit/business-logic/stock.logic.test.js[2m > 
+[22mStock Update Logic - Unit Tests[2m > [22mStock 
+Operations - Edge Cases[2m > [22mshould handle zero 
+quantity
+[31m[1mTypeError[22m: Cannot read properties of 
+null (reading 'quantity')[39m
+[36m [2mΓ¥»[22m tests/unit/business-logic/stock.log
+ic.test.js:[2m290:26[22m[39m
+    [90m288| [39m
+    [90m289| [39m            const stock = await 
+Stock.findOne({ foodId: testFood1._id ΓÇª
+    [90m290| [39m            [34mexpect[39m(stock
+[33m.[39mquantity)[33m.[39m[34mtoBe[39m([34m100
+[39m)[33m;[39m [90m// No change[39m
+    [90m   | [39m                         
+[31m^[39m
+    [90m291| [39m        })[33m;[39m
+    [90m292| [39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[59/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/unit/business-logic/stock.logic.test.js[2m > 
+[22mStock Update Logic - Unit Tests[2m > [22mError 
+Recovery[2m > [22mshould not modify stock if item 
+not found
+[31m[1mError[22m: OUT_OF_STOCK[39m
+[36m [2mΓ¥»[22m decStock 
+controllers/updateStock.js:[2m45:13[22m[39m
+    [90m 43| [39m
+    [90m 44| [39m    [35mif[39m 
+([33m![39mres[33m.[39mmodifiedCount) {
+    [90m 45| [39m      [35mthrow[39m 
+[35mnew[39m 
+[33mError[39m([32m"OUT_OF_STOCK"[39m)[33m;[39m
+    [90m   | [39m            [31m^[39m
+    [90m 46| [39m    }
+    [90m 47| [39m  }
+[90m [2mΓ¥»[22m tests/unit/business-logic/stock.log
+ic.test.js:[2m342:13[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[60/66]ΓÄ»[22m[39m
+
+[41m[1m FAIL [22m[49m 
+tests/unit/business-logic/stock.logic.test.js[2m > 
+[22mStock Update Logic - Unit Tests[2m > [22mError 
+Recovery[2m > [22mshould handle malformed item 
+objects
+[31m[1mAssertionError[22m: promise rejected 
+"Error: OUT_OF_STOCK" instead of resolving[39m
+[36m [2mΓ¥»[22m tests/unit/business-logic/stock.log
+ic.test.js:[2m356:42[22m[39m
+    [90m354| [39m            ][33m;[39m
+    [90m355| [39m
+    [90m356| [39m            [35mawait[39m [34mex
+pect[39m([34mdecStock[39m(items))[33m.[39mresolve
+s[33m.[39mnot[33m.[39m[34mtoThrow[39m()[33m;[3
+9m
+    [90m   | [39m                                   
+      [31m^[39m
+    [90m357| [39m            [35mawait[39m [34mex
+pect[39m([34mincStock[39m(items))[33m.[39mresolve
+s[33m.[39mnot[33m.[39m[34mtoThrow[39m()[33m;[3
+9m
+    [90m358| [39m        })[33m;[39m
+
+[31m[1mCaused by: Error[22m: OUT_OF_STOCK[39m
+[36m [2mΓ¥»[22m decStock 
+controllers/updateStock.js:[2m45:13[22m[39m
+[90m [2mΓ¥»[22m tests/unit/business-logic/stock.log
+ic.test.js:[2m356:13[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[61/66]ΓÄ»[22m[39m
+
