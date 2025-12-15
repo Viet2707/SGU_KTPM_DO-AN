@@ -27,12 +27,13 @@ export const updateStock = async (req, res) => {
 
 // ========= HÀM DÙNG KHI ĐẶT/HỦY ĐƠN =========
 const pickId = (i) => i.foodId || i.productId || i._id || i.id;
-const pickQty = (i) => i.quantity || i.qty || 1;
+const pickQty = (i) => (i.quantity !== undefined ? i.quantity : (i.qty !== undefined ? i.qty : 1));
 
 // Trừ kho theo foodId
 export const decStock = async (items, session) => {
   for (const it of items) {
     const id = pickId(it);
+    if (!id) continue; // Skip invalid items
     const qty = pickQty(it);
 
     const res = await Stock.updateOne(
@@ -51,6 +52,7 @@ export const decStock = async (items, session) => {
 export const incStock = async (items, session) => {
   for (const it of items) {
     const id = pickId(it);
+    if (!id) continue; // Skip invalid items
     const qty = pickQty(it);
 
     await Stock.updateOne(

@@ -1,0 +1,158 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - generic [ref=e4]:
+    - heading "Đăng ký" [level=2] [ref=e6]
+    - generic [ref=e7]:
+      - textbox "Tên của bạn" [ref=e8]
+      - textbox "Email của bạn" [ref=e9]
+      - textbox "Mật khẩu" [ref=e10]
+    - button "Tạo tài khoản" [ref=e11] [cursor=pointer]
+    - paragraph [ref=e12]: Bạn đã có tài khoản? Đăng nhập ở đây
+  - generic [ref=e13]:
+    - generic [ref=e14]:
+      - link [ref=e15]:
+        - /url: /
+      - list [ref=e16]:
+        - link "Trang chủ" [ref=e17]:
+          - /url: /
+        - link "Danh mục" [ref=e18]:
+          - /url: "#explore-menu"
+        - link "Liên hệ chúng tôi" [ref=e19]:
+          - /url: "#footer"
+      - generic [ref=e20]:
+        - link [ref=e21]:
+          - /url: /cart
+        - button "Đăng nhập" [ref=e22] [cursor=pointer]
+    - generic [ref=e23]:
+      - heading "Hãy lựa chọn sản phẩm" [level=1] [ref=e24]
+      - paragraph [ref=e25]: Mỗi bông hoa mang một câu chuyện tình yêu, nhẹ nhàng nhưng sâu sắc như trái tim bạn.
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - img "Cây dễ chăm" [ref=e28] [cursor=pointer]
+          - paragraph [ref=e29] [cursor=pointer]: Cây dễ chăm
+        - generic [ref=e30]:
+          - img "Cây văn phòng" [ref=e31] [cursor=pointer]
+          - paragraph [ref=e32] [cursor=pointer]: Cây văn phòng
+        - generic [ref=e33]:
+          - img "Cây phong thủy" [ref=e34] [cursor=pointer]
+          - paragraph [ref=e35] [cursor=pointer]: Cây phong thủy
+        - generic [ref=e36]:
+          - img "Cây để bàn" [ref=e37] [cursor=pointer]
+          - paragraph [ref=e38] [cursor=pointer]: Cây để bàn
+        - generic [ref=e39]:
+          - img "Cây trồng nước" [ref=e40] [cursor=pointer]
+          - paragraph [ref=e41] [cursor=pointer]: Cây trồng nước
+        - generic [ref=e42]:
+          - img "Cây cao cấp" [ref=e43] [cursor=pointer]
+          - paragraph [ref=e44] [cursor=pointer]: Cây cao cấp
+        - generic [ref=e45]:
+          - img "Chậu nung đất" [ref=e46] [cursor=pointer]
+          - paragraph [ref=e47] [cursor=pointer]: Chậu nung đất
+        - generic [ref=e48]:
+          - img "Chậu xi măng" [ref=e49] [cursor=pointer]
+          - paragraph [ref=e50] [cursor=pointer]: Chậu xi măng
+      - generic [ref=e51]:
+        - generic [ref=e52]:
+          - text: Giá từ
+          - spinbutton [ref=e53]
+        - generic [ref=e54]: —
+        - generic [ref=e55]:
+          - text: Đến
+          - spinbutton [ref=e56]
+        - button "Áp dụng" [ref=e57] [cursor=pointer]
+      - separator [ref=e58]
+    - generic [ref=e59]:
+      - heading "Danh sách cây - Tất cả sản phẩm" [level=2] [ref=e60]
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - link "Cây Hải" [ref=e64]:
+              - /url: /product/692b295c5457a3d40a365676
+              - img "Cây Hải" [ref=e65]
+            - img "add" [ref=e66] [cursor=pointer]
+          - generic [ref=e67]:
+            - generic [ref=e68]:
+              - paragraph [ref=e69]: Cây Hải
+              - img "rating" [ref=e70]
+            - paragraph [ref=e71]: Hải tặc
+            - paragraph [ref=e72]: 5.000.000vnđ
+        - generic [ref=e73]:
+          - generic [ref=e74]:
+            - link "Dừa cảnh" [ref=e75]:
+              - /url: /product/692b29be5457a3d40a36568b
+              - img "Dừa cảnh" [ref=e76]
+            - img "add" [ref=e77] [cursor=pointer]
+          - generic [ref=e78]:
+            - generic [ref=e79]:
+              - paragraph [ref=e80]: Dừa cảnh
+              - img "rating" [ref=e81]
+            - paragraph [ref=e82]: che mát trong nhà
+            - paragraph [ref=e83]: 5.000.000vnđ
+        - generic [ref=e84]:
+          - generic [ref=e85]:
+            - link "cây hoa đen" [ref=e86]:
+              - /url: /product/692b29ff5457a3d40a365695
+              - img "cây hoa đen" [ref=e87]
+            - img "add" [ref=e88] [cursor=pointer]
+          - generic [ref=e89]:
+            - generic [ref=e90]:
+              - paragraph [ref=e91]: cây hoa đen
+              - img "rating" [ref=e92]
+            - paragraph [ref=e93]: chưa ra hoa
+            - paragraph [ref=e94]: 4.500.000vnđ
+        - generic [ref=e95]:
+          - generic [ref=e96]:
+            - link "Cây tre chăm đốttt" [ref=e97]:
+              - /url: /product/693bd1bceb9ba237e3de019d
+              - img "Cây tre chăm đốttt" [ref=e98]
+            - img "add" [ref=e99] [cursor=pointer]
+          - generic [ref=e100]:
+            - generic [ref=e101]:
+              - paragraph [ref=e102]: Cây tre chăm đốttt
+              - img "rating" [ref=e103]
+            - paragraph [ref=e104]: tươi mát cả nhà
+            - paragraph [ref=e105]: 2.000.000vnđ
+        - generic [ref=e106]:
+          - generic [ref=e107]:
+            - link "qqq" [ref=e108]:
+              - /url: /product/693e8e3ca2e1d288cd7d431c
+              - img "qqq" [ref=e109]
+            - img "add" [ref=e110] [cursor=pointer]
+          - generic [ref=e111]:
+            - generic [ref=e112]:
+              - paragraph [ref=e113]: qqq
+              - img "rating" [ref=e114]
+            - paragraph [ref=e115]: qqq11
+            - paragraph [ref=e116]: 111vnđ
+        - generic [ref=e117]:
+          - generic [ref=e118]:
+            - link "q22" [ref=e119]:
+              - /url: /product/693e97f17916080a8dde56ed
+              - img "q22" [ref=e120]
+            - img "add" [ref=e121] [cursor=pointer]
+          - generic [ref=e122]:
+            - generic [ref=e123]:
+              - paragraph [ref=e124]: q22
+              - img "rating" [ref=e125]
+            - paragraph [ref=e126]: 1ee
+            - paragraph [ref=e127]: 600vnđ
+  - generic [ref=e128]:
+    - generic [ref=e129]:
+      - paragraph [ref=e131]: Mỗi đóa hoa không chỉ là một món quà, mà là lời thì thầm của yêu thương, là sự quan tâm dịu dàng được gửi trao qua từng cánh mỏng. Hãy để chúng tôi giúp bạn kể câu chuyện của riêng mình, một câu chuyện được dệt nên từ hương sắc và những xúc cảm chân thành nhất.
+      - generic [ref=e133]:
+        - heading "CÔNGTY" [level=2] [ref=e134]
+        - list [ref=e135]:
+          - listitem [ref=e136] [cursor=pointer]: NOW
+          - listitem [ref=e137] [cursor=pointer]: Trang chủ
+          - listitem [ref=e138] [cursor=pointer]: Danh mục
+          - listitem [ref=e139] [cursor=pointer]: Liên hệ với chúng tôi
+      - generic [ref=e140]:
+        - heading "LIÊN HỆ" [level=2] [ref=e141]
+        - list [ref=e142]:
+          - listitem [ref=e143] [cursor=pointer]: "0365986732"
+          - listitem [ref=e144] [cursor=pointer]: tdat07082004@gmail.com
+    - separator [ref=e145]
+    - paragraph [ref=e146]: https://www.facebook.com/nguyen.aat.2024
+```

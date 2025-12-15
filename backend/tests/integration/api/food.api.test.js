@@ -40,7 +40,7 @@ describe("Food API - Integration Tests", () => {
 
     describe("GET /api/food - List All Foods", () => {
         it("should return empty array when no foods exist", async () => {
-            const res = await request(app).get("/api/food");
+            const res = await request(app).get("/api/food/list");
 
             expect(res.body.success).toBe(true);
             expect(res.body.data).toEqual([]);
@@ -64,7 +64,7 @@ describe("Food API - Integration Tests", () => {
             await Stock.create({ foodId: food1._id, quantity: 10 });
             await Stock.create({ foodId: food2._id, quantity: 5 });
 
-            const res = await request(app).get("/api/food");
+            const res = await request(app).get("/api/food/list");
 
             expect(res.body.success).toBe(true);
             expect(res.body.data).toHaveLength(2);
@@ -81,7 +81,7 @@ describe("Food API - Integration Tests", () => {
 
             await Stock.create({ foodId: food._id, quantity: 10 });
 
-            const res = await request(app).get("/api/food");
+            const res = await request(app).get("/api/food/list");
 
             expect(res.body.data[0].category).toBe("Test Category");
         });
@@ -93,7 +93,7 @@ describe("Food API - Integration Tests", () => {
                 categoryId: testCategory._id,
             });
 
-            const res = await request(app).get("/api/food");
+            const res = await request(app).get("/api/food/list");
 
             expect(res.body.data[0].quantity).toBe(0);
         });
