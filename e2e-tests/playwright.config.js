@@ -42,17 +42,17 @@ export default defineConfig({
     // Run your local dev servers before starting the tests
     webServer: [
         {
-            command: 'cd frontend && npm run dev',
+            command: 'cd ../frontend && npm run dev',
             url: 'http://localhost:5173',
             reuseExistingServer: !process.env.CI,
         },
         {
-            command: 'cd admin && npm run dev',
+            command: 'cd ../admin && npm run dev',
             url: 'http://localhost:5174',
             reuseExistingServer: !process.env.CI,
         },
         {
-            command: 'cd backend && npm run server',
+            command: 'cd ../backend && npm run server',
             url: 'http://localhost:5000',
             reuseExistingServer: !process.env.CI,
         },
