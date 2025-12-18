@@ -9,7 +9,7 @@
     "server": "nodemon server.js",
     "test": "vitest run",
     "test:watch": "vitest watch",
-    "test:unit": "vitest run tests/unit",
+    "test:unit": "vitest run tests/unit/strict_unit.test.js",
     "test:integration": "vitest run tests/integration",
     "test:models": "vitest run tests/unit/models",
     "test:api": "vitest run tests/integration/api",
