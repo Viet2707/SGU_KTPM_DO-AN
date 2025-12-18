@@ -15,6 +15,13 @@ const Add = () => {
     categoryId: ""   // sẽ lưu ObjectId từ backend
   });
 
+  // Gợi ý tên cây phổ biến
+  const treeSuggestions = [
+    "Cây Hải Đường", "Cây Lá Co", "Cây Dừa Cạn", "Cây Hoa Đen",
+    "Cây Tre Chậm Đốt", "Cây Phong Thủy", "Cây Vạn Niên Tùng",
+    "Cây Cảnh Mini", "Cây Xương Rồng", "Cây Lưỡi Hổ"
+  ];
+
   // 📌 Lấy Category khi component mount
   useEffect(() => {
     const fetchCategories = async () => {
@@ -90,6 +97,14 @@ const Add = () => {
             />
             <img src={!image ? assets.upload_area : URL.createObjectURL(image)} alt="preview" />
           </label>
+          {image && (
+            <div className="image-info">
+              <p>✅ Đã chọn: {image.name}</p>
+              <button type="button" onClick={() => setImage(null)} className="remove-image-btn">
+                Xóa ảnh
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Tên sản phẩm */}
@@ -100,9 +115,24 @@ const Add = () => {
             value={data.name} 
             onChange={onChangeHandler} 
             type="text" 
-            placeholder='Nhập tên sản phẩm' 
+            placeholder='Ví dụ: Cây Hải Đường, Cây Lá Co...' 
             required 
           />
+          <div className="tree-suggestions">
+            <p>Gợi ý tên cây:</p>
+            <div className="suggestions-list">
+              {treeSuggestions.map((suggestion, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  className="suggestion-btn"
+                  onClick={() => setData(prev => ({ ...prev, name: suggestion }))}
+                >
+                  {suggestion}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Mô tả */}
@@ -113,9 +143,21 @@ const Add = () => {
             value={data.description} 
             onChange={onChangeHandler} 
             rows={6} 
-            placeholder='Nhập mô tả sản phẩm' 
+            placeholder='Mô tả về cây: kích thước, đặc điểm, cách chăm sóc...' 
             required 
           />
+          <div className="description-template">
+            <button
+              type="button"
+              className="template-btn"
+              onClick={() => setData(prev => ({ 
+                ...prev, 
+                description: `${prev.name || 'Cây cảnh'} là loại cây dễ trồng, phù hợp để trang trí trong nhà và văn phòng.\n\nĐặc điểm:\n- Kích thước: Nhỏ gọn, phù hợp chậu 15-20cm\n- Ánh sáng: Ưa ánh sáng gián tiếp\n- Tưới nước: 2-3 lần/tuần\n\nLợi ích:\n- Thanh lọc không khí\n- Dễ chăm sóc\n- Mang lại may mắn theo phong thủy` 
+              }))}
+            >
+              📝 Sử dụng mẫu mô tả
+            </button>
+          </div>
         </div>
 
         {/* Category + Price */}
@@ -144,9 +186,16 @@ const Add = () => {
               name='price' 
               value={data.price} 
               onChange={onChangeHandler} 
-              placeholder='Nhập giá (VND)' 
+              placeholder='Ví dụ: 50000' 
+              min="1000"
+              step="1000"
               required 
             />
+            {data.price && (
+              <small className="price-preview">
+                Giá: {Number(data.price).toLocaleString('vi-VN')} VNĐ
+              </small>
+            )}
           </div>
         </div>
 

@@ -4,6 +4,47 @@
     padding: 20px;
 }
 
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 5px;
+}
+
+.header-info p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.header-info small {
+    color: #666;
+    font-size: 14px;
+    margin-top: 4px;
+    display: block;
+}
+
+.add-new-btn {
+    background: linear-gradient(90deg, #28a745 0%, #20c997 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.2);
+}
+
+.add-new-btn:hover {
+    background: linear-gradient(90deg, #218838 0%, #1ea085 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
 .list-table {
     flex: 2; /* chiếm 2 phần */
     background: #fff;
@@ -14,7 +55,7 @@
 
 .list-table-format {
     display: grid;
-    grid-template-columns: 0.6fr 2fr 1fr 1fr 1fr;
+    grid-template-columns: 0.6fr 2fr 1fr 1fr 1fr 1fr;
     align-items: center;
     gap: 10px;
     padding: 12px 15px;

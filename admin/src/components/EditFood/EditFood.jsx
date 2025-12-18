@@ -166,12 +166,42 @@ const EditFood = ({ food, onClose, refreshList }) => {
   }
 };
   return (
-    <div className="edit-modal">
-      <div className="edit-form">
-        <h3>✏️ Sửa sản phẩm</h3>
+    <div className="edit-modal" style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      background: 'rgba(0, 0, 0, 0.7)',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 9999,
+      backdropFilter: 'blur(5px)'
+    }}>
+      <div className="edit-form" style={{
+        background: '#ffffff',
+        padding: '40px',
+        borderRadius: '20px',
+        boxShadow: '0 25px 80px rgba(0, 0, 0, 0.25)',
+        maxWidth: '550px',
+        width: '95%',
+        maxHeight: '90vh',
+        overflowY: 'auto',
+        border: '3px solid #e3f2fd'
+      }}>
+        <h3 style={{
+          margin: '0 0 30px 0',
+          fontSize: '28px',
+          fontWeight: '800',
+          color: '#1565c0',
+          textAlign: 'center',
+          borderBottom: '3px solid #2196f3',
+          paddingBottom: '15px'
+        }}>✏️ Sửa sản phẩm</h3>
 
         {/* Tên sản phẩm */}
-        <div className="form-group">
+        <div className="form-group" style={{ marginBottom: '25px' }}>
           <input
             type="text"
             value={form.name}
@@ -182,12 +212,29 @@ const EditFood = ({ food, onClose, refreshList }) => {
             placeholder="Tên sản phẩm"
             className={errors.name ? "input-error" : ""}
             disabled={loading}
+            style={{
+              width: '100%',
+              padding: '15px 20px',
+              fontSize: '16px',
+              border: '2px solid #bbdefb',
+              borderRadius: '12px',
+              background: '#f3f8ff',
+              transition: 'all 0.3s ease',
+              boxSizing: 'border-box',
+              fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif'
+            }}
           />
-          {errors.name && <span className="error-message">{errors.name}</span>}
+          {errors.name && <span className="error-message" style={{
+            color: '#dc3545',
+            fontSize: '13px',
+            marginTop: '4px',
+            display: 'block',
+            fontWeight: '500'
+          }}>{errors.name}</span>}
         </div>
 
         {/* Mô tả */}
-        <div className="form-group">
+        <div className="form-group" style={{ marginBottom: '25px' }}>
           <textarea
             value={form.description}
             onChange={(e) => {
@@ -197,12 +244,31 @@ const EditFood = ({ food, onClose, refreshList }) => {
             placeholder="Mô tả"
             className={errors.description ? "input-error" : ""}
             disabled={loading}
+            style={{
+              width: '100%',
+              padding: '15px 20px',
+              fontSize: '16px',
+              border: '2px solid #bbdefb',
+              borderRadius: '12px',
+              background: '#f3f8ff',
+              transition: 'all 0.3s ease',
+              boxSizing: 'border-box',
+              fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif',
+              minHeight: '80px',
+              resize: 'vertical'
+            }}
           />
-          {errors.description && <span className="error-message">{errors.description}</span>}
+          {errors.description && <span className="error-message" style={{
+            color: '#dc3545',
+            fontSize: '13px',
+            marginTop: '4px',
+            display: 'block',
+            fontWeight: '500'
+          }}>{errors.description}</span>}
         </div>
 
         {/* Giá */}
-        <div className="form-group">
+        <div className="form-group" style={{ marginBottom: '25px' }}>
           <input
             type="number"
             value={form.price}
@@ -215,29 +281,63 @@ const EditFood = ({ food, onClose, refreshList }) => {
             step="1000"
             className={errors.price ? "input-error" : ""}
             disabled={loading}
+            style={{
+              width: '100%',
+              padding: '15px 20px',
+              fontSize: '16px',
+              border: '2px solid #bbdefb',
+              borderRadius: '12px',
+              background: '#f3f8ff',
+              transition: 'all 0.3s ease',
+              boxSizing: 'border-box',
+              fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif'
+            }}
           />
-          {errors.price && <span className="error-message">{errors.price}</span>}
+          {errors.price && <span className="error-message" style={{
+            color: '#dc3545',
+            fontSize: '13px',
+            marginTop: '4px',
+            display: 'block',
+            fontWeight: '500'
+          }}>{errors.price}</span>}
         </div>
 
         {/* Upload ảnh */}
-        <div className="form-group">
+        <div className="form-group" style={{ marginBottom: '25px' }}>
           <input
             type="file"
             accept="image/*"
             onChange={handleFileChange}
             disabled={loading}
+            style={{
+              width: '100%',
+              padding: '15px 20px',
+              fontSize: '16px',
+              border: '2px dashed #bbdefb',
+              borderRadius: '12px',
+              background: '#f3f8ff',
+              transition: 'all 0.3s ease',
+              boxSizing: 'border-box',
+              cursor: 'pointer'
+            }}
           />
           {form.previewImage && (
             <img
               src={form.previewImage}
               alt="preview"
-              style={{ width: 100, marginTop: 10 }}
+              style={{ 
+                width: 120, 
+                marginTop: 15, 
+                borderRadius: '8px',
+                border: '2px solid #e9ecef',
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+              }}
             />
           )}
         </div>
 
         {/* Select danh mục */}
-        <div className="form-group">
+        <div className="form-group" style={{ marginBottom: '25px' }}>
           <select
             value={form.categoryId}
             onChange={(e) => {
@@ -246,6 +346,17 @@ const EditFood = ({ food, onClose, refreshList }) => {
             }}
             className={errors.categoryId ? "input-error" : ""}
             disabled={loading}
+            style={{
+              width: '100%',
+              padding: '15px 20px',
+              fontSize: '16px',
+              border: '2px solid #bbdefb',
+              borderRadius: '12px',
+              background: '#f3f8ff',
+              transition: 'all 0.3s ease',
+              boxSizing: 'border-box',
+              fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif'
+            }}
           >
             <option value="">-- Chọn danh mục --</option>
             {categories.map((cat) => (
@@ -254,15 +365,64 @@ const EditFood = ({ food, onClose, refreshList }) => {
               </option>
             ))}
           </select>
-          {errors.categoryId && <span className="error-message">{errors.categoryId}</span>}
+          {errors.categoryId && <span className="error-message" style={{
+            color: '#dc3545',
+            fontSize: '13px',
+            marginTop: '4px',
+            display: 'block',
+            fontWeight: '500'
+          }}>{errors.categoryId}</span>}
         </div>
 
         {/* Action buttons */}
-        <div style={{ marginTop: 20 }}>
-          <button onClick={handleUpdate} disabled={loading}>
+        <div style={{ 
+          marginTop: 32, 
+          paddingTop: 20, 
+          borderTop: '1px solid #e9ecef',
+          display: 'flex',
+          gap: '12px',
+          justifyContent: 'center'
+        }}>
+          <button 
+            onClick={handleUpdate} 
+            disabled={loading}
+            style={{
+              padding: '15px 30px',
+              fontSize: '16px',
+              fontWeight: '700',
+              border: 'none',
+              borderRadius: '25px',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              minWidth: '120px',
+              background: 'linear-gradient(135deg, #4caf50 0%, #66bb6a 100%)',
+              color: 'white',
+              boxShadow: '0 6px 20px rgba(76, 175, 80, 0.4)',
+              textTransform: 'uppercase',
+              letterSpacing: '1px'
+            }}
+          >
             {loading ? "⏳ Đang lưu..." : "💾 Lưu"}
           </button>
-          <button onClick={onClose} style={{ marginLeft: 10 }} disabled={loading}>
+          <button 
+            onClick={onClose} 
+            disabled={loading}
+            style={{
+              padding: '15px 30px',
+              fontSize: '16px',
+              fontWeight: '700',
+              border: 'none',
+              borderRadius: '25px',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              minWidth: '120px',
+              background: 'linear-gradient(135deg, #f44336 0%, #e57373 100%)',
+              color: 'white',
+              boxShadow: '0 6px 20px rgba(244, 67, 54, 0.4)',
+              textTransform: 'uppercase',
+              letterSpacing: '1px'
+            }}
+          >
             ❌ Hủy
           </button>
         </div>

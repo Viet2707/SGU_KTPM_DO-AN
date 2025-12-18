@@ -8,15 +8,15 @@ const Sidebar = () => {
     <div className="sidebar">
       <div className="sidebar-options">
 
-        {/* Thêm cây mới */}
-        <NavLink 
+        {/* Thêm cây mới - HIDDEN */}
+        {/* <NavLink 
           to="/add" 
           className={({ isActive }) => 
             isActive ? "sidebar-option active" : "sidebar-option"
           }
         >
           <p>Thêm cây mới</p>
-        </NavLink>
+        </NavLink> */}
 
         {/* Danh sách cây */}
         <NavLink 

@@ -1,68 +1,265 @@
-.edit-food {
-    flex: 1; /* chiếm 1 phần */
+/* Modal overlay */
+.edit-modal {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(0, 0, 0, 0.7) !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    z-index: 9999 !important;
+    backdrop-filter: blur(5px) !important;
+}
+
+/* Form container */
+.edit-form {
+    background: #ffffff !important;
+    padding: 40px !important;
+    border-radius: 20px !important;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25) !important;
+    max-width: 550px !important;
+    width: 95% !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    animation: slideIn 0.4s ease-out !important;
+    border: 3px solid #e3f2fd !important;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.edit-form h3 {
+    margin: 0 0 30px 0 !important;
+    font-size: 28px !important;
+    font-weight: 800 !important;
+    color: #1565c0 !important;
+    text-align: center !important;
+    border-bottom: 3px solid #2196f3 !important;
+    padding-bottom: 15px !important;
+    background: linear-gradient(135deg, #1565c0, #2196f3) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+/* Form groups */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100% !important;
+    padding: 15px 20px !important;
+    font-size: 16px !important;
+    border: 2px solid #bbdefb !important;
+    border-radius: 12px !important;
+    background: #f3f8ff !important;
+    transition: all 0.3s ease !important;
+    box-sizing: border-box !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #007bff;
     background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    max-width: 400px;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
 
-.edit-food h2 {
-    margin-bottom: 15px;
-    font-size: 20px;
-    text-align: center;
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+    font-family: inherit;
 }
 
-.edit-food form {
-    display: flex;
-    flex-direction: column;
-}
-
-.edit-food form input,
-.edit-food form select {
-    margin-bottom: 12px;
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.edit-food form input[type="file"] {
-    padding: 3px;
-}
-
-.edit-food form button {
-    padding: 10px;
-    margin-top: 5px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
+.form-group input[type="file"] {
+    padding: 8px;
+    background: #fff;
+    border: 2px dashed #dee2e6;
     cursor: pointer;
 }
 
-.edit-food form button:hover {
-    background-color: #0056b3;
+.form-group input[type="file"]:hover {
+    border-color: #007bff;
+    background: #f8f9ff;
 }
 
-.edit-food form button[type="button"] {
-    background-color: #6c757d;
+/* Error states */
+.input-error {
+    border-color: #dc3545 !important;
+    background: #fff5f5 !important;
 }
 
-.edit-food form button[type="button"]:hover {
-    background-color: #5a6268;
+.error-message {
+    color: #dc3545;
+    font-size: 13px;
+    margin-top: 4px;
+    display: block;
+    font-weight: 500;
+}
+
+/* Preview image */
+.form-group img {
+    border-radius: 8px;
+    border: 2px solid #e9ecef;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons */
+.edit-form button {
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 100px;
+}
+
+.edit-form button:first-of-type {
+    background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%) !important;
+    color: white !important;
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4) !important;
+    border-radius: 25px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
+.edit-form button:first-of-type:hover:not(:disabled) {
+    background: linear-gradient(135deg, #218838 0%, #1ea085 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(40, 167, 69, 0.4);
+}
+
+.edit-form button:last-of-type {
+    background: linear-gradient(135deg, #f44336 0%, #e57373 100%) !important;
+    color: white !important;
+    box-shadow: 0 6px 20px rgba(244, 67, 54, 0.4) !important;
+    border-radius: 25px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
+.edit-form button:last-of-type:hover:not(:disabled) {
+    background: linear-gradient(135deg, #5a6268 0%, #495057 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(108, 117, 125, 0.4);
+}
+
+.edit-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Button container */
+.edit-form > div:last-child {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid #e9ecef;
 }
 
 /* Responsive */
-@media (max-width: 1000px) {
-    .edit-food {
-        max-width: 100%;
-        margin-top: 20px;
+@media (max-width: 600px) {
+    .edit-form {
+        padding: 24px 20px;
+        margin: 20px;
+        width: calc(100% - 40px);
+    }
+    
+    .edit-form h3 {
+        font-size: 20px;
+    }
+    
+    .edit-form > div:last-child {
+        flex-direction: column;
+    }
+    
+    .edit-form button {
+        width: 100%;
     }
 }
-/* List.css */
-.list-container {
-    display: flex;
-    gap: 20px;
-    padding: 20px;
+
+/* Loading state */
+.edit-form button:disabled {
+    position: relative;
+}
+
+.edit-form button:disabled::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    margin: auto;
+    border: 2px solid transparent;
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Force override any existing styles */
+.edit-modal * {
+    box-sizing: border-box !important;
+}
+
+.edit-form {
+    position: relative !important;
+    transform: scale(1) !important;
+}
+
+.form-group {
+    margin-bottom: 25px !important;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none !important;
+    border-color: #2196f3 !important;
+    background: #ffffff !important;
+    box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.15) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Enhanced button styles */
+.edit-form button {
+    padding: 15px 30px !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    border: none !important;
+    border-radius: 25px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    min-width: 120px !important;
+    margin: 0 8px !important;
+}
+
+.edit-form button:hover:not(:disabled) {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
 }
