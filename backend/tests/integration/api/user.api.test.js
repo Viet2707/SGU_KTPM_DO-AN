@@ -69,7 +69,7 @@ describe("User API - Integration Tests", () => {
                 });
 
             expect(res.body.success).toBe(false);
-            expect(res.body.message).toContain("already exists");
+            expect(res.body.message).toContain("đã được sử dụng");
         });
 
         it("should reject registration with invalid email", async () => {
@@ -84,7 +84,7 @@ describe("User API - Integration Tests", () => {
                 .send(invalidUser);
 
             expect(res.body.success).toBe(false);
-            expect(res.body.message).toContain("valid email");
+            expect(res.body.message).toContain("đúng định dạng");
         });
 
         it("should reject registration with short password (< 8 chars)", async () => {
@@ -99,7 +99,7 @@ describe("User API - Integration Tests", () => {
                 .send(invalidUser);
 
             expect(res.body.success).toBe(false);
-            expect(res.body.message).toContain("strong password");
+            expect(res.body.message).toContain("8 ký tự");
         });
 
         it("should initialize user with default status 'unlock'", async () => {

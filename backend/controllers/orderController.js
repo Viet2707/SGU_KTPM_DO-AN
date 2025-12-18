@@ -182,12 +182,12 @@ const getOrderById = async (req, res) => {
 };
 
 const placeOrder = placeOrderCod;
-export { 
-   placeOrder,
-    listOrders, 
-    userOrders, 
-    updateStatus, 
-  
-    placeOrderCod,
-    getOrderById // <-- THÊM VÀO ĐÂY
+export {
+  placeOrder,
+  listOrders,
+  userOrders,
+  updateStatus,
+
+  placeOrderCod,
+  getOrderById // <-- THÊM VÀO ĐÂY
 };

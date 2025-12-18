@@ -1,6 +1,7 @@
 import express from 'express';
 import { addFood, listFood, removeFood, updateFood } from '../controllers/foodController.js';
 import multer from 'multer';
+import adminAuth from '../middleware/adminAuth.js';
 
 const foodRouter = express.Router();
 
@@ -20,15 +21,15 @@ foodRouter.use((req, res, next) => {
 });
 
 foodRouter.get("/list", listFood);
-foodRouter.post("/add", upload.single('image'), addFood);
-foodRouter.post("/remove", removeFood);
+foodRouter.post("/add", adminAuth, upload.single('image'), addFood);
+foodRouter.post("/remove", adminAuth, removeFood);
 
 // ✅ Log PUT request
-foodRouter.put("/:id", (req, res, next) => {
-    console.log("✅ PUT /:id route matched!");
+foodRouter.put("/update/:id", (req, res, next) => {
+    console.log("✅ PUT /update/:id route matched!");
     console.log("📌 ID từ URL:", req.params.id);
     next();
-}, upload.single('image'), updateFood);
+}, adminAuth, upload.single('image'), updateFood);
 
 console.log("✅ Food routes loaded");
 

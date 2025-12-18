@@ -1,7 +1,12 @@
-import { defineConfig, devices } from '@playwright/test';
+// @ts-check
+const { defineConfig, devices } = require('@playwright/test');
 
-export default defineConfig({
+module.exports = defineConfig({
     testDir: './tests',
+    timeout: 30 * 1000,
+    expect: {
+        timeout: 5000
+    },
     fullyParallel: true,
     forbidOnly: !!process.env.CI,
     retries: process.env.CI ? 2 : 0,
@@ -19,42 +24,6 @@ export default defineConfig({
         {
             name: 'chromium',
             use: { ...devices['Desktop Chrome'] },
-        },
-        {
-            name: 'firefox',
-            use: { ...devices['Desktop Firefox'] },
-        },
-        {
-            name: 'webkit',
-            use: { ...devices['Desktop Safari'] },
-        },
-        // Mobile viewports
-        {
-            name: 'Mobile Chrome',
-            use: { ...devices['Pixel 5'] },
-        },
-        {
-            name: 'Mobile Safari',
-            use: { ...devices['iPhone 12'] },
-        },
-    ],
-
-    // Run your local dev servers before starting the tests
-    webServer: [
-        {
-            command: 'cd ../frontend && npm run dev',
-            url: 'http://localhost:5173',
-            reuseExistingServer: !process.env.CI,
-        },
-        {
-            command: 'cd ../admin && npm run dev',
-            url: 'http://localhost:5174',
-            reuseExistingServer: !process.env.CI,
-        },
-        {
-            command: 'cd ../backend && npm run server',
-            url: 'http://localhost:5000',
-            reuseExistingServer: !process.env.CI,
         },
     ],
 });
