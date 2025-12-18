@@ -4,10 +4,12 @@ import { currency, url } from "../../assets/assets";
 import axios from "axios";
 import { toast } from "react-toastify";
 import EditFood from "../../components/EditFood/EditFood";
+import { useNavigate } from "react-router-dom";
 
 const List = () => {
   const [list, setList] = useState([]);
   const [editingFood, setEditingFood] = useState(null);
+  const navigate = useNavigate();
 
   // 📌 Lấy danh sách sản phẩm + sắp xếp theo số lượng giảm dần
   const fetchList = async () => {
@@ -51,7 +53,18 @@ const List = () => {
 
   return (
     <div className="list add flex-col">
-      <p>Danh sách sản phẩm</p>
+      <div className="list-header">
+        <div className="header-info">
+          <p>Danh sách sản phẩm</p>
+          <small>Tổng cộng: {list.length} sản phẩm</small>
+        </div>
+        <button 
+          className="add-new-btn" 
+          onClick={() => navigate('/add')}
+        >
+          🌱 Thêm cây mới
+        </button>
+      </div>
       <div className="list-table">
         <div className="list-table-format title">
           <b>Image</b>

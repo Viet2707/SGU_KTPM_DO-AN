@@ -93,3 +93,92 @@
 .add-btn:hover {
     background: linear-gradient(90deg, #dd2476 0%, #ff512f 100%);
 }
+
+.image-info {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.image-info p {
+    color: #28a745;
+    font-size: 14px;
+    margin: 4px 0;
+}
+
+.remove-image-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.remove-image-btn:hover {
+    background: #c82333;
+}
+
+.price-preview {
+    color: #28a745;
+    font-weight: 500;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.tree-suggestions {
+    margin-top: 12px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.tree-suggestions p {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.suggestions-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.suggestion-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.suggestion-btn:hover {
+    background: #0056b3;
+    transform: translateY(-1px);
+}
+
+.description-template {
+    margin-top: 8px;
+}
+
+.template-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.template-btn:hover {
+    background: #218838;
+}
