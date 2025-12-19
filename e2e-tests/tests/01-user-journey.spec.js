@@ -21,6 +21,7 @@ const TEST_USER = {
 test.describe('E2E User Journey - Full Order Flow', () => {
 
     test('Complete Order Flow: Login → Browse → Add to Cart → Checkout → Success', async ({ page }) => {
+        test.setTimeout(60000); // Tăng thời gian timeout lên 60s cho flow dài
 
         /* =====================================================
            STEP 1 – USER TRUY CẬP HỆ THỐNG

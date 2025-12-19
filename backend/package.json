@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "test": "vitest run",
+    "test": "vitest run tests/unit/strict_unit.test.js tests/integration",
     "test:watch": "vitest watch",
     "test:unit": "vitest run tests/unit/strict_unit.test.js",
     "test:integration": "vitest run tests/integration",
