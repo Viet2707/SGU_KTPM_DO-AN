@@ -56,3 +56,17 @@
 18. should return error if user does not exist
 19. should return error if userId is missing from request body
 20. should handle internal server errors during database operations
+
+
+--- [12/19/2025, 11:15:46 AM] userController ---
+1. should register a new user successfully with valid data
+2. should return an error if email already exists
+3. should return an error for invalid email format
+4. should return an error for password less than 8 characters
+5. should return a server error message if an internal error occurs during registration
+6. should log in an existing user successfully with correct credentials
+7. should return 404 if the email does not exist
+8. should return 401 for incorrect password
+9. should return 403 if the user account is locked
+10. should return 500 if a server error occurs during login
+11. should return the user status if authenticated with a valid token
