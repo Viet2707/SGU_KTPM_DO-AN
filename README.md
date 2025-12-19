@@ -1,4 +1,4 @@
-# 🍔 FoodFast - Ứng Dụng Đặt Đồ Ăn Trực Tuyến
+# 🍔 MOW GARDEN - Web bán cây
 
 Chào mừng đến với **FoodFast**, đồ án môn học **Kiểm Thử Phần Mềm** (KTPM) tại Đại học Sài Gòn (SGU). Đây là một hệ thống đặt đồ ăn hoàn chỉnh bao gồm Website cho khách hàng, Trang quản trị (Admin Panel) và Backend API mạnh mẽ.
 
@@ -72,6 +72,37 @@ Tổng quan về sự tương tác giữa người dùng và hệ thống FoodFa
 #### C2 - Container (Thành phần chứa)
 Chi tiết các thành phần bên trong hệ thống: Web App, Admin Panel, API Backend, Database.
 ![C4 Container](docs/images/c4_container.png)
+
+### 5. Domain-Driven Design (Subjects & Relations)
+
+#### Khái niệm
+
+Trong **MOW Garden**, “domain” là toàn bộ phạm vi nghiệp vụ liên quan đến hoạt động của cửa hàng cây cảnh trực tuyến. **Static View** mô tả cấu trúc tĩnh: dữ liệu nằm ở đâu, domain nào quản lý dữ liệu nào và các domain liên kết với nhau ra sao. Hệ thống được chia thành nhiều subdomain độc lập, mỗi subdomain đại diện cho một mảng nghiệp vụ riêng như quản lý sản phẩm, giỏ hàng hay xử lý đơn hàng COD. Mỗi subdomain có model, controller và quy tắc nghiệp vụ riêng. Khi kết hợp, các domain tạo nên quy trình xuyên suốt: người dùng đăng nhập, xem sản phẩm, thêm vào giỏ, đặt hàng COD, hệ thống trừ kho và quản trị viên theo dõi đơn.
+
+#### Mô tả các Domain chính
+
+**1) Access Control Domain – Xác thực và phân quyền**  
+Access Control quản lý việc đăng ký và đăng nhập của Buyer cũng như đăng nhập của Admin. Buyer được lưu trong `userModel.js` với các trường như `name`, `email`, `password` (hash) và trạng thái tài khoản (unlock/lock). Mỗi tài khoản Buyer cũng chứa giỏ hàng riêng thông qua trường `cartData`. Admin dùng tài khoản có sẵn trong `adminModel.js` và có thể khóa hoặc mở khóa người dùng trong `adminUserController.js`. Domain này là nền tảng để các domain khác hoạt động vì mọi thao tác giỏ hàng, đặt hàng hay xem đơn đều yêu cầu người dùng đã xác thực.
+
+**2) Product Catalog Domain – Quản lý sản phẩm và danh mục**  
+Product Catalog quản lý toàn bộ dữ liệu về sản phẩm và danh mục. Mỗi sản phẩm trong `Food.js` gồm tên, mô tả, giá, hình ảnh và `categoryId`. Hệ thống đảm bảo không có hai sản phẩm trùng tên trong cùng danh mục nhờ unique index `{ name, categoryId }`. Khi admin thêm sản phẩm, controller tự động tạo thêm một record tồn kho tương ứng trong `Stock.js`. Khi sản phẩm bị xoá, hệ thống cũng xoá ảnh vật lý và stock đi kèm. Product Catalog cung cấp dữ liệu cho Shopping Cart và Order.
+
+**3) Shopping Cart Domain – Giỏ hàng cá nhân của từng Buyer**  
+Giỏ hàng được nhúng trực tiếp vào user qua trường `cartData` trong `userModel.js`. Điều này đảm bảo mỗi Buyer có đúng một giỏ hàng gắn với tài khoản. Trong `cartController.js`, người dùng có thể thêm sản phẩm, tăng giảm số lượng hoặc xoá khỏi giỏ. Khi người dùng tiến hành thanh toán, dữ liệu trong giỏ là nguồn tạo Order, và sau khi tạo đơn hàng thành công, giỏ được đặt lại rỗng. Domain này nối giữa Product Catalog và Order & Checkout.
+
+**4) Order & Checkout Domain – Đặt hàng COD và vòng đời đơn hàng**  
+Domain này xử lý việc chuyển giỏ hàng thành đơn hàng thực tế. `orderModel.js` lưu snapshot của sản phẩm tại thời điểm mua, tổng tiền (gồm phí ship), địa chỉ nhận hàng, trạng thái và phương thức thanh toán COD. Trong `orderController.js`, hàm `placeOrderCod` kiểm tra tồn kho, trừ kho bằng `decStock`, tạo đơn hàng và xoá giỏ của user. Trạng thái đơn hàng tuân theo ba giá trị: “Food Processing” cho đơn mới, “Delivered” khi giao và thu COD thành công, và “Canceled” khi huỷ đơn hàng (kèm hoàn kho bằng `incStock`). Domain này liên kết chặt với Cart, Inventory và Access Control.
+
+**5) Inventory Domain – Quản lý tồn kho**  
+Inventory theo dõi số lượng tồn của từng sản phẩm. Mỗi sản phẩm có một record stock trong `Stock.js`. Khi bán hàng thành công, tồn kho bị trừ; khi huỷ đơn, tồn kho được hoàn lại. Admin có thể nhập thêm hàng, thay đổi số lượng hoặc xoá dòng tồn kho. `stockController.js` và helper `updateStock.js` hỗ trợ việc trừ và hoàn kho đảm bảo nhất quán dữ liệu. Inventory là phần đảm bảo dữ liệu kho phản ánh đúng tình trạng bán hàng trong hệ thống.
+
+#### Quan hệ giữa các Domain
+
+Các domain trong **MOW Garden** liên kết theo dòng nghiệp vụ rõ ràng. **Access Control** đứng đầu vì người dùng phải được xác thực trước khi sử dụng giỏ hàng hay đặt hàng. **Shopping Cart** gắn trực tiếp vào Buyer và lưu lựa chọn mua hàng. Khi đặt hàng, giỏ hàng được chuyển thành Order nên giữa Cart và Order tồn tại mối quan hệ chuyển đổi. **Order** tác động lên **Inventory** bằng cách trừ hoặc hoàn kho. **Product Catalog** liên kết với Inventory ở mức cấu trúc: mỗi sản phẩm có đúng một record stock. Nhìn tổng thể, chuỗi domain phản ánh đúng luồng kinh doanh: đăng nhập → xem sản phẩm → thêm giỏ → đặt hàng COD → cập nhật kho.
+
+#### Tổng kết
+
+**MOW Garden** được tổ chức thành năm domain: Access Control, Product Catalog, Shopping Cart, Order & Checkout và Inventory. Các domain này tạo thành chuỗi nghiệp vụ hoàn chỉnh, phản ánh đúng quy trình mua bán ngoài đời: người dùng đăng nhập, duyệt sản phẩm, chọn mua, đặt hàng COD, hệ thống trừ kho và quản trị viên xử lý đơn. Mỗi domain có dữ liệu, controller và quy tắc riêng nhưng liên kết logic với nhau qua các khóa như `userId`, `foodId` và `stock`. Static View này là khung nền để hiểu toàn bộ kiến trúc backend và phục vụ cho các sơ đồ ở mức chi tiết hơn.
 
 ---
 
